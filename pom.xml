@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.morning</groupId>
+    <artifactId>morning-cloud</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>morning-common</module>
+        <module>morning-gateway</module>
+        <module>morning-manager</module>
+        <module>morning-order</module>
+        <module>morning-product</module>
+        <module>morning-ucenter</module>
+        <module>morning-seckill</module>
+        <module>morning-wms</module>
+        <module>morning-activiti</module>
+        <module>morning-crm</module>
+        <module>morning-erp</module>
+        <module>morning-serach</module>
+        <module>morning-merchant</module>
+        <module>morning-schedule</module>
+        <module>morning-cms</module>
+        <module>morning-point</module>
+        <module>morning-pay</module>
+        <module>morning-register</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <spring-cloud.version>Edgware.SR2</spring-cloud.version>
+        <spring-boot.version>1.5.10.RELEASE</spring-boot.version>
+        <zipkin-rabbitmq.version>2.3.1</zipkin-rabbitmq.version>
+        <de.codecentric.version>2.1.4</de.codecentric.version>
+        <druid-spring-boot.version>1.1.13</druid-spring-boot.version>
+        <!--mybatisplus版本-->
+        <mybatis-plus.version>2.1.9</mybatis-plus.version>
+        <mybatisplus-boot-starter.version>1.0.5</mybatisplus-boot-starter.version>
+    </properties>
+
+</project>
