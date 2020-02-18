@@ -1,0 +1,24 @@
+server:
+  port: 9410
+
+spring:
+  application:
+    name: morning-zipkin
+  profiles:
+    active: dev
+zipkin:
+  collector:
+    rabbitmq:
+      addresses: 127.0.0.1:5672
+      username: admin
+      password: admin
+      queue: zipkin
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/
+
+logging:
+  level: debug
+  path: logs
