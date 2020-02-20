@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: web-ui
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/morning-shop?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC&autoReconnect=true&failOverReadOnly=false
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+  redis:
+    host: 106.52.83.225
+    port: 6379
+    password: 123456!@#$%^
+redis:
+  host: 106.52.83.225
+  port: 6379
+  password: 123456!@#$%^

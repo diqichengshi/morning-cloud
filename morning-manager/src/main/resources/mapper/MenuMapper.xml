@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.posp.ui.dao.IMenuMapper">
+    <resultMap id="BaseResultMap" type="com.posp.common.service.user.entyty.MenuDO">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="PARENT_ID" property="parentId" jdbcType="VARCHAR"/>
+        <result column="NAME" property="name" jdbcType="VARCHAR"/>
+        <result column="URL" property="url" jdbcType="VARCHAR"/>
+        <result column="PERMS" property="perms" jdbcType="VARCHAR"/>
+        <result column="TYPE" property="type" jdbcType="VARCHAR"/>
+        <result column="ICON" property="icon" jdbcType="VARCHAR"/>
+        <result column="SORT_NO" property="sortNo" jdbcType="VARCHAR"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR"/>
+        <result column="CREATE_USER_ID" property="createUserId" jdbcType="VARCHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="LAST_USER_ID" property="lastUserId" jdbcType="VARCHAR"/>
+        <result column="LAST_MOD_TIME" property="lastModTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        ID,PARENT_ID,NAME,URL,PERMS,TYPE,ICON,SORT_NO,REMARK,CREATE_USER_ID,CREATE_TIME,LAST_USER_ID,LAST_MOD_TIME
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT <include refid="Base_Column_List"/> FROM S_MENU WHERE ID = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        DELETE FROM S_MENU WHERE ID = #{id,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="com.posp.common.service.user.entyty.MenuDO">
+        INSERT INTO S_MENU (ID,PARENT_ID,NAME,URL,PERMS,TYPE,ICON,SORT_NO,REMARK,CREATE_USER_ID,CREATE_TIME,LAST_USER_ID,LAST_MOD_TIME)
+        VALUES(#{id,jdbcType=VARCHAR},#{parentId,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{url,jdbcType=VARCHAR},#{perms,jdbcType=VARCHAR},#{type,jdbcType=VARCHAR},#{icon,jdbcType=VARCHAR},#{sortNo,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR},#{createUserId,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{lastUserId,jdbcType=VARCHAR},#{lastModTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.posp.common.service.user.entyty.MenuDO">
+        INSERT INTO S_MENU
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="parentId != null">
+                PARENT_ID,
+            </if>
+            <if test="name != null">
+                NAME,
+            </if>
+            <if test="url != null">
+                URL,
+            </if>
+            <if test="perms != null">
+                PERMS,
+            </if>
+            <if test="type != null">
+                TYPE,
+            </if>
+            <if test="icon != null">
+                ICON,
+            </if>
+            <if test="sortNo != null">
+                SORT_NO,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="createUserId != null">
+                CREATE_USER_ID,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="lastUserId != null">
+                LAST_USER_ID,
+            </if>
+            <if test="lastModTime != null">
+                LAST_MOD_TIME
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="parentId != null">
+                #{parentId,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null">
+                #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="perms != null">
+                #{perms,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null">
+                #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="sortNo != null">
+                #{sortNo,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createUserId != null">
+                #{createUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUserId != null">
+                #{lastUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="lastModTime != null">
+                #{lastModTime,jdbcType=TIMESTAMP}
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.posp.common.service.user.entyty.MenuDO">
+        UPDATE S_MENU
+        <set>
+            <if test="parentId != null">
+                PARENT_ID = #{parentId,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                NAME = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null">
+                URL = #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="perms != null">
+                PERMS = #{perms,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                TYPE = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null">
+                ICON = #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="sortNo != null">
+                SORT_NO = #{sortNo,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createUserId != null">
+                CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUserId != null">
+                LAST_USER_ID = #{lastUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="lastModTime != null">
+                LAST_MOD_TIME = #{lastModTime,jdbcType=TIMESTAMP}
+            </if>
+        </set>
+        WHERE ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.posp.common.service.user.entyty.MenuDO">
+        UPDATE S_MENU
+        SET
+            PARENT_ID = #{parentId,jdbcType=VARCHAR},
+            NAME = #{name,jdbcType=VARCHAR},
+            URL = #{url,jdbcType=VARCHAR},
+            PERMS = #{perms,jdbcType=VARCHAR},
+            TYPE = #{type,jdbcType=VARCHAR},
+            ICON = #{icon,jdbcType=VARCHAR},
+            SORT_NO = #{sortNo,jdbcType=VARCHAR},
+            REMARK = #{remark,jdbcType=VARCHAR},
+            CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
+            CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            LAST_USER_ID = #{lastUserId,jdbcType=VARCHAR},
+            LAST_MOD_TIME = #{lastModTime,jdbcType=TIMESTAMP}
+        WHERE ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <!--自定义查询条件-->
+    <sql id="whereQueryParam">
+        <if test="id != null and id != ''">
+            AND ID = #{id}
+        </if>
+        <if test="parentId != null and parentId != ''">
+            AND PARENT_ID = #{parentId}
+        </if>
+        <if test="name != null and name != ''">
+            AND NAME LIKE  CONCAT(CONCAT('%',#{name,jdbcType=VARCHAR}),'%')
+        </if>
+        <if test="url != null and url != ''">
+            AND URL LIKE  CONCAT(CONCAT('%',#{url,jdbcType=VARCHAR}),'%')
+        </if>
+        <if test="perms != null and perms != ''">
+            AND PERMS lIKE  CONCAT(CONCAT('%',#{perms,jdbcType=VARCHAR}),'%')
+        </if>
+        <if test="type != null and type != ''">
+            AND TYPE = #{type}
+        </if>
+        <if test="icon != null and icon != ''">
+            AND ICON = #{icon}
+        </if>
+        <if test="sortNo != null and sortNo != ''">
+            AND SORT_NO = #{sortNo}
+        </if>
+        <if test="remark != null and remark != ''">
+            AND REMARK = #{remark}
+        </if>
+        <if test="createUserId != null and createUserId != ''">
+            AND CREATE_USER_ID = #{createUserId}
+        </if>
+        <if test="createTimeStart != null and createTimeStart != ''">
+            AND TO_CHAR(CREATE_TIME,'YYYYMMDD') &gt;= #{createTimeStart}
+        </if>
+        <if test="createTimeEnd != null and createTimeEnd != ''">
+            AND TO_CHAR(CREATE_TIME,'YYYYMMDD') &lt;= #{createTimeEnd}
+        </if>
+        <if test="lastUserId != null and lastUserId != ''">
+            AND LAST_USER_ID = #{lastUserId}
+        </if>
+        <if test="lastModTimeStart != null and lastModTimeStart != ''">
+            AND TO_CHAR(LAST_MOD_TIME,'YYYYMMDD') &gt;= #{lastModTimeStart}
+        </if>
+        <if test="lastModTimeEnd != null and lastModTimeEnd != ''">
+            AND TO_CHAR(LAST_MOD_TIME,'YYYYMMDD') &lt;= #{lastModTimeEnd}
+        </if>
+    </sql>
+    <!--自定义方法-->
+    <select id="selectByParam" resultMap="BaseResultMap" parameterType="com.posp.common.service.user.query.MenuQuery">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM S_MENU
+        <where>
+            <include refid="whereQueryParam"></include>
+        </where>
+        ORDER BY type,to_number(SORT_NO)
+    </select>
+    <!--批量删除-->
+    <delete id="batchDelete" parameterType="java.util.List">
+        DELETE FROM S_MENU WHERE ID IN
+        <foreach collection="ids" item="item" index="index" open="(" close=")" separator=",">
+        #{item}
+        </foreach>
+    </delete>
+    <!--批量新增-->
+    <insert id="batchInsert" parameterType="java.util.List">
+        INSERT INTO S_MENU (ID,PARENT_ID,NAME,URL,PERMS,TYPE,ICON,SORT_NO,REMARK,CREATE_USER_ID,CREATE_TIME,LAST_USER_ID,LAST_MOD_TIME)
+        SELECT a.* FROM (
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT
+            #{item.id,jdbcType=VARCHAR},
+            #{item.parentId,jdbcType=VARCHAR},
+            #{item.name,jdbcType=VARCHAR},
+            #{item.url,jdbcType=VARCHAR},
+            #{item.perms,jdbcType=VARCHAR},
+            #{item.type,jdbcType=VARCHAR},
+            #{item.icon,jdbcType=VARCHAR},
+            #{item.sortNo,jdbcType=VARCHAR},
+            #{item.remark,jdbcType=VARCHAR},
+            #{item.createUserId,jdbcType=VARCHAR},
+            #{item.createTime,jdbcType=TIMESTAMP},
+            #{item.lastUserId,jdbcType=VARCHAR},
+            #{item.lastModTime,jdbcType=TIMESTAMP}
+            FROM dual
+        </foreach>
+        ) a
+    </insert>
+        <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.String">
+    SELECT DISTINCT m.ID,m.PARENT_ID,m.NAME,m.URL,m.PERMS,m.TYPE,m.ICON,m.SORT_NO,m.REMARK,m.CREATE_TIME
+    FROM S_MENU m
+    JOIN S_ROLE_MENU rm on rm.menu_id=m.id
+    JOIN S_USER_ROLE ur on ur.role_id=rm.role_id
+    <where>
+         ur.USER_ID=#{userId}
+    </where>
+        ORDER BY m.type,to_number(m.SORT_NO)
+    </select>
+</mapper>

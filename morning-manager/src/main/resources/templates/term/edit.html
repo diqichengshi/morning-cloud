@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="utf-8"/>
+    <title>运营管理系统-畅捷支付</title>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all"/>
+    <link rel="stylesheet" th:href="@{/style/admin.css}" media="all"/>
+</head>
+<body>
+<div class="layui-form layui-form-pane" style="padding-top: 20px;margin-left: 10px;margin-right: 10px">
+        <div class="layui-form-item">
+        <label class="layui-form-label"></label>
+        <div class="layui-input-block">
+            <input type="text" name="id" th:value="${entity?.id}"  disabled="disabled" lay-verify="required" autocomplete="on" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">商户标识</label>
+        <div class="layui-input-block">
+            <input type="text" name="userCode" th:value="${entity?.userCode}" lay-verify="required" autocomplete="on" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">门店标识</label>
+        <div class="layui-input-block">
+            <input type="text" name="storeId" th:value="${entity?.storeId}"  autocomplete="on" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">终端号</label>
+        <div class="layui-input-block">
+            <input type="text" name="termId" th:value="${entity?.termId}" lay-verify="required" autocomplete="on" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">状态</label>
+        <div class="layui-input-inline">
+            <input type="checkbox" name="status" lay-skin="switch" lay-text="启动|禁用" value="1" th:checked="${entity?.status}=='1'"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">是否在审核中：0:否，1:是，只要标志为1，禁止任何的修改资料，状态变更等操作。</label>
+        <div class="layui-input-block">
+            <input type="text" name="chkFlag" th:value="${entity?.chkFlag}" lay-verify="required" autocomplete="on" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">是否已下载参数: 0:未下载，1:已下载</label>
+        <div class="layui-input-block">
+            <input type="text" name="downloadFlag" th:value="${entity?.downloadFlag}" lay-verify="required" autocomplete="on" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">联系人</label>
+        <div class="layui-input-block">
+            <input type="text" name="contacts" th:value="${entity?.contacts}"  autocomplete="on" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">电话</label>
+        <div class="layui-input-block">
+            <input type="text" name="tel" th:value="${entity?.tel}"  autocomplete="on" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">布放地址</label>
+        <div class="layui-input-block">
+            <input type="text" name="addr" th:value="${entity?.addr}" lay-verify="required" autocomplete="on" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">工作主密钥</label>
+        <div class="layui-input-block">
+            <input type="text" name="tmk" th:value="${entity?.tmk}"  autocomplete="on" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">安全密钥</label>
+        <div class="layui-input-block">
+            <input type="text" name="macKey" th:value="${entity?.macKey}"  autocomplete="on" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">密钥密钥</label>
+        <div class="layui-input-block">
+            <input type="text" name="pinKey" th:value="${entity?.pinKey}"  autocomplete="on" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">磁道密钥</label>
+        <div class="layui-input-block">
+            <input type="text" name="trackKey" th:value="${entity?.trackKey}"  autocomplete="on" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">备注</label>
+        <div class="layui-input-block">
+            <input type="text" name="remark" th:value="${entity?.remark}"  autocomplete="on" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">是否在银联报备（0:未报备,1:已报备,2:报备错误,3:报备中）</label>
+        <div class="layui-input-block">
+            <input type="text" name="cupsFlag" th:value="${entity?.cupsFlag}"  autocomplete="on" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">银联报备批次</label>
+        <div class="layui-input-block">
+            <input type="text" name="cupsBatch" th:value="${entity?.cupsBatch}"  autocomplete="on" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">免密标志,0：待更新1：已更新,2不更新</label>
+        <div class="layui-input-block">
+            <input type="text" name="freeFlag" th:value="${entity?.freeFlag}" lay-verify="required" autocomplete="on" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item layui-hide">
+        <input type="button" lay-submit="submit" lay-filter="edit-submit" id="edit-submit" value="提交"/>
+    </div>
+</div>
+
+<script th:src="@{/layui/layui.js}"></script>
+<script>
+    layui.config({
+        base: '/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'term'], function () {
+    });
+</script>
+</body>
+</html>

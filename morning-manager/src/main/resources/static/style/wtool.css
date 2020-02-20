@@ -1,0 +1,77 @@
+.shade{
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+}
+.loading{
+    position: absolute;
+    color: #fff;
+    text-align: center;
+    top: 45%;
+    left: 45%;
+    margin-left: -42px;
+    margin-top: -20px;
+    padding: 8px 4px;
+    /* background-color: rgba(255,255,255,0.9); */
+    border-radius: 3px;
+}
+.loading .loading_img{
+    background: url(../../images/loading.gif) center no-repeat;
+    background-size: auto 50px;
+    width:120px;
+    height: 50px;
+}
+
+.maskLayerTransparent{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.maskLayer{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 1000;
+}
+
+#wAlert{
+    border-radius: 3px;
+    overflow: hidden;
+    background: #fff;
+    width: 480px;
+    position: absolute;
+    top: 30%;
+    left: 36%;
+}
+#wAlertText,.wAlertText{
+    font-size: 14px;
+    text-align: center;
+    min-height: 40px;
+    border-bottom: 1px solid #ddd;
+    padding: 26px 12px 20px;
+    line-height: 30px;
+}
+#wAlertBtn,.wAlertBtn{
+    display: table;
+    width: 100%;
+}
+#wAlertBtn p,.wAlertBtn p{
+    display: table-cell;
+    text-align: center;
+    width: 50%;
+    height: 50px;
+    line-height: 50px;
+    color: #f36f21;
+}
+#wAlertBtn .border_right,.wAlertBtn .border_right{
+    border-right:1px solid #ddd;
+}

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.posp.ui.dao.IOrganizeMapper">
+    <resultMap id="BaseResultMap" type="com.posp.common.service.user.entyty.OrganizeDO">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="CODE" property="code" jdbcType="VARCHAR"/>
+        <result column="NAME" property="name" jdbcType="VARCHAR"/>
+        <result column="PARENT_CODE" property="parentCode" jdbcType="VARCHAR"/>
+        <result column="SORT_NO" property="sortNo" jdbcType="VARCHAR"/>
+        <result column="GROUP_CODES" property="groupCodes" jdbcType="VARCHAR"/>
+        <result column="CREATE_USER_ID" property="createUserId" jdbcType="VARCHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="LAST_USER_ID" property="lastUserId" jdbcType="VARCHAR"/>
+        <result column="LAST_MOD_TIME" property="lastModTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        ID,CODE,NAME,PARENT_CODE,SORT_NO,GROUP_CODES,CREATE_USER_ID,CREATE_TIME,LAST_USER_ID,LAST_MOD_TIME
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT <include refid="Base_Column_List"/> FROM S_ORGANIZE WHERE ID = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        DELETE FROM S_ORGANIZE WHERE ID = #{id,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="com.posp.common.service.user.entyty.OrganizeDO">
+        INSERT INTO S_ORGANIZE (ID,CODE,NAME,PARENT_CODE,SORT_NO,GROUP_CODES,CREATE_USER_ID,CREATE_TIME,LAST_USER_ID,LAST_MOD_TIME)
+        VALUES(#{id,jdbcType=VARCHAR},#{code,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{parentCode,jdbcType=VARCHAR},#{sortNo,jdbcType=VARCHAR},#{groupCodes,jdbcType=VARCHAR},#{createUserId,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{lastUserId,jdbcType=VARCHAR},#{lastModTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.posp.common.service.user.entyty.OrganizeDO">
+        INSERT INTO S_ORGANIZE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="code != null">
+                CODE,
+            </if>
+            <if test="name != null">
+                NAME,
+            </if>
+            <if test="parentCode != null">
+                PARENT_CODE,
+            </if>
+            <if test="sortNo != null">
+                SORT_NO,
+            </if>
+            <if test="groupCodes != null">
+                GROUP_CODES,
+            </if>
+            <if test="createUserId != null">
+                CREATE_USER_ID,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="lastUserId != null">
+                LAST_USER_ID,
+            </if>
+            <if test="lastModTime != null">
+                LAST_MOD_TIME
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="code != null">
+                #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="parentCode != null">
+                #{parentCode,jdbcType=VARCHAR},
+            </if>
+            <if test="sortNo != null">
+                #{sortNo,jdbcType=VARCHAR},
+            </if>
+            <if test="groupCodes != null">
+                #{groupCodes,jdbcType=VARCHAR},
+            </if>
+            <if test="createUserId != null">
+                #{createUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUserId != null">
+                #{lastUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="lastModTime != null">
+                #{lastModTime,jdbcType=TIMESTAMP}
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.posp.common.service.user.entyty.OrganizeDO">
+        UPDATE S_ORGANIZE
+        <set>
+            <if test="code != null">
+                CODE = #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                NAME = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="parentCode != null">
+                PARENT_CODE = #{parentCode,jdbcType=VARCHAR},
+            </if>
+            <if test="sortNo != null">
+                SORT_NO = #{sortNo,jdbcType=VARCHAR},
+            </if>
+            <if test="groupCodes != null">
+                GROUP_CODES = #{groupCodes,jdbcType=VARCHAR},
+            </if>
+            <if test="createUserId != null">
+                CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUserId != null">
+                LAST_USER_ID = #{lastUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="lastModTime != null">
+                LAST_MOD_TIME = #{lastModTime,jdbcType=TIMESTAMP}
+            </if>
+        </set>
+        WHERE ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.posp.common.service.user.entyty.OrganizeDO">
+        UPDATE S_ORGANIZE
+        SET
+            CODE = #{code,jdbcType=VARCHAR},
+            NAME = #{name,jdbcType=VARCHAR},
+            PARENT_CODE = #{parentCode,jdbcType=VARCHAR},
+            SORT_NO = #{sortNo,jdbcType=VARCHAR},
+            GROUP_CODES = #{groupCodes,jdbcType=VARCHAR},
+            CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
+            CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            LAST_USER_ID = #{lastUserId,jdbcType=VARCHAR},
+            LAST_MOD_TIME = #{lastModTime,jdbcType=TIMESTAMP}
+        WHERE ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <!--自定义查询条件-->
+    <sql id="whereQueryParam">
+        <if test="id != null and id != ''">
+            AND ID = #{id}
+        </if>
+        <if test="code != null and code != ''">
+            AND CODE = #{code}
+        </if>
+        <if test="name != null and name != ''">
+            AND NAME LIKE  CONCAT(CONCAT('%',#{name,jdbcType=VARCHAR}),'%')
+        </if>
+        <if test="parentCode != null and parentCode != ''">
+            AND PARENT_CODE = #{parentCode}
+        </if>
+        <if test="sortNo != null and sortNo != ''">
+            AND SORT_NO = #{sortNo}
+        </if>
+        <if test="groupCodes != null and groupCodes != ''">
+            AND GROUP_CODES = #{groupCodes}
+        </if>
+        <if test="createUserId != null and createUserId != ''">
+            AND CREATE_USER_ID = #{createUserId}
+        </if>
+        <if test="createTimeStart != null and createTimeStart != ''">
+            AND TO_CHAR(CREATE_TIME,'YYYYMMDD') &gt;= #{createTimeStart}
+        </if>
+        <if test="createTimeEnd != null and createTimeEnd != ''">
+            AND TO_CHAR(CREATE_TIME,'YYYYMMDD') &lt;= #{createTimeEnd}
+        </if>
+        <if test="lastUserId != null and lastUserId != ''">
+            AND LAST_USER_ID = #{lastUserId}
+        </if>
+        <if test="lastModTimeStart != null and lastModTimeStart != ''">
+            AND TO_CHAR(LAST_MOD_TIME,'YYYYMMDD') &gt;= #{lastModTimeStart}
+        </if>
+        <if test="lastModTimeEnd != null and lastModTimeEnd != ''">
+            AND TO_CHAR(LAST_MOD_TIME,'YYYYMMDD') &lt;= #{lastModTimeEnd}
+        </if>
+    </sql>
+    <!--自定义方法-->
+    <select id="selectByParam" resultMap="BaseResultMap" parameterType="com.posp.common.service.user.query.OrganizeQuery">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM S_ORGANIZE
+        <where>
+            <include refid="whereQueryParam"></include>
+        </where>
+        ORDER BY CREATE_TIME DESC
+    </select>
+    <!--自定义方法2,本机构以及下属机构-->
+    <select id="selectByParamAndOrg" resultMap="BaseResultMap" parameterType="com.posp.common.service.user.query.OrganizeQuery">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM S_ORGANIZE
+        <where>
+            CODE IN (SELECT code FROM S_ORGANIZE WHERE INSTR(GROUP_CODES,#{organizeCode})>0)
+            <include refid="whereQueryParam"></include>
+        </where>
+        ORDER BY CREATE_TIME DESC
+    </select>
+    <!--批量删除-->
+    <delete id="batchDelete" parameterType="java.util.List">
+        DELETE FROM S_ORGANIZE WHERE ID IN
+        <foreach collection="ids" item="item" index="index" open="(" close=")" separator=",">
+        #{item}
+        </foreach>
+    </delete>
+    <!--批量新增-->
+    <insert id="batchInsert" parameterType="java.util.List">
+        INSERT INTO S_ORGANIZE (ID,CODE,NAME,PARENT_CODE,SORT_NO,GROUP_CODES,CREATE_USER_ID,CREATE_TIME,LAST_USER_ID,LAST_MOD_TIME)
+        SELECT a.* FROM (
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT
+            #{item.id,jdbcType=VARCHAR},
+            #{item.code,jdbcType=VARCHAR},
+            #{item.name,jdbcType=VARCHAR},
+            #{item.parentCode,jdbcType=VARCHAR},
+            #{item.sortNo,jdbcType=VARCHAR},
+            #{item.groupCodes,jdbcType=VARCHAR},
+            #{item.createUserId,jdbcType=VARCHAR},
+            #{item.createTime,jdbcType=TIMESTAMP},
+            #{item.lastUserId,jdbcType=VARCHAR},
+            #{item.lastModTime,jdbcType=TIMESTAMP}
+            FROM dual
+        </foreach>
+        ) a
+    </insert>
+    <!--根据部门编号查出部门-->
+    <select id="selectByOrgCode" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM S_ORGANIZE
+        WHERE CODE = #{code}
+    </select>
+    <!--根据部门编号查出子部门编号-->
+    <select id="selectAllCodeByOrgCode" resultType="java.lang.String" >
+        SELECT
+        CODE
+        FROM S_ORGANIZE
+        <where>
+            CODE IN (SELECT code FROM S_ORGANIZE WHERE INSTR(GROUP_CODES,#{organizeCode})>0)
+        </where>
+    </select>
+
+
+    <update id="updateByCode" parameterType="com.posp.common.service.user.entyty.OrganizeDO">
+        UPDATE S_ORGANIZE
+        <set>
+            <if test="code != null">
+                CODE = #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                NAME = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="parentCode != null">
+                PARENT_CODE = #{parentCode,jdbcType=VARCHAR},
+            </if>
+            <if test="sortNo != null">
+                SORT_NO = #{sortNo,jdbcType=VARCHAR},
+            </if>
+            <if test="groupCodes != null">
+                GROUP_CODES = #{groupCodes,jdbcType=VARCHAR},
+            </if>
+
+            <if test="lastUserId != null">
+                LAST_USER_ID = #{lastUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="lastModTime != null">
+                LAST_MOD_TIME = #{lastModTime,jdbcType=TIMESTAMP}
+            </if>
+        </set>
+        WHERE   CODE = #{code,jdbcType=VARCHAR}
+
+    </update>
+</mapper>

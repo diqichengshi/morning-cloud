@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="utf-8"/>
+    <title>运营管理系统-畅捷支付</title>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all"/>
+    <link rel="stylesheet" th:href="@{/style/admin.css}" media="all"/>
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto" lay-filter="form-search">
+            <div class="layui-form-item">
+                <!--<div class="layui-inline">
+                    <label class="layui-form-label">ID</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="id" placeholder="请输入" autocomplete="on" class="layui-input"/>
+                    </div>
+                </div>-->
+                <div class="layui-inline">
+                    <label class="layui-form-label">部门编号</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="code" placeholder="请输入" autocomplete="on" class="layui-input"/>
+                    </div>
+                    <label class="layui-form-label">部门名称</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="name" placeholder="请输入" autocomplete="on" class="layui-input"/>
+                    </div>
+                </div>
+
+            </div>
+                <div class="layui-form-item">
+                <div class="layui-inline">
+                    <button class="layui-btn layuiadmin-btn-comm" data-type="reload" lay-submit="submit"
+                            lay-filter="table-organize-search">
+                        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>查询
+                    </button>
+                    <button type="reset" class="layui-btn layui-btn-primary layuiadmin-btn-admin" data-type="reset">
+                        <i class="layui-icon layui-icon-refresh layuiadmin-button-btn"></i>重置
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="layui-card-body">
+
+            <table id="table-data-organize" lay-filter="table-operation-organize-filter"></table>
+            <script type="text/html" id="table-operation">
+                <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="selectCode"><i
+                        class="layui-icon layui-icon-add-circle-fine"></i>选择</a>
+            </script>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/layui/layui.js}"></script>
+<script th:src="@{/modules/tool.js}"></script>
+<script>
+    layui.config({
+        base: '/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'laydate', 'selectOrgCode'], function () {
+    });
+</script>
+</body>
+</html>
+

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.posp.ui.dao.IUserRoleMapper">
+    <resultMap id="BaseResultMap" type="com.posp.common.service.user.entyty.UserRoleDO">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="USER_ID" property="userId" jdbcType="VARCHAR"/>
+        <result column="ROLE_ID" property="roleId" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        ID,USER_ID,ROLE_ID
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM S_USER_ROLE WHERE ID = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        DELETE FROM S_USER_ROLE WHERE ID = #{id,jdbcType=VARCHAR}
+    </delete>
+    <!--批量删除-->
+    <delete id="batchDelete" parameterType="java.util.List">
+        DELETE FROM S_USER_ROLE WHERE ID IN
+        <foreach collection="ids" item="item" index="index" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </delete>
+    <insert id="insert" parameterType="com.posp.common.service.user.entyty.UserRoleDO">
+
+        INSERT INTO S_USER_ROLE (ID,USER_ID,ROLE_ID)
+        VALUES(#{id,jdbcType=VARCHAR},#{userId,jdbcType=VARCHAR},#{roleId,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertRole" parameterType="com.posp.common.service.user.entyty.UserRoleDO">
+        INSERT INTO S_USER_ROLE (ID,USER_ID,ROLE_ID)
+        VALUES(#{id,jdbcType=VARCHAR},#{userId,jdbcType=VARCHAR},#{roleId,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.posp.common.service.user.entyty.UserRoleDO">
+        INSERT INTO S_USER_ROLE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="roleId != null">
+                ROLE_ID
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="roleId != null">
+                #{roleId,jdbcType=VARCHAR}
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.posp.common.service.user.entyty.UserRoleDO">
+        UPDATE S_USER_ROLE
+        <set>
+            <if test="userId != null">
+                USER_ID = #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="roleId != null">
+                ROLE_ID = #{roleId,jdbcType=VARCHAR}
+            </if>
+        </set>
+        WHERE ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.posp.common.service.user.entyty.UserRoleDO">
+        UPDATE S_USER_ROLE
+        SET
+            USER_ID = #{userId,jdbcType=VARCHAR},
+            ROLE_ID = #{roleId,jdbcType=VARCHAR}
+        WHERE ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <!--自定义方法-->
+    <select id="selectByParam" resultMap="BaseResultMap"
+            parameterType="com.posp.common.service.user.query.UserRoleQuery">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM S_USER_ROLE
+        <where>
+            <if test="id != null and id != ''">
+                AND ID = #{id}
+            </if>
+            <if test="userId != null and userId != ''">
+                AND USER_ID = #{userId}
+            </if>
+            <if test="roleId != null and roleId != ''">
+                AND ROLE_ID = #{roleId}
+            </if>
+        </where>
+    </select>
+    <delete id="deleteByUserId" parameterType="java.lang.String">
+        DELETE FROM S_USER_ROLE WHERE USER_ID = #{userId,jdbcType=VARCHAR}
+    </delete>
+    <delete id="deleteByRoleId" parameterType="java.lang.String">
+        DELETE FROM S_USER_ROLE WHERE ROLE_ID = #{roleId,jdbcType=VARCHAR}
+    </delete>
+    <!--根据用户id查出角色id-->
+    <select id="selectRoleIdByUserId" resultType="java.lang.String">
+        SELECT
+        distinct ROLE_ID
+        FROM S_USER_ROLE
+        <where>
+            AND USER_ID = #{userId}
+        </where>
+    </select>
+    <!--根据角色id查出用户id-->
+    <select id="selectUserIdByRoleId" resultType="java.lang.String">
+        SELECT
+        distinct USER_ID
+        FROM S_USER_ROLE
+        <where>
+            AND ROLE_ID = #{roleId}
+        </where>
+    </select>
+    
+    <!-- change用户不包含的角色-->
+    <select id="selectUserNotRoleOfChange" resultMap="BaseResultMap" parameterType="java.util.Map">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM S_USER_ROLE
+        WHERE 
+        	USER_ID =  #{userId,jdbcType=VARCHAR}
+        <if test="roleId.size() > 0">
+            AND ROLE_ID NOT IN 
+            <foreach collection="roleId" item="item" separator="," open="(" close=")">
+                #{item,jdbcType=VARCHAR}
+            </foreach>
+        </if>
+    </select>
+    
+    <!-- 查询用户拥有的菜单ID-->
+    <select id="selectRoleMenuIdByUserName" resultType="java.lang.String" parameterType="java.util.Map">
+        select 
+		rm1.id
+		from s_role_menu rm1 
+		join s_user_role ur1 on ur1.role_id = rm1.role_id
+		join s_user u on u.id = ur1.user_id 
+		where u.username in 
+		<foreach collection="userlist" item="item" index="index" open="(" close=")" separator=","> 
+                #{item,jdbcType=VARCHAR}
+        </foreach>
+	    and rm1.menu_id in 
+	    <foreach collection="menulist" item="item" index="index" open="(" close=")" separator=","> 
+                #{item,jdbcType=VARCHAR}
+        </foreach>
+    </select>
+    
+    <!--根据角色id查出用户名-->
+    <select id="selectUserNameByRoleId" resultType="java.lang.String" parameterType="java.util.List">
+        SELECT
+        distinct u.username
+        FROM S_USER_ROLE ur1
+        join S_USER u on u.id = ur1.user_id
+        where ur1.role_id in 
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator=","> 
+                #{item,jdbcType=VARCHAR}
+        </foreach>
+    </select>
+</mapper>

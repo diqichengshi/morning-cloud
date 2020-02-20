@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.posp.ui.dao.ITableColumnMapper">
+    <resultMap id="BaseResultMap" type="com.posp.common.service.user.entyty.DbTableColumnDO">
+        <result column="TABLE_NAME" property="tableName" jdbcType="VARCHAR"/>
+        <result column="COLUMN_NAME" property="columnName" jdbcType="VARCHAR"/>
+        <result column="DATA_TYPE" property="dataType" jdbcType="VARCHAR"/>
+        <result column="DATA_LENGTH" property="dataLength" jdbcType="DECIMAL"/>
+        <result column="DATA_PRECISION" property="dataPrecision" jdbcType="DECIMAL"/>
+        <result column="DATA_SCALE" property="dataScale" jdbcType="DECIMAL"/>
+        <result column="NULLABLE" property="nullable" jdbcType="VARCHAR"/>
+        <result column="COMMENTS" property="comments" jdbcType="VARCHAR"/>
+        <result column="DATA_DEFAULT" property="defaultValue" jdbcType="BLOB" javaType="String"/>
+    </resultMap>
+
+    <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        t.TABLE_NAME,t.COLUMN_NAME,t.DATA_TYPE,t.DATA_LENGTH,t.DATA_PRECISION,t.NULLABLE,t.DATA_SCALE,cc.COMMENTS,t.DATA_DEFAULT
+        FROM USER_TAB_COLUMNS t
+        JOIN USER_COL_COMMENTS cc on cc.table_name=t.table_name and cc.column_name = t.column_name
+        <where>
+            <if test="name != null and name != ''">
+                t.TABLE_NAME = #{name}
+            </if>
+        </where>
+    </select>
+</mapper>

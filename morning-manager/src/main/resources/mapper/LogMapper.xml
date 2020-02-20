@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.posp.ui.dao.ILogMapper">
+    <resultMap id="BaseResultMap" type="com.posp.common.service.user.entyty.LogDO">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="IP" property="ip" jdbcType="VARCHAR"/>
+        <result column="URL" property="url" jdbcType="VARCHAR"/>
+        <result column="HTTP_METHOD" property="httpMethod" jdbcType="VARCHAR"/>
+        <result column="CLASS_METHOD" property="classMethod" jdbcType="VARCHAR"/>
+        <result column="ARGS" property="args" jdbcType="VARCHAR"/>
+        <result column="CODE" property="code" jdbcType="VARCHAR"/>
+        <result column="MESSAGE" property="message" jdbcType="VARCHAR"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR"/>
+        <result column="ORG_CODE" property="orgCode" jdbcType="VARCHAR"/>
+        <result column="CREATE_USER_ID" property="createUserId" jdbcType="VARCHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        ID,IP,URL,HTTP_METHOD,CLASS_METHOD,ARGS,CODE,MESSAGE,REMARK,ORG_CODE,CREATE_USER_ID,CREATE_TIME
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT <include refid="Base_Column_List"/> FROM S_LOG WHERE ID = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        DELETE FROM S_LOG WHERE ID = #{id,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="com.posp.common.service.user.entyty.LogDO">
+        INSERT INTO S_LOG (ID,IP,URL,HTTP_METHOD,CLASS_METHOD,ARGS,CODE,MESSAGE,REMARK,ORG_CODE,CREATE_USER_ID,CREATE_TIME)
+        VALUES(#{id,jdbcType=VARCHAR},#{ip,jdbcType=VARCHAR},#{url,jdbcType=VARCHAR},#{httpMethod,jdbcType=VARCHAR},#{classMethod,jdbcType=VARCHAR},#{args,jdbcType=VARCHAR},#{code,jdbcType=VARCHAR},#{message,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR},#{orgCode,jdbcType=VARCHAR},#{createUserId,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.posp.common.service.user.entyty.LogDO">
+        INSERT INTO S_LOG
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="ip != null">
+                IP,
+            </if>
+            <if test="url != null">
+                URL,
+            </if>
+            <if test="httpMethod != null">
+                HTTP_METHOD,
+            </if>
+            <if test="classMethod != null">
+                CLASS_METHOD,
+            </if>
+            <if test="args != null">
+                ARGS,
+            </if>
+            <if test="code != null">
+                CODE,
+            </if>
+            <if test="message != null">
+                MESSAGE,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="orgCode != null">
+                ORG_CODE,
+            </if>
+            <if test="createUserId != null">
+                CREATE_USER_ID,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="ip != null">
+                #{ip,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null">
+                #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="httpMethod != null">
+                #{httpMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="classMethod != null">
+                #{classMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="args != null">
+                #{args,jdbcType=VARCHAR},
+            </if>
+            <if test="code != null">
+                #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="message != null">
+                #{message,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="orgCode != null">
+                #{orgCode,jdbcType=VARCHAR},
+            </if>
+            <if test="createUserId != null">
+                #{createUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP}
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.posp.common.service.user.entyty.LogDO">
+        UPDATE S_LOG
+        <set>
+            <if test="ip != null">
+                IP = #{ip,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null">
+                URL = #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="httpMethod != null">
+                HTTP_METHOD = #{httpMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="classMethod != null">
+                CLASS_METHOD = #{classMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="args != null">
+                ARGS = #{args,jdbcType=VARCHAR},
+            </if>
+            <if test="code != null">
+                CODE = #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="message != null">
+                MESSAGE = #{message,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="orgCode != null">
+                ORG_CODE = #{orgCode,jdbcType=VARCHAR},
+            </if>
+            <if test="createUserId != null">
+                CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+        </set>
+        WHERE ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.posp.common.service.user.entyty.LogDO">
+        UPDATE S_LOG
+        SET
+            IP = #{ip,jdbcType=VARCHAR},
+            URL = #{url,jdbcType=VARCHAR},
+            HTTP_METHOD = #{httpMethod,jdbcType=VARCHAR},
+            CLASS_METHOD = #{classMethod,jdbcType=VARCHAR},
+            ARGS = #{args,jdbcType=VARCHAR},
+            CODE = #{code,jdbcType=VARCHAR},
+            MESSAGE = #{message,jdbcType=VARCHAR},
+            REMARK = #{remark,jdbcType=VARCHAR},
+            ORG_CODE = #{orgCode,jdbcType=VARCHAR},
+            CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
+            CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+        WHERE ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <!--自定义查询条件-->
+    <sql id="whereQueryParam">
+        <if test="id != null and id != ''">
+            AND ID = #{id}
+        </if>
+        <if test="ip != null and ip != ''">
+            AND IP = #{ip}
+        </if>
+        <if test="url != null and url != ''">
+            AND URL = #{url}
+        </if>
+        <if test="httpMethod != null and httpMethod != ''">
+            AND HTTP_METHOD = #{httpMethod}
+        </if>
+        <if test="classMethod != null and classMethod != ''">
+            AND CLASS_METHOD = #{classMethod}
+        </if>
+        <if test="args != null and args != ''">
+            AND ARGS = #{args}
+        </if>
+        <if test="code != null and code != ''">
+            AND CODE = #{code}
+        </if>
+        <if test="message != null and message != ''">
+            AND MESSAGE LIKE CONCAT(CONCAT('%',#{message,jdbcType=VARCHAR}),'%')
+        </if>
+        <if test="remark != null and remark != ''">
+            AND REMARK = #{remark}
+        </if>
+        <if test="orgCode != null and orgCode != ''">
+            AND ORG_CODE = #{orgCode}
+        </if>
+        <if test="createUserId != null and createUserId != ''">
+            AND CREATE_USER_ID = #{createUserId}
+        </if>
+        <if test="createTimeStart != null and createTimeStart != ''">
+            AND TO_CHAR(CREATE_TIME,'YYYYMMDD') &gt;= #{createTimeStart}
+        </if>
+        <if test="createTimeEnd != null and createTimeEnd != ''">
+            AND TO_CHAR(CREATE_TIME,'YYYYMMDD') &lt;= #{createTimeEnd}
+        </if>
+    </sql>
+    <!--自定义方法-->
+    <select id="selectByParam" resultMap="BaseResultMap" parameterType="com.posp.common.service.user.query.LogQuery">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM S_LOG
+        <where>
+            <include refid="whereQueryParam"></include>
+        </where>
+        ORDER BY CREATE_TIME DESC
+    </select>
+    <!--自定义方法2,本机构以及下属机构-->
+    <select id="selectByParamAndOrg" resultMap="BaseResultMap" parameterType="com.posp.common.service.user.query.LogQuery">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM S_LOG
+        <where>
+            ORG_CODE IN (SELECT code FROM S_ORGANIZE WHERE INSTR(GROUP_CODES,#{organizeCode})>0)
+            <include refid="whereQueryParam"></include>
+        </where>
+        ORDER BY CREATE_TIME DESC
+    </select>
+    <!--批量删除-->
+    <delete id="batchDelete" parameterType="java.util.List">
+        DELETE FROM S_LOG WHERE ID IN
+        <foreach collection="ids" item="item" index="index" open="(" close=")" separator=",">
+        #{item}
+        </foreach>
+    </delete>
+    <!--批量新增-->
+    <insert id="batchInsert" parameterType="java.util.List">
+        INSERT INTO S_LOG (ID,IP,URL,HTTP_METHOD,CLASS_METHOD,ARGS,CODE,MESSAGE,REMARK,ORG_CODE,CREATE_USER_ID,CREATE_TIME)
+        SELECT a.* FROM (
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT
+            #{item.id,jdbcType=VARCHAR},
+            #{item.ip,jdbcType=VARCHAR},
+            #{item.url,jdbcType=VARCHAR},
+            #{item.httpMethod,jdbcType=VARCHAR},
+            #{item.classMethod,jdbcType=VARCHAR},
+            #{item.args,jdbcType=VARCHAR},
+            #{item.code,jdbcType=VARCHAR},
+            #{item.message,jdbcType=VARCHAR},
+            #{item.remark,jdbcType=VARCHAR},
+            #{item.orgCode,jdbcType=VARCHAR},
+            #{item.createUserId,jdbcType=VARCHAR},
+            #{item.createTime,jdbcType=TIMESTAMP}
+            FROM dual
+        </foreach>
+        ) a
+    </insert>
+</mapper>

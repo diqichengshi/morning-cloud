@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.posp.ui.dao.IUserMerchantMapper">
+    <resultMap id="BaseResultMap" type="com.posp.common.service.user.entyty.UserMerchantDO">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="USER_NAME" property="username" jdbcType="VARCHAR"/>
+        <result column="PWD_GENERAL" property="pwdGeneral" jdbcType="VARCHAR"/>
+        <result column="PWD_GESTURE" property="pwdGesture" jdbcType="VARCHAR"/>
+        <result column="PWD_GENERAL_ERROR_CNT" property="pwdGeneralErrorCnt" jdbcType="BIGINT"/>
+        <result column="PWD_GESTURE_ERROR_CNT" property="pwdGestureErrorCnt" jdbcType="BIGINT"/>
+        <result column="PWD_GENERAL_MODIFY_TIME" property="pwdGeneralModifyTime" jdbcType="TIMESTAMP"/>
+        <result column="PWD_GESTURE_MODIFY_TIME" property="pwdGestureModifyTime" jdbcType="TIMESTAMP"/>
+        <result column="EMAIL" property="email" jdbcType="VARCHAR"/>
+        <result column="MOBILE" property="mobile" jdbcType="VARCHAR"/>
+        <result column="MOBILE_ENCRYPT" property="mobileEncrypt" jdbcType="VARCHAR"/>
+        <result column="REAL_NAME" property="realName" jdbcType="VARCHAR"/>
+        <result column="ORG_CODE" property="orgCode" jdbcType="VARCHAR"/>
+        <result column="STATUS" property="status" jdbcType="VARCHAR"/>
+        <result column="DELETE_STATUS" property="deleteStatus" jdbcType="VARCHAR"/>
+        <result column="MOBILE_AUTH_STATUS" property="mobileAuthStatus" jdbcType="VARCHAR"/>
+        <result column="REAL_AUTH_STATUS" property="realAuthStatus" jdbcType="VARCHAR"/>
+        <result column="EMAIL_AUTH_STATUS" property="emailAuthStatus" jdbcType="VARCHAR"/>
+        <result column="LOGIN_RESERVE" property="loginReserve" jdbcType="VARCHAR"/>
+        <result column="REGISTER_FROM" property="registerFrom" jdbcType="VARCHAR"/>
+        <result column="DATA_PERMISSION" property="dataPermission" jdbcType="VARCHAR"/>
+        <result column="CREATE_USER_ID" property="createUserId" jdbcType="VARCHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="LAST_USER_ID" property="lastUserId" jdbcType="VARCHAR"/>
+        <result column="LAST_MOD_TIME" property="lastModTime" jdbcType="TIMESTAMP"/>
+        <result column="KEY_NAME" property="keyName" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        ID,USER_NAME,PWD_GENERAL,PWD_GESTURE,PWD_GENERAL_ERROR_CNT,PWD_GESTURE_ERROR_CNT,PWD_GENERAL_MODIFY_TIME,PWD_GESTURE_MODIFY_TIME,EMAIL,MOBILE,MOBILE_ENCRYPT,REAL_NAME,ORG_CODE,STATUS,DELETE_STATUS,MOBILE_AUTH_STATUS,REAL_AUTH_STATUS,EMAIL_AUTH_STATUS,LOGIN_RESERVE,REGISTER_FROM,DATA_PERMISSION,CREATE_USER_ID,CREATE_TIME,LAST_USER_ID,LAST_MOD_TIME,KEY_NAME
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT <include refid="Base_Column_List"/> FROM S_USER_MERCHANT WHERE ID = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        DELETE FROM S_USER_MERCHANT WHERE ID = #{id,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="com.posp.common.service.user.entyty.UserMerchantDO">
+        INSERT INTO S_USER_MERCHANT (ID,USER_NAME,PWD_GENERAL,PWD_GESTURE,PWD_GENERAL_ERROR_CNT,PWD_GESTURE_ERROR_CNT,PWD_GENERAL_MODIFY_TIME,PWD_GESTURE_MODIFY_TIME,EMAIL,MOBILE,MOBILE_ENCRYPT,REAL_NAME,ORG_CODE,STATUS,DELETE_STATUS,MOBILE_AUTH_STATUS,REAL_AUTH_STATUS,EMAIL_AUTH_STATUS,LOGIN_RESERVE,REGISTER_FROM,DATA_PERMISSION,CREATE_USER_ID,CREATE_TIME,LAST_USER_ID,LAST_MOD_TIME,KEY_NAME)
+        VALUES(#{id,jdbcType=VARCHAR},#{username,jdbcType=VARCHAR},#{pwdGeneral,jdbcType=VARCHAR},#{pwdGesture,jdbcType=VARCHAR},#{pwdGeneralErrorCnt,jdbcType=BIGINT},#{pwdGestureErrorCnt,jdbcType=BIGINT},#{pwdGeneralModifyTime,jdbcType=TIMESTAMP},#{pwdGestureModifyTime,jdbcType=TIMESTAMP},#{email,jdbcType=VARCHAR},#{mobile,jdbcType=VARCHAR},#{mobileEncrypt,jdbcType=VARCHAR},#{realName,jdbcType=VARCHAR},#{orgCode,jdbcType=VARCHAR},#{status,jdbcType=VARCHAR},#{deleteStatus,jdbcType=VARCHAR},#{mobileAuthStatus,jdbcType=VARCHAR},#{realAuthStatus,jdbcType=VARCHAR},#{emailAuthStatus,jdbcType=VARCHAR},#{loginReserve,jdbcType=VARCHAR},#{registerFrom,jdbcType=VARCHAR},#{dataPermission,jdbcType=VARCHAR},#{createUserId,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{lastUserId,jdbcType=VARCHAR},#{lastModTime,jdbcType=TIMESTAMP},#{keyName,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.posp.common.service.user.entyty.UserMerchantDO">
+        INSERT INTO S_USER_MERCHANT
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="username != null">
+                USER_NAME,
+            </if>
+            <if test="pwdGeneral != null">
+                PWD_GENERAL,
+            </if>
+            <if test="pwdGesture != null">
+                PWD_GESTURE,
+            </if>
+            <if test="pwdGeneralErrorCnt != null">
+                PWD_GENERAL_ERROR_CNT,
+            </if>
+            <if test="pwdGestureErrorCnt != null">
+                PWD_GESTURE_ERROR_CNT,
+            </if>
+            <if test="pwdGeneralModifyTime != null">
+                PWD_GENERAL_MODIFY_TIME,
+            </if>
+            <if test="pwdGestureModifyTime != null">
+                PWD_GESTURE_MODIFY_TIME,
+            </if>
+            <if test="email != null">
+                EMAIL,
+            </if>
+            <if test="mobile != null">
+                MOBILE,
+            </if>
+            <if test="mobileEncrypt != null">
+                MOBILE_ENCRYPT,
+            </if>
+            <if test="realName != null">
+                REAL_NAME,
+            </if>
+            <if test="orgCode != null">
+                ORG_CODE,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="deleteStatus != null">
+                DELETE_STATUS,
+            </if>
+            <if test="mobileAuthStatus != null">
+                MOBILE_AUTH_STATUS,
+            </if>
+            <if test="realAuthStatus != null">
+                REAL_AUTH_STATUS,
+            </if>
+            <if test="emailAuthStatus != null">
+                EMAIL_AUTH_STATUS,
+            </if>
+            <if test="loginReserve != null">
+                LOGIN_RESERVE,
+            </if>
+            <if test="registerFrom != null">
+                REGISTER_FROM,
+            </if>
+            <if test="dataPermission != null">
+                DATA_PERMISSION,
+            </if>
+            <if test="createUserId != null">
+                CREATE_USER_ID,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="lastUserId != null">
+                LAST_USER_ID,
+            </if>
+            <if test="lastModTime != null">
+                LAST_MOD_TIME,
+            </if>
+            <if test="keyName != null">
+                KEY_NAME
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="pwdGeneral != null">
+                #{pwdGeneral,jdbcType=VARCHAR},
+            </if>
+            <if test="pwdGesture != null">
+                #{pwdGesture,jdbcType=VARCHAR},
+            </if>
+            <if test="pwdGeneralErrorCnt != null">
+                #{pwdGeneralErrorCnt,jdbcType=BIGINT},
+            </if>
+            <if test="pwdGestureErrorCnt != null">
+                #{pwdGestureErrorCnt,jdbcType=BIGINT},
+            </if>
+            <if test="pwdGeneralModifyTime != null">
+                #{pwdGeneralModifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="pwdGestureModifyTime != null">
+                #{pwdGestureModifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="mobileEncrypt != null">
+                #{mobileEncrypt,jdbcType=VARCHAR},
+            </if>
+            <if test="realName != null">
+                #{realName,jdbcType=VARCHAR},
+            </if>
+            <if test="orgCode != null">
+                #{orgCode,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="deleteStatus != null">
+                #{deleteStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="mobileAuthStatus != null">
+                #{mobileAuthStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="realAuthStatus != null">
+                #{realAuthStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="emailAuthStatus != null">
+                #{emailAuthStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="loginReserve != null">
+                #{loginReserve,jdbcType=VARCHAR},
+            </if>
+            <if test="registerFrom != null">
+                #{registerFrom,jdbcType=VARCHAR},
+            </if>
+            <if test="dataPermission != null">
+                #{dataPermission,jdbcType=VARCHAR},
+            </if>
+            <if test="createUserId != null">
+                #{createUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUserId != null">
+                #{lastUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="lastModTime != null">
+                #{lastModTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="keyName != null">
+                #{keyName,jdbcType=VARCHAR}
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.posp.common.service.user.entyty.UserMerchantDO">
+        UPDATE S_USER_MERCHANT
+        <set>
+            <if test="username != null">
+                USER_NAME = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="pwdGeneral != null">
+                PWD_GENERAL = #{pwdGeneral,jdbcType=VARCHAR},
+            </if>
+            <if test="pwdGesture != null">
+                PWD_GESTURE = #{pwdGesture,jdbcType=VARCHAR},
+            </if>
+            <if test="pwdGeneralErrorCnt != null">
+                PWD_GENERAL_ERROR_CNT = #{pwdGeneralErrorCnt,jdbcType=BIGINT},
+            </if>
+            <if test="pwdGestureErrorCnt != null">
+                PWD_GESTURE_ERROR_CNT = #{pwdGestureErrorCnt,jdbcType=BIGINT},
+            </if>
+            <if test="pwdGeneralModifyTime != null">
+                PWD_GENERAL_MODIFY_TIME = #{pwdGeneralModifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="pwdGestureModifyTime != null">
+                PWD_GESTURE_MODIFY_TIME = #{pwdGestureModifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="email != null">
+                EMAIL = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                MOBILE = #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="mobileEncrypt != null">
+                MOBILE_ENCRYPT = #{mobileEncrypt,jdbcType=VARCHAR},
+            </if>
+            <if test="realName != null">
+                REAL_NAME = #{realName,jdbcType=VARCHAR},
+            </if>
+            <if test="orgCode != null">
+                ORG_CODE = #{orgCode,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="deleteStatus != null">
+                DELETE_STATUS = #{deleteStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="mobileAuthStatus != null">
+                MOBILE_AUTH_STATUS = #{mobileAuthStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="realAuthStatus != null">
+                REAL_AUTH_STATUS = #{realAuthStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="emailAuthStatus != null">
+                EMAIL_AUTH_STATUS = #{emailAuthStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="loginReserve != null">
+                LOGIN_RESERVE = #{loginReserve,jdbcType=VARCHAR},
+            </if>
+            <if test="registerFrom != null">
+                REGISTER_FROM = #{registerFrom,jdbcType=VARCHAR},
+            </if>
+            <if test="dataPermission != null">
+                DATA_PERMISSION = #{dataPermission,jdbcType=VARCHAR},
+            </if>
+            <if test="createUserId != null">
+                CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUserId != null">
+                LAST_USER_ID = #{lastUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="lastModTime != null">
+                LAST_MOD_TIME = #{lastModTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="keyName != null">
+                KEY_NAME = #{keyName,jdbcType=VARCHAR}
+            </if>
+        </set>
+        WHERE ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.posp.common.service.user.entyty.UserMerchantDO">
+        UPDATE S_USER_MERCHANT
+        SET
+            USER_NAME = #{username,jdbcType=VARCHAR},
+            PWD_GENERAL = #{pwdGeneral,jdbcType=VARCHAR},
+            PWD_GESTURE = #{pwdGesture,jdbcType=VARCHAR},
+            PWD_GENERAL_ERROR_CNT = #{pwdGeneralErrorCnt,jdbcType=BIGINT},
+            PWD_GESTURE_ERROR_CNT = #{pwdGestureErrorCnt,jdbcType=BIGINT},
+            PWD_GENERAL_MODIFY_TIME = #{pwdGeneralModifyTime,jdbcType=TIMESTAMP},
+            PWD_GESTURE_MODIFY_TIME = #{pwdGestureModifyTime,jdbcType=TIMESTAMP},
+            EMAIL = #{email,jdbcType=VARCHAR},
+            MOBILE = #{mobile,jdbcType=VARCHAR},
+            MOBILE_ENCRYPT = #{mobileEncrypt,jdbcType=VARCHAR},
+            REAL_NAME = #{realName,jdbcType=VARCHAR},
+            ORG_CODE = #{orgCode,jdbcType=VARCHAR},
+            STATUS = #{status,jdbcType=VARCHAR},
+            DELETE_STATUS = #{deleteStatus,jdbcType=VARCHAR},
+            MOBILE_AUTH_STATUS = #{mobileAuthStatus,jdbcType=VARCHAR},
+            REAL_AUTH_STATUS = #{realAuthStatus,jdbcType=VARCHAR},
+            EMAIL_AUTH_STATUS = #{emailAuthStatus,jdbcType=VARCHAR},
+            LOGIN_RESERVE = #{loginReserve,jdbcType=VARCHAR},
+            REGISTER_FROM = #{registerFrom,jdbcType=VARCHAR},
+            DATA_PERMISSION = #{dataPermission,jdbcType=VARCHAR},
+            CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
+            CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            LAST_USER_ID = #{lastUserId,jdbcType=VARCHAR},
+            LAST_MOD_TIME = #{lastModTime,jdbcType=TIMESTAMP},
+            KEY_NAME = #{keyName,jdbcType=VARCHAR}
+        WHERE ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <!--自定义查询条件-->
+    <sql id="whereQueryParam">
+        <if test="id != null and id != ''">
+            AND ID = #{id}
+        </if>
+        <if test="username != null and username != ''">
+            AND USER_NAME = #{username}
+        </if>
+        <if test="pwdGeneral != null and pwdGeneral != ''">
+            AND PWD_GENERAL = #{pwdGeneral}
+        </if>
+        <if test="pwdGesture != null and pwdGesture != ''">
+            AND PWD_GESTURE = #{pwdGesture}
+        </if>
+        <if test="pwdGeneralErrorCnt != null and pwdGeneralErrorCnt != ''">
+            AND PWD_GENERAL_ERROR_CNT = #{pwdGeneralErrorCnt}
+        </if>
+        <if test="pwdGestureErrorCnt != null and pwdGestureErrorCnt != ''">
+            AND PWD_GESTURE_ERROR_CNT = #{pwdGestureErrorCnt}
+        </if>
+        <if test="pwdGeneralModifyTimeStart != null and pwdGeneralModifyTimeStart != ''">
+            AND TO_CHAR(PWD_GENERAL_MODIFY_TIME,'YYYYMMDD') &gt;= #{pwdGeneralModifyTimeStart}
+        </if>
+        <if test="pwdGeneralModifyTimeEnd != null and pwdGeneralModifyTimeEnd != ''">
+            AND TO_CHAR(PWD_GENERAL_MODIFY_TIME,'YYYYMMDD') &lt;= #{pwdGeneralModifyTimeEnd}
+        </if>
+        <if test="pwdGestureModifyTimeStart != null and pwdGestureModifyTimeStart != ''">
+            AND TO_CHAR(PWD_GESTURE_MODIFY_TIME,'YYYYMMDD') &gt;= #{pwdGestureModifyTimeStart}
+        </if>
+        <if test="pwdGestureModifyTimeEnd != null and pwdGestureModifyTimeEnd != ''">
+            AND TO_CHAR(PWD_GESTURE_MODIFY_TIME,'YYYYMMDD') &lt;= #{pwdGestureModifyTimeEnd}
+        </if>
+        <if test="email != null and email != ''">
+            AND EMAIL = #{email}
+        </if>
+        <if test="mobile != null and mobile != ''">
+            AND MOBILE = #{mobile}
+        </if>
+        <if test="mobileEncrypt != null and mobileEncrypt != ''">
+            AND MOBILE_ENCRYPT = #{mobileEncrypt}
+        </if>
+        <if test="realName != null and realName != ''">
+            AND REAL_NAME = #{realName}
+        </if>
+        <if test="orgCode != null and orgCode != ''">
+            AND ORG_CODE = #{orgCode}
+        </if>
+        <if test="status != null and status != ''">
+            AND STATUS = #{status}
+        </if>
+        <if test="deleteStatus != null and deleteStatus != ''">
+            AND DELETE_STATUS = #{deleteStatus}
+        </if>
+        <if test="mobileAuthStatus != null and mobileAuthStatus != ''">
+            AND MOBILE_AUTH_STATUS = #{mobileAuthStatus}
+        </if>
+        <if test="realAuthStatus != null and realAuthStatus != ''">
+            AND REAL_AUTH_STATUS = #{realAuthStatus}
+        </if>
+        <if test="emailAuthStatus != null and emailAuthStatus != ''">
+            AND EMAIL_AUTH_STATUS = #{emailAuthStatus}
+        </if>
+        <if test="loginReserve != null and loginReserve != ''">
+            AND LOGIN_RESERVE = #{loginReserve}
+        </if>
+        <if test="registerFrom != null and registerFrom != ''">
+            AND REGISTER_FROM = #{registerFrom}
+        </if>
+        <if test="dataPermission != null and dataPermission != ''">
+            AND DATA_PERMISSION = #{dataPermission}
+        </if>
+        <if test="createUserId != null and createUserId != ''">
+            AND CREATE_USER_ID = #{createUserId}
+        </if>
+        <if test="createTimeStart != null and createTimeStart != ''">
+            AND TO_CHAR(CREATE_TIME,'YYYYMMDD') &gt;= #{createTimeStart}
+        </if>
+        <if test="createTimeEnd != null and createTimeEnd != ''">
+            AND TO_CHAR(CREATE_TIME,'YYYYMMDD') &lt;= #{createTimeEnd}
+        </if>
+        <if test="lastUserId != null and lastUserId != ''">
+            AND LAST_USER_ID = #{lastUserId}
+        </if>
+        <if test="lastModTimeStart != null and lastModTimeStart != ''">
+            AND TO_CHAR(LAST_MOD_TIME,'YYYYMMDD') &gt;= #{lastModTimeStart}
+        </if>
+        <if test="lastModTimeEnd != null and lastModTimeEnd != ''">
+            AND TO_CHAR(LAST_MOD_TIME,'YYYYMMDD') &lt;= #{lastModTimeEnd}
+        </if>
+        <if test="keyName != null and keyName != ''">
+            AND KEY_NAME = #{keyName}
+        </if>
+    </sql>
+    <!--自定义方法-->
+    <select id="selectByParam" resultMap="BaseResultMap" parameterType="com.posp.common.service.user.query.UserMerchantQuery">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM S_USER_MERCHANT
+        UM
+        INNER JOIN(
+        SELECT AGENT_ID, AGENT_NAME, AGENT_ORGANIZATION FROM B_AGENT
+        WHERE
+        1 = 1
+        <if test="organizeCode != null and organizeCode != ''">AND instr(agent_organization, #{organizeCode,jdbcType=VARCHAR}) > 0</if>
+        )ba ON ba.AGENT_ID = UM.ORG_CODE
+        WHERE 1 = 1
+            <if test="username != null and username != ''">AND UM.USER_NAME = #{username,jdbcType=VARCHAR}</if>
+            <if test="realName != null and realName != ''">AND UM.REAL_NAME = #{realName,jdbcType=VARCHAR}</if>
+            <if test="mobileEncrypt != null and mobileEncrypt != ''">AND UM.MOBILE_ENCRYPT = #{mobileEncrypt,jdbcType=VARCHAR}</if>
+            <if test="status != null and status != ''">AND UM.STATUS = #{status,jdbcType=VARCHAR}</if>
+
+        ORDER BY UM.create_time desc
+    </select>
+    <!--自定义方法2,本机构以及下属机构-->
+    <select id="selectByParamAndOrg" resultMap="BaseResultMap" parameterType="com.posp.common.service.user.query.UserMerchantQuery">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM S_USER_MERCHANT
+        UM
+        INNER JOIN(
+        SELECT AGENT_ID, AGENT_NAME, AGENT_ORGANIZATION FROM B_AGENT
+        WHERE
+        1 = 1
+        <if test="organizeCode != null and organizeCode != ''">AND instr(agent_organization, #{organizeCode,jdbcType=VARCHAR}) > 0</if>
+        )ba ON ba.AGENT_ID = UM.ORG_CODE
+        WHERE 1 = 1
+            <if test="username != null and username != ''">AND UM.USER_NAME = #{username,jdbcType=VARCHAR}</if>
+            <if test="realName != null and realName != ''">AND UM.REAL_NAME = #{realName,jdbcType=VARCHAR}</if>
+            <if test="mobileEncrypt != null and mobileEncrypt != ''">AND UM.MOBILE_ENCRYPT = #{mobileEncrypt,jdbcType=VARCHAR}</if>
+            <if test="status != null and status != ''">AND UM.STATUS = #{status,jdbcType=VARCHAR}</if>
+        ORDER BY UM.create_time desc
+    </select>
+    <!--批量删除-->
+    <delete id="batchDelete" parameterType="java.util.List">
+        DELETE FROM S_USER_MERCHANT WHERE ID IN
+        <foreach collection="ids" item="item" index="index" open="(" close=")" separator=",">
+        #{item}
+        </foreach>
+    </delete>
+    <!--批量新增-->
+    <insert id="batchInsert" parameterType="java.util.List">
+        INSERT INTO S_USER_MERCHANT (ID,USER_NAME,PWD_GENERAL,PWD_GESTURE,PWD_GENERAL_ERROR_CNT,PWD_GESTURE_ERROR_CNT,PWD_GENERAL_MODIFY_TIME,PWD_GESTURE_MODIFY_TIME,EMAIL,MOBILE,MOBILE_ENCRYPT,REAL_NAME,ORG_CODE,STATUS,DELETE_STATUS,MOBILE_AUTH_STATUS,REAL_AUTH_STATUS,EMAIL_AUTH_STATUS,LOGIN_RESERVE,REGISTER_FROM,DATA_PERMISSION,CREATE_USER_ID,CREATE_TIME,LAST_USER_ID,LAST_MOD_TIME,KEY_NAME)
+        SELECT a.* FROM (
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT
+            #{item.id,jdbcType=VARCHAR},
+            #{item.username,jdbcType=VARCHAR},
+            #{item.pwdGeneral,jdbcType=VARCHAR},
+            #{item.pwdGesture,jdbcType=VARCHAR},
+            #{item.pwdGeneralErrorCnt,jdbcType=BIGINT},
+            #{item.pwdGestureErrorCnt,jdbcType=BIGINT},
+            #{item.pwdGeneralModifyTime,jdbcType=TIMESTAMP},
+            #{item.pwdGestureModifyTime,jdbcType=TIMESTAMP},
+            #{item.email,jdbcType=VARCHAR},
+            #{item.mobile,jdbcType=VARCHAR},
+            #{item.mobileEncrypt,jdbcType=VARCHAR},
+            #{item.realName,jdbcType=VARCHAR},
+            #{item.orgCode,jdbcType=VARCHAR},
+            #{item.status,jdbcType=VARCHAR},
+            #{item.deleteStatus,jdbcType=VARCHAR},
+            #{item.mobileAuthStatus,jdbcType=VARCHAR},
+            #{item.realAuthStatus,jdbcType=VARCHAR},
+            #{item.emailAuthStatus,jdbcType=VARCHAR},
+            #{item.loginReserve,jdbcType=VARCHAR},
+            #{item.registerFrom,jdbcType=VARCHAR},
+            #{item.dataPermission,jdbcType=VARCHAR},
+            #{item.createUserId,jdbcType=VARCHAR},
+            #{item.createTime,jdbcType=TIMESTAMP},
+            #{item.lastUserId,jdbcType=VARCHAR},
+            #{item.lastModTime,jdbcType=TIMESTAMP},
+            #{item.keyName,jdbcType=VARCHAR}
+            FROM dual
+        </foreach>
+        ) a
+    </insert>
+    <!--使用手机号查询用户-->
+    <select id="selectByMobile" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT <include refid="Base_Column_List"/> FROM S_USER_MERCHANT WHERE MOBILE_ENCRYPT = #{mobileEncrypt,jdbcType=VARCHAR}
+    </select>
+
+    <update id="updateMerch" parameterType="com.posp.common.service.user.bo.UserMerchantBO">
+        UPDATE S_USER_MERCHANT
+        <set>
+        <if test="status != null">
+            status = #{status,jdbcType=VARCHAR},
+        </if>
+        <if test="pwdGeneral != null">
+            PWD_GENERAL = #{pwdGeneral,jdbcType=VARCHAR},
+        </if>
+         <if test="pwdGeneralErrorCnt != null">
+             PWD_GENERAL_ERROR_CNT = #{pwdGeneralErrorCnt,jdbcType=VARCHAR},
+            </if>
+        </set>
+        WHERE ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <!--使用商户查询用户-->
+    <select id="getByUserName" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT <include refid="Base_Column_List"/> FROM S_USER_MERCHANT WHERE USER_NAME = #{userName,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getByMobileEncrypt" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM S_USER_MERCHANT
+        WHERE (1=1)
+        <if test="mobileEncrypt!=null and mobileEncrypt!=''">
+            AND MOBILE_ENCRYPT = #{mobileEncrypt}
+        </if>
+    </select>
+</mapper>

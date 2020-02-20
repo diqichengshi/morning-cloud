@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.posp.ui.dao.IPwdDetailMapper">
+    <resultMap id="BaseResultMap" type="com.posp.common.service.user.entyty.PwdDetailDO">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="USER_ID" property="userId" jdbcType="VARCHAR"/>
+        <result column="USER_TYPE" property="userType" jdbcType="VARCHAR"/>
+        <result column="PWD_OLD" property="pwdOld" jdbcType="VARCHAR"/>
+        <result column="PWD_MODIFY_TYPE" property="pwdModifyType" jdbcType="VARCHAR"/>
+        <result column="CREATE_USER_ID" property="createUserId" jdbcType="VARCHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="userNo" property="userNo" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        pwd.ID,pwd.USER_ID,pwd.USER_TYPE,pwd.PWD_OLD,pwd.PWD_MODIFY_TYPE,pwd.CREATE_USER_ID,pwd.CREATE_TIME
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT <include refid="Base_Column_List"/>,su.USERNAME as userNo
+        FROM H_PWD_DETAIL pwd
+        INNER JOIN S_USER su on su.ID = pwd.USER_ID
+        WHERE pwd.ID = #{id,jdbcType=VARCHAR}
+        UNION
+        SELECT
+        <include refid="Base_Column_List"/>, suser.USER_NAME as userNo
+        FROM H_PWD_DETAIL pwd
+        INNER JOIN S_USER_MERCHANT suser on suser.ID = pwd.USER_ID
+       WHERE pwd.ID = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        DELETE FROM H_PWD_DETAIL WHERE ID = #{id,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="com.posp.common.service.user.entyty.PwdDetailDO">
+        INSERT INTO H_PWD_DETAIL (ID,USER_ID,USER_TYPE,PWD_OLD,PWD_MODIFY_TYPE,CREATE_USER_ID,CREATE_TIME)
+        VALUES(#{id,jdbcType=VARCHAR},#{userId,jdbcType=VARCHAR},#{userType,jdbcType=VARCHAR},#{pwdOld,jdbcType=VARCHAR},#{pwdModifyType,jdbcType=VARCHAR},#{createUserId,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.posp.common.service.user.entyty.PwdDetailDO">
+        INSERT INTO H_PWD_DETAIL
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="userType != null">
+                USER_TYPE,
+            </if>
+            <if test="pwdOld != null">
+                PWD_OLD,
+            </if>
+            <if test="pwdModifyType != null">
+                PWD_MODIFY_TYPE,
+            </if>
+            <if test="createUserId != null">
+                CREATE_USER_ID,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="userType != null">
+                #{userType,jdbcType=VARCHAR},
+            </if>
+            <if test="pwdOld != null">
+                #{pwdOld,jdbcType=VARCHAR},
+            </if>
+            <if test="pwdModifyType != null">
+                #{pwdModifyType,jdbcType=VARCHAR},
+            </if>
+            <if test="createUserId != null">
+                #{createUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP}
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.posp.common.service.user.entyty.PwdDetailDO">
+        UPDATE H_PWD_DETAIL
+        <set>
+            <if test="userId != null">
+                USER_ID = #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="userType != null">
+                USER_TYPE = #{userType,jdbcType=VARCHAR},
+            </if>
+            <if test="pwdOld != null">
+                PWD_OLD = #{pwdOld,jdbcType=VARCHAR},
+            </if>
+            <if test="pwdModifyType != null">
+                PWD_MODIFY_TYPE = #{pwdModifyType,jdbcType=VARCHAR},
+            </if>
+            <if test="createUserId != null">
+                CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+        </set>
+        WHERE ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.posp.common.service.user.entyty.PwdDetailDO">
+        UPDATE H_PWD_DETAIL
+        SET
+            USER_ID = #{userId,jdbcType=VARCHAR},
+            USER_TYPE = #{userType,jdbcType=VARCHAR},
+            PWD_OLD = #{pwdOld,jdbcType=VARCHAR},
+            PWD_MODIFY_TYPE = #{pwdModifyType,jdbcType=VARCHAR},
+            CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
+            CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+        WHERE ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <!--自定义查询条件-->
+    <sql id="whereQueryParam">
+        <if test="id != null and id != ''">
+            AND pwd.ID = #{id}
+        </if>
+        <if test="userId != null and userId != ''">
+            AND pwd.USER_ID = #{userId}
+        </if>
+        <if test="userType != null and userType != ''">
+            AND pwd.USER_TYPE = #{userType}
+        </if>
+        <if test="pwdOld != null and pwdOld != ''">
+            AND pwd.PWD_OLD = #{pwdOld}
+        </if>
+        <if test="pwdModifyType != null and pwdModifyType != ''">
+            AND pwd.PWD_MODIFY_TYPE = #{pwdModifyType}
+        </if>
+        <if test="createUserId != null and createUserId != ''">
+            AND pwd.CREATE_USER_ID = #{createUserId}
+        </if>
+        <if test="createTimeStart != null and createTimeStart != ''">
+            AND pwd.TO_CHAR(CREATE_TIME,'YYYYMMDD') &gt;= #{createTimeStart}
+        </if>
+        <if test="createTimeEnd != null and createTimeEnd != ''">
+            AND pwd.TO_CHAR(CREATE_TIME,'YYYYMMDD') &lt;= #{createTimeEnd}
+        </if>
+    </sql>
+    <!--自定义方法-->
+    <select id="selectByParam" resultMap="BaseResultMap" parameterType="com.posp.common.service.user.query.PwdDetailQuery">
+        SELECT
+        <include refid="Base_Column_List"/>,su.USERNAME as userNo
+        FROM H_PWD_DETAIL pwd
+        INNER JOIN S_USER su on su.ID = pwd.USER_ID
+        <where>
+            <include refid="whereQueryParam"></include>
+            <if test="code != null and code != ''">
+                AND su.ORG_CODE = #{code}
+            </if>
+        </where>
+        UNION
+        SELECT
+        <include refid="Base_Column_List"/>, suser.USER_NAME as userNo
+        FROM H_PWD_DETAIL pwd
+        INNER JOIN S_USER_MERCHANT suser on suser.ID = pwd.USER_ID
+        <where>
+            <include refid="whereQueryParam"></include>
+            <if test="code != null and code != ''">
+                AND suser.ORG_CODE = #{code}
+            </if>
+        </where>
+        ORDER BY CREATE_TIME DESC
+    </select>
+    <!--自定义方法2,本机构以及下属机构-->
+    <select id="selectByParamAndOrg" resultMap="BaseResultMap" parameterType="com.posp.common.service.user.query.PwdDetailQuery">
+        SELECT
+        <include refid="Base_Column_List"/>,su.USERNAME as userNo
+        FROM H_PWD_DETAIL pwd
+        INNER JOIN S_USER su on su.ID = pwd.USER_ID
+        <where>
+            su.ORG_CODE IN (SELECT code FROM S_ORGANIZE WHERE INSTR(GROUP_CODES,#{organizeCode})>0)
+            <include refid="whereQueryParam"></include>
+        </where>
+        UNION
+        SELECT
+        <include refid="Base_Column_List"/>, suser.USER_NAME as userNo
+        FROM H_PWD_DETAIL pwd
+        INNER JOIN S_USER_MERCHANT suser on suser.ID = pwd.USER_ID
+        <where>
+            suser.ORG_CODE IN (SELECT code FROM S_ORGANIZE WHERE INSTR(GROUP_CODES,#{organizeCode})>0)
+            <include refid="whereQueryParam"></include>
+        </where>
+        ORDER BY CREATE_TIME DESC
+    </select>
+    <!--批量删除-->
+    <delete id="batchDelete" parameterType="java.util.List">
+        DELETE FROM H_PWD_DETAIL WHERE ID IN
+        <foreach collection="ids" item="item" index="index" open="(" close=")" separator=",">
+        #{item}
+        </foreach>
+    </delete>
+    <!--批量新增-->
+    <insert id="batchInsert" parameterType="java.util.List">
+        INSERT INTO H_PWD_DETAIL (ID,USER_ID,USER_TYPE,PWD_OLD,PWD_MODIFY_TYPE,CREATE_USER_ID,CREATE_TIME)
+        SELECT a.* FROM (
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT
+            #{item.id,jdbcType=VARCHAR},
+            #{item.userId,jdbcType=VARCHAR},
+            #{item.userType,jdbcType=VARCHAR},
+            #{item.pwdOld,jdbcType=VARCHAR},
+            #{item.pwdModifyType,jdbcType=VARCHAR},
+            #{item.createUserId,jdbcType=VARCHAR},
+            #{item.createTime,jdbcType=TIMESTAMP}
+            FROM dual
+        </foreach>
+        ) a
+    </insert>
+</mapper>

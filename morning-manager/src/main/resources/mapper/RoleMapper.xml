@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.posp.ui.dao.IRoleMapper">
+    <resultMap id="BaseResultMap" type="com.posp.common.service.user.entyty.RoleDO">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="NAME" property="name" jdbcType="VARCHAR"/>
+        <result column="STATUS" property="status" jdbcType="VARCHAR"/>
+        <result column="ORG_CODE" property="orgCode" jdbcType="VARCHAR"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR"/>
+        <result column="CREATE_USER_ID" property="createUserId" jdbcType="VARCHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="LAST_USER_ID" property="lastUserId" jdbcType="VARCHAR"/>
+        <result column="LAST_MOD_TIME" property="lastModTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        ID,NAME,STATUS,ORG_CODE,REMARK,CREATE_USER_ID,CREATE_TIME,LAST_USER_ID,LAST_MOD_TIME
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT <include refid="Base_Column_List"/> FROM S_ROLE WHERE ID = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        DELETE FROM S_ROLE WHERE ID = #{id,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="com.posp.common.service.user.entyty.RoleDO">
+        INSERT INTO S_ROLE (ID,NAME,STATUS,ORG_CODE,REMARK,CREATE_USER_ID,CREATE_TIME,LAST_USER_ID,LAST_MOD_TIME)
+        VALUES(#{id,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{status,jdbcType=VARCHAR},#{orgCode,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR},#{createUserId,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{lastUserId,jdbcType=VARCHAR},#{lastModTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.posp.common.service.user.entyty.RoleDO">
+        INSERT INTO S_ROLE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="name != null">
+                NAME,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="orgCode != null">
+                ORG_CODE,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="createUserId != null">
+                CREATE_USER_ID,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="lastUserId != null">
+                LAST_USER_ID,
+            </if>
+            <if test="lastModTime != null">
+                LAST_MOD_TIME
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="orgCode != null">
+                #{orgCode,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createUserId != null">
+                #{createUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUserId != null">
+                #{lastUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="lastModTime != null">
+                #{lastModTime,jdbcType=TIMESTAMP}
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.posp.common.service.user.entyty.RoleDO">
+        UPDATE S_ROLE
+        <set>
+            <if test="name != null">
+                NAME = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="orgCode != null">
+                ORG_CODE = #{orgCode,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createUserId != null">
+                CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUserId != null">
+                LAST_USER_ID = #{lastUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="lastModTime != null">
+                LAST_MOD_TIME = #{lastModTime,jdbcType=TIMESTAMP}
+            </if>
+        </set>
+        WHERE ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.posp.common.service.user.entyty.RoleDO">
+        UPDATE S_ROLE
+        SET
+            NAME = #{name,jdbcType=VARCHAR},
+            STATUS = #{status,jdbcType=VARCHAR},
+            ORG_CODE = #{orgCode,jdbcType=VARCHAR},
+            REMARK = #{remark,jdbcType=VARCHAR},
+            CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
+            CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            LAST_USER_ID = #{lastUserId,jdbcType=VARCHAR},
+            LAST_MOD_TIME = #{lastModTime,jdbcType=TIMESTAMP}
+        WHERE ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <!--自定义查询条件-->
+    <sql id="whereQueryParam">
+        <if test="id != null and id != ''">
+            AND ID = #{id}
+        </if>
+        <if test="name != null and name != ''">
+            AND NAME LIKE  CONCAT(CONCAT('%',#{name,jdbcType=VARCHAR}),'%')
+        </if>
+        <if test="status != null and status != ''">
+            AND STATUS = #{status}
+        </if>
+        <if test="orgCode != null and orgCode != ''">
+            AND ORG_CODE = #{orgCode}
+        </if>
+        <if test="remark != null and remark != ''">
+            AND REMARK = #{remark}
+        </if>
+        <if test="createUserId != null and createUserId != ''">
+            AND CREATE_USER_ID = #{createUserId}
+        </if>
+        <if test="createTimeStart != null and createTimeStart != ''">
+            AND TO_CHAR(CREATE_TIME,'YYYYMMDD') &gt;= #{createTimeStart}
+        </if>
+        <if test="createTimeEnd != null and createTimeEnd != ''">
+            AND TO_CHAR(CREATE_TIME,'YYYYMMDD') &lt;= #{createTimeEnd}
+        </if>
+        <if test="lastUserId != null and lastUserId != ''">
+            AND LAST_USER_ID = #{lastUserId}
+        </if>
+        <if test="lastModTimeStart != null and lastModTimeStart != ''">
+            AND TO_CHAR(LAST_MOD_TIME,'YYYYMMDD') &gt;= #{lastModTimeStart}
+        </if>
+        <if test="lastModTimeEnd != null and lastModTimeEnd != ''">
+            AND TO_CHAR(LAST_MOD_TIME,'YYYYMMDD') &lt;= #{lastModTimeEnd}
+        </if>
+    </sql>
+    <!--自定义方法-->
+    <select id="selectByParam" resultMap="BaseResultMap" parameterType="com.posp.common.service.user.query.RoleQuery">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM S_ROLE
+        <where>
+            <include refid="whereQueryParam"></include>
+        </where>
+        ORDER BY CREATE_TIME DESC
+    </select>
+    <!--自定义方法2,本机构以及下属机构-->
+    <select id="selectByParamAndOrg" resultMap="BaseResultMap" parameterType="com.posp.common.service.user.query.RoleQuery">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM S_ROLE
+        <where>
+            ORG_CODE IN (SELECT code FROM S_ORGANIZE WHERE INSTR(GROUP_CODES,#{organizeCode})>0)
+            <include refid="whereQueryParam"></include>
+        </where>
+        ORDER BY CREATE_TIME DESC
+    </select>
+    <!--批量删除-->
+    <delete id="batchDelete" parameterType="java.util.List">
+        DELETE FROM S_ROLE WHERE ID IN
+        <foreach collection="ids" item="item" index="index" open="(" close=")" separator=",">
+        #{item}
+        </foreach>
+    </delete>
+    <!--批量新增-->
+    <insert id="batchInsert" parameterType="java.util.List">
+        INSERT INTO S_ROLE (ID,NAME,STATUS,ORG_CODE,REMARK,CREATE_USER_ID,CREATE_TIME,LAST_USER_ID,LAST_MOD_TIME)
+        SELECT a.* FROM (
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT
+            #{item.id,jdbcType=VARCHAR},
+            #{item.name,jdbcType=VARCHAR},
+            #{item.status,jdbcType=VARCHAR},
+            #{item.orgCode,jdbcType=VARCHAR},
+            #{item.remark,jdbcType=VARCHAR},
+            #{item.createUserId,jdbcType=VARCHAR},
+            #{item.createTime,jdbcType=TIMESTAMP},
+            #{item.lastUserId,jdbcType=VARCHAR},
+            #{item.lastModTime,jdbcType=TIMESTAMP}
+            FROM dual
+        </foreach>
+        ) a
+    </insert>
+    <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+        r.ID,r.NAME,r.STATUS,r.REMARK,r.ORG_CODE,r.CREATE_USER_ID,r.CREATE_TIME,r.LAST_USER_ID,r.LAST_MOD_TIME
+        FROM S_ROLE r
+        JOIN S_USER_ROLE ur on ur.ROLE_ID= r.ID
+        <where>
+          ur.USER_ID = #{userId} AND r.STATUS = '1'
+        </where>
+    </select>
+
+    <!--判断角色名称重复性-->
+    <select id="selectByName" resultType="java.lang.Integer" parameterType="java.lang.String">
+        SELECT COUNT(*) FROM S_ROLE WHERE NAME = #{name, jdbcType=VARCHAR}
+    </select>
+
+    <!--根据部门id查询角色id-->
+    <select id="selectRoleIdIdByOrdCodes" resultType="java.lang.String" >
+        SELECT
+        ID
+        FROM S_ROLE
+        <where>
+            AND ORG_CODE IN
+            <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </where>
+    </select>
+    <!--根据角色id修改角色状态-->
+    <update id="updateStatusByRoleId" parameterType="java.lang.String">
+        UPDATE S_ROLE
+        SET
+            STATUS = '0'
+        WHERE id = #{roleId,jdbcType=VARCHAR}
+    </update>
+</mapper>

@@ -1,0 +1,1413 @@
+/**
+*清除并定义默认样式
+*/
+/*为了方便,定义盒模型为border-box*/
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+input[type="search"] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+input[type="radio"] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+}
+input[type="search"] {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-appearance: textfield;
+}
+/*默认字体14像素*/
+body {
+  font-family: "Microsoft Yahei";
+  font-size: 14px;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: #333333;
+}
+b,
+strong {
+  font-weight: normal;
+}
+i,
+em {
+  font-style: normal;
+}
+img {
+  vertical-align: middle;
+}
+a img {
+  border: 0;
+}
+/*清除并自定义input的样式*/
+input {
+  padding: 0;
+}
+label {
+  height: 20px;
+  line-height: 20px;
+}
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 20px;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+  border-color: #66afe9;
+  outline: 0 none;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+button,
+input[type="button"],
+input[type="submit"] {
+  border: 0;
+  padding: 0;
+}
+input[type="button"]:focus,
+input[type="submit"]:focus,
+button:focus {
+  outline: none;
+}
+input[type="button"]:hover,
+input[type="submit"]:hover,
+button:hover {
+  cursor: pointer;
+}
+/*表格*/
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td,
+th {
+  padding: 0;
+}
+/*标题和段落*/
+p {
+  margin: 0;
+  padding: 0;
+  line-height: 100%;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: normal;
+  font-size: 14px;
+}
+/*列表*/
+ul,
+ol,
+li,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+ul,
+ol {
+  list-style: none;
+}
+/*清除浮动*/
+.clearfix:after {
+  display: block;
+  content: "";
+  clear: both;
+}
+.clear {
+  zoom: 1;
+}
+/*以下是布局样式*/
+.contain {
+  width: 1000px;
+  padding: 0;
+  margin: 0 auto;
+}
+.float-left {
+  float: left;
+}
+.float-right {
+  float: right;
+}
+.position-relative {
+  position: relative;
+}
+.position-absolute {
+  position: absolute;
+}
+.position-fixed {
+  position: fixed;
+}
+/*以下是基础样式*/
+.border-bottom {
+  border-bottom: 1px solid #ececec;
+}
+.text-right {
+  text-align: right;
+}
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.hide {
+  display: none;
+}
+/*循环生成样式,如padding,margin,width,height*/
+.padding-left100 {
+  padding-left: 100px;
+}
+.padding-left90 {
+  padding-left: 90px;
+}
+.padding-left80 {
+  padding-left: 80px;
+}
+.padding-left70 {
+  padding-left: 70px;
+}
+.padding-left60 {
+  padding-left: 60px;
+}
+.padding-left50 {
+  padding-left: 50px;
+}
+.padding-left40 {
+  padding-left: 40px;
+}
+.padding-left30 {
+  padding-left: 30px;
+}
+.padding-left20 {
+  padding-left: 20px;
+}
+.padding-left10 {
+  padding-left: 10px;
+}
+.padding-right100 {
+  padding-right: 100px;
+}
+.padding-right90 {
+  padding-right: 90px;
+}
+.padding-right80 {
+  padding-right: 80px;
+}
+.padding-right70 {
+  padding-right: 70px;
+}
+.padding-right60 {
+  padding-right: 60px;
+}
+.padding-right50 {
+  padding-right: 50px;
+}
+.padding-right40 {
+  padding-right: 40px;
+}
+.padding-right30 {
+  padding-right: 30px;
+}
+.padding-right20 {
+  padding-right: 20px;
+}
+.padding-right10 {
+  padding-right: 10px;
+}
+.padding-top100 {
+  padding-top: 100px;
+}
+.padding-top90 {
+  padding-top: 90px;
+}
+.padding-top80 {
+  padding-top: 80px;
+}
+.padding-top70 {
+  padding-top: 70px;
+}
+.padding-top60 {
+  padding-top: 60px;
+}
+.padding-top50 {
+  padding-top: 50px;
+}
+.padding-top40 {
+  padding-top: 40px;
+}
+.padding-top30 {
+  padding-top: 30px;
+}
+.padding-top20 {
+  padding-top: 20px;
+}
+.padding-top10 {
+  padding-top: 10px;
+}
+.padding-bottom100 {
+  padding-bottom: 100px;
+}
+.padding-bottom90 {
+  padding-bottom: 90px;
+}
+.padding-bottom80 {
+  padding-bottom: 80px;
+}
+.padding-bottom70 {
+  padding-bottom: 70px;
+}
+.padding-bottom60 {
+  padding-bottom: 60px;
+}
+.padding-bottom50 {
+  padding-bottom: 50px;
+}
+.padding-bottom40 {
+  padding-bottom: 40px;
+}
+.padding-bottom30 {
+  padding-bottom: 30px;
+}
+.padding-bottom20 {
+  padding-bottom: 20px;
+}
+.padding-bottom10 {
+  padding-bottom: 10px;
+}
+.margin-left100 {
+  margin-left: 100px;
+}
+.margin-left90 {
+  margin-left: 90px;
+}
+.margin-left80 {
+  margin-left: 80px;
+}
+.margin-left70 {
+  margin-left: 70px;
+}
+.margin-left60 {
+  margin-left: 60px;
+}
+.margin-left50 {
+  margin-left: 50px;
+}
+.margin-left40 {
+  margin-left: 40px;
+}
+.margin-left30 {
+  margin-left: 30px;
+}
+.margin-left20 {
+  margin-left: 20px;
+}
+.margin-left10 {
+  margin-left: 10px;
+}
+.margin-right100 {
+  margin-right: 100px;
+}
+.margin-right90 {
+  margin-right: 90px;
+}
+.margin-right80 {
+  margin-right: 80px;
+}
+.margin-right70 {
+  margin-right: 70px;
+}
+.margin-right60 {
+  margin-right: 60px;
+}
+.margin-right50 {
+  margin-right: 50px;
+}
+.margin-right40 {
+  margin-right: 40px;
+}
+.margin-right30 {
+  margin-right: 30px;
+}
+.margin-right20 {
+  margin-right: 20px;
+}
+.margin-right10 {
+  margin-right: 10px;
+}
+.margin-top100 {
+  margin-top: 100px;
+}
+.margin-top90 {
+  margin-top: 90px;
+}
+.margin-top80 {
+  margin-top: 80px;
+}
+.margin-top70 {
+  margin-top: 70px;
+}
+.margin-top60 {
+  margin-top: 60px;
+}
+.margin-top50 {
+  margin-top: 50px;
+}
+.margin-top40 {
+  margin-top: 40px;
+}
+.margin-top30 {
+  margin-top: 30px;
+}
+.margin-top20 {
+  margin-top: 20px;
+}
+.margin-top10 {
+  margin-top: 10px;
+}
+.margin-bottom100 {
+  margin-bottom: 100px;
+}
+.margin-bottom90 {
+  margin-bottom: 90px;
+}
+.margin-bottom80 {
+  margin-bottom: 80px;
+}
+.margin-bottom70 {
+  margin-bottom: 70px;
+}
+.margin-bottom60 {
+  margin-bottom: 60px;
+}
+.margin-bottom50 {
+  margin-bottom: 50px;
+}
+.margin-bottom40 {
+  margin-bottom: 40px;
+}
+.margin-bottom30 {
+  margin-bottom: 30px;
+}
+.margin-bottom20 {
+  margin-bottom: 20px;
+}
+.margin-bottom10 {
+  margin-bottom: 10px;
+}
+/*生成字体大小10-40px*/
+.font40 {
+  font-size: 40px;
+}
+.font38 {
+  font-size: 38px;
+}
+.font36 {
+  font-size: 36px;
+}
+.font34 {
+  font-size: 34px;
+}
+.font32 {
+  font-size: 32px;
+}
+.font30 {
+  font-size: 30px;
+}
+.font28 {
+  font-size: 28px;
+}
+.font26 {
+  font-size: 26px;
+}
+.font24 {
+  font-size: 24px;
+}
+.font22 {
+  font-size: 22px;
+}
+.font20 {
+  font-size: 20px;
+}
+.font18 {
+  font-size: 18px;
+}
+.font16 {
+  font-size: 16px;
+}
+.font14 {
+  font-size: 14px;
+}
+.font12 {
+  font-size: 12px;
+}
+.font10 {
+  font-size: 10px;
+}
+/*生成宽度10%-100%*/
+.col-10 {
+  float: left;
+  width: 100%;
+}
+.col-9 {
+  float: left;
+  width: 90%;
+}
+.col-8 {
+  float: left;
+  width: 80%;
+}
+.col-7 {
+  float: left;
+  width: 70%;
+}
+.col-6 {
+  float: left;
+  width: 60%;
+}
+.col-5 {
+  float: left;
+  width: 50%;
+}
+/* start */
+.col-5x {
+  float: right;
+  width: 50%;
+}
+.col-3x {
+  float: left;
+  width: 30%;
+  text-align: left;
+  margin-top: 7px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+/* end */
+.col-4 {
+  float: left;
+  width: 40%;
+}
+.col-3 {
+  float: left;
+  width: 30%;
+}
+
+.col-2 {
+  float: left;
+  width: 20%;
+}
+.col-18 {
+  float: left;
+  width: 18%;
+}
+.col-1 {
+  float: left;
+  width: 10%;
+}
+/*生成margin-left的距离10%-100%*/
+.col-left-10 {
+  margin-left: 100%;
+}
+.col-left-9 {
+  margin-left: 90%;
+}
+.col-left-8 {
+  margin-left: 80%;
+}
+.col-left-7 {
+  margin-left: 70%;
+}
+.col-left-6 {
+  margin-left: 60%;
+}
+.col-left-5 {
+  margin-left: 50%;
+}
+.col-left-4 {
+  margin-left: 40%;
+}
+.col-left-3 {
+  margin-left: 30%;
+}
+.col-left-2 {
+  margin-left: 20%;
+}
+.col-left-1 {
+  margin-left: 10%;
+}
+/*生成margin-right的距离10%-100%*/
+.col-right-10 {
+  margin-right: 100%;
+}
+.col-right-9 {
+  margin-right: 90%;
+}
+.col-right-8 {
+  margin-right: 80%;
+}
+.col-right-7 {
+  margin-right: 70%;
+}
+.col-right-6 {
+  margin-right: 60%;
+}
+.col-right-5 {
+  margin-right: 50%;
+}
+.col-right-4 {
+  margin-right: 40%;
+}
+.col-right-3 {
+  margin-right: 30%;
+}
+.col-right-2 {
+  margin-right: 20%;
+}
+.col-right-1 {
+  margin-right: 10%;
+}
+/*以下是页面基础组件样式*/
+/* 主题按钮样式 */
+.btn-threme {
+  width: 108px;
+  height: 32px;
+  border-radius: 2px;
+  background-color: #f36f21;
+  color: #ffffff;
+  font-size: 14px;
+}
+.btn-threme-long {
+  width: 172px;
+  height: 32px;
+  border-radius: 2px;
+  background-color: #f36f21;
+  color: #ffffff;
+  font-size: 14px;
+}
+.btn-threme-middle{
+  width: 160px;
+  height: 34px;
+  border-radius: 2px;
+  background-color: #f36f21;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.btn-disable {
+  width: 108px;
+  height: 32px;
+  border-radius: 2px;
+  background-color: #c2c2c2;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: default !important;
+}
+/*单选框和多选框样式*/
+.select-box label {
+  float: left;
+  padding-right: 4px;
+  padding-left: 4px;
+}
+.select-box input[type="radio"],
+.select-box input[type="checkbox"] {
+  float: left;
+  height: 14px;
+  margin: 4px 3px 2px;
+}
+/*定义inline的表单样式*/
+.form-group {
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+.form-group .control-label {
+  text-align: right;
+  margin-top: 7px;
+}
+.form-group .col-1,
+.form-group .col-2,
+.form-group .col-3,
+.form-group .col-4,
+.form-group .col-5,
+.form-group .col-6,
+.form-group .col-7,
+.form-group .col-9,
+.form-group .col-10 {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.form-group .form-control {
+  width: 100%;
+}
+.notice {
+  padding-top: 6px;
+  color: #ff0000;
+}
+/**
+* @color
+* 此模块是页面颜色设置接口.
+* 如果你想自由搭配你的主题颜色,在这里可以方便的设置,修改字体,边框,背景色.
+*/
+/**
+ * 主题色设置,只需要修改@theme-color即可
+ * 修改后,表示强调的文字,焦点时字体颜色和边框颜色都会改变.
+*/
+.theme-color {
+  color: #f36f21;
+}
+.warn {
+  color: #ff0000;
+}
+/*
+ * Description: 银行列表
+ * basic */
+.shot-bank-icon {
+  width: 130px !important;
+}
+/***银行***/
+/***银行***/
+.mainBank-list{}
+.mainBank-list .BIocn{ display:block; width:160px; height:34px; background:url(../jquery/cashier/bank.png) 0 0 no-repeat; overflow:hidden; }
+.mainBank-list .TESTBANK{ background-position:0 -1114px; text-indent:-999em;}/*测试银行*/
+.mainBank-list .ICBC{ background-position:0 -4px; text-indent:-999em;}/*中国工商银行*/
+.mainBank-list .ABC{ background-position:0 -41px; text-indent:-999em;}/*中国农业银行*/
+.mainBank-list .CCB{ background-position:0 -78px; text-indent:-999em;}/*中国建设银行*/
+.mainBank-list .PSBC{ background-position:0 -115px; text-indent:-999em;}/*中国邮政储蓄银行*/
+.mainBank-list .SHRCB{ background-position:0 -152px; text-indent:-999em;}/*上海农商银行*/
+.mainBank-list .CMBC{ background-position:0 -189px; text-indent:-999em;}/*中国民生银行*/
+.mainBank-list .CMB{ background-position:0 -226px; text-indent:-999em;}/*招商银行*/
+.mainBank-list .BOC{ background-position:0 -263px; text-indent:-999em;}/*中国银行*/
+.mainBank-list .COMM{ background-position:0 -297px; text-indent:-999em;}/*交通银行*/
+.mainBank-list .CIB{ background-position:0 -337px; text-indent:-999em;}/*兴业银行*/
+.mainBank-list .GDB{ background-position:0 -372px; text-indent:-999em;}/*广发银行*/
+.mainBank-list .HKBEA{ background-position:0 -408px; text-indent:-999em;}/*东亚银行*/
+.mainBank-list .CEB{ background-position:0 -445px; text-indent:-999em;}/*中国光大银行*/
+.mainBank-list .BJRCB{ background-position:0 -482px; text-indent:-999em;}/*北京农商银行*/
+.mainBank-list .CBHB{ background-position:0 -519px; text-indent:-999em;}/*渤海银行*/
+.mainBank-list .BOS{ background-position:0 -556px; text-indent:-999em;}/*上海银行*/
+.mainBank-list .CITIC{ background-position:0 -593px; text-indent:-999em;}/*中信银行*/
+.mainBank-list .CZB{ background-position:0 -630px; text-indent:-999em;}/*浙商银行*/
+.mainBank-list .GZCB{ background-position:0 -667px; text-indent:-999em;}/*广州银行*/
+.mainBank-list .GNXS{ background-position:0 -704px; text-indent:-999em;}/*广州农商银行*/
+.mainBank-list .HSBANK{ background-position:0 -741px; text-indent:-999em;}/*徽商银行*/
+.mainBank-list .HXB{ background-position:0 -778px; text-indent:-999em;}/*华夏银行*/
+.mainBank-list .HCCB{ background-position:0 -816px; text-indent:-999em;}/*杭州银行*/
+.mainBank-list .JSCB{ background-position:0 -854px; text-indent:-999em;}/*江苏银行*/
+.mainBank-list .NBCB{ background-position:0 -890px; text-indent:-999em;}/*宁波银行*/
+.mainBank-list .NJCB{ background-position:0 -927px; text-indent:-999em;}/*南京银行*/
+.mainBank-list .SZPAB{ background-position:0 -964px; text-indent:-999em;}/*平安银行*/
+.mainBank-list .SDB{ background-position:0 -1001px; text-indent:-999em;}/*深圳发展银行*/
+.mainBank-list .BCCB{ background-position:0 -1038px; text-indent:-999em;}/*北京银行*/
+.mainBank-list .SPDB{ background-position:0 -1073px; text-indent:-999em;}/*浦发银行*/
+.mainBank-list .CQRCB{background-position:0 -1154px; text-indent:-999em;}/*重庆农商行*/
+.mainBank-list .AHRCU{background-position:0 -1194px; text-indent:-999em;}/*安徽农商行*/
+.mainBank-list .GSRCB{background-position:0 -1234px; text-indent:-999em;}/*甘肃省农信社*/
+.mainBank-list .SDNXS{background-position:0 -1274px; text-indent:-999em;}/*山东农信社*/
+.mainBank-list .CJCCB{background-position:0 -1314px; text-indent:-999em;}/*长江商业银行*/
+.mainBank-list .WHRCB{background-position:0 -1354px; text-indent:-999em;}/*武汉农商行*/
+.mainBank-list .HLJRCB{background-position:0 -1394px; text-indent:-999em;}/*黑龙江农信社*/
+.mainBank-list .TCRCB{background-position:0 -1434px; text-indent:-999em;}/*太仓农商行*/
+.mainBank-list .JNRCB{background-position:0 -1474px; text-indent:-999em;}/*江南农商行*/
+.mainBank-list .JLRCB{background-position:0 -1514px; text-indent:-999em;}/*吉林农信社*/
+.mainBank-list .HFBANK{background-position:0 -1554px; text-indent:-999em;}/*恒丰银行*/
+.mainBank-list .HZCCB{background-position:0 -1594px; text-indent:-999em;}/*湖州银行*/
+.mainBank-list .SDEB{background-position:0 -1634px; text-indent:-999em;}/*顺德农商行*/
+.mainBank-list .HKBCHINA{background-position:0 -1674px;text-indent:-999em;}/*汉口银行*/
+.mainBank-list .BQD{background-position:0 -1714px; text-indent:-999em;}/*青岛银行*/
+.mainBank-list .LZB{background-position:0 -1754px; text-indent:-999em;}/*兰州银行*/
+.mainBank-list .WZCB{background-position:0 -1794px; text-indent:-999em;}/*温州银行*/
+.mainBank-list .CDRCB{background-position:0 -1914px; text-indent:-999em;}/*成都农商银行*/
+.mainBank-list .CRCB{background-position:0 -1954px; text-indent:-999em;}/*重庆农村商业银行*/
+.mainBank-list .CQB{background-position:0 -1994px; text-indent:-999em;}/*重庆银行*/
+.mainBank-list .DLB{background-position:0 -2034px; text-indent:-999em;}/*大连银行*/
+.mainBank-list .DYCCB{background-position:0 -2074px; text-indent:-999em;}/*东营市商业银行*/
+.mainBank-list .ORBANK{background-position:0 -2114px; text-indent:-999em;}/*鄂尔多斯银行*/
+.mainBank-list .FJNXB{background-position:0 -2154px; text-indent:-999em;}/*福建省农村信用社*/
+.mainBank-list .GYB{background-position:0 -2194px; text-indent:-999em;}/*贵阳银行*/
+.mainBank-list .HEBB{background-position:0 -2234px; text-indent:-999em;}/*哈尔滨银行*/
+.mainBank-list .BHB{background-position:0 -2274px; text-indent:-999em;}/*河北银行*/
+.mainBank-list .CSRCB{background-position:0 -2314px; text-indent:-999em;}/*江苏常熟农村商业银行*/
+.mainBank-list .JSB{background-position:0 -2354px; text-indent:-999em;}/*江苏银行*/
+.mainBank-list .JRCB{background-position:0 -2394px; text-indent:-999em;}/*江阴农村商业银行*/
+.mainBank-list .JJCCB{background-position:0 -2434px; text-indent:-999em;}/*九江银行*/
+.mainBank-list .LZB{background-position:0 -2474px; text-indent:-999em;}/*兰州银行*/
+.mainBank-list .DAQINGB{background-position:0 -2514px; text-indent:-999em;}/*龙江银行*/
+.mainBank-list .QHB{background-position:0 -2554px; text-indent:-999em;}/*青海银行*/
+.mainBank-list .SRB{background-position:0 -2594px; text-indent:-999em;}/*上饶银行*/
+.mainBank-list .TZCB{background-position:0 -2634px; text-indent:-999em;}/*台州银行*/
+.mainBank-list .WHSHB{background-position:0 -2674px; text-indent:-999em;}/*威海市商业银行*/
+.mainBank-list .WFCCB{background-position:0 -2714px; text-indent:-999em;}/*潍坊银行*/
+.mainBank-list .URMQCCB{background-position:0 -2754px; text-indent:-999em;}/*乌鲁木齐商业银行*/
+.mainBank-list .WRCB{background-position:0 -2794px; text-indent:-999em;}/*无锡农村商业银行*/
+.mainBank-list .BOTJ{background-position:0 -2834px; text-indent:-999em;}/*天津银行*/
+.mainBank-list .YZB{background-position:0 -2874px; text-indent:-999em;}/*鄞州银行*/
+.mainBank-list .ZJTLCB{background-position:0 -2914px; text-indent:-999em;}/*浙江泰隆商业银行*/
+.mainBank-list .MTBANK{background-position:0 -2954px; text-indent:-999em;}/*浙江民泰商业银行*/
+.mainBank-list .NCB{background-position:0 -2994px; text-indent:-999em;}/*南昌银行*/
+.mainBank-list .QLBANK{background-position:0 -3034px; text-indent:-999em;}/*齐鲁银行*/
+.mainBank-list .YDRCB{background-position:0 -3074px; text-indent:-999em;}/*尧都农村商业银行 */
+.mainBank-list .GHBANK{background-position:0 -3154px; text-indent:-999em;}/*广东华兴银行*/
+
+/***银行快捷***/
+.mainBank-list{}
+.mainBank-list .BIocn-KJ{ display:block; width:160px; height:34px; background:url(../../images/bank/bank-kj.png) 0 0 no-repeat; overflow:hidden; }
+.mainBank-list .ICBC-KJ{     background-position:0 -4px; text-indent:-999em;}/*中国工商银行*/
+.mainBank-list .ABC-KJ{ background-position:0 -41px; text-indent:-999em;}/*中国农业银行*/
+.mainBank-list .CCB-KJ{ background-position:0 -78px; text-indent:-999em;}/*中国建设银行*/
+.mainBank-list .PSBC-KJ{ background-position:0 -115px; text-indent:-999em;}/*中国邮政储蓄银行*/
+.mainBank-list .SHRCB-KJ{ background-position:0 -152px; text-indent:-999em;}/*上海农商银行*/
+.mainBank-list .CMBC-KJ{ background-position:0 -189px; text-indent:-999em;}/*中国民生银行*/
+.mainBank-list .CMB-KJ{ background-position:0 -226px; text-indent:-999em;}/*招商银行*/
+.mainBank-list .BOC-KJ{ background-position:0 -263px; text-indent:-999em;}/*中国银行*/
+.mainBank-list .COMM-KJ{ background-position:0 -297px; text-indent:-999em;}/*交通银行*/
+.mainBank-list .CIB-KJ{ background-position:0 -337px; text-indent:-999em;}/*兴业银行*/
+.mainBank-list .GDB-KJ{ background-position:0 -372px; text-indent:-999em;}/*广发银行*/
+.mainBank-list .HKBEA-KJ{ background-position:0 -408px; text-indent:-999em;}/*东亚银行*/
+.mainBank-list .CEB-KJ{ background-position:0 -445px; text-indent:-999em;}/*中国光大银行*/
+.mainBank-list .BJRCB-KJ{ background-position:0 -482px; text-indent:-999em;}/*北京农商银行*/
+.mainBank-list .CBHB-KJ{ background-position:0 -519px; text-indent:-999em;}/*渤海银行*/
+.mainBank-list .BOS-KJ{ background-position:0 -556px; text-indent:-999em;}/*上海银行*/
+.mainBank-list .CITIC-KJ{ background-position:0 -593px; text-indent:-999em;}/*中信银行*/
+.mainBank-list .CZB-KJ{ background-position:0 -630px; text-indent:-999em;}/*浙商银行*/
+.mainBank-list .GZCB-KJ{ background-position:0 -667px; text-indent:-999em;}/*广州银行*/
+.mainBank-list .GNXS-KJ{ background-position:0 -704px; text-indent:-999em;}/*广州农商银行*/
+.mainBank-list .HSBANK-KJ{ background-position:0 -741px; text-indent:-999em;}/*徽商银行*/
+.mainBank-list .HXB-KJ{ background-position:0 -778px; text-indent:-999em;}/*华夏银行*/
+.mainBank-list .HCCB-KJ{ background-position:0 -816px; text-indent:-999em;}/*杭州银行*/
+.mainBank-list .JSCB-KJ{ background-position:0 -854px; text-indent:-999em;}/*江苏银行*/
+.mainBank-list .NBCB-KJ{ background-position:0 -890px; text-indent:-999em;}/*宁波银行*/
+.mainBank-list .NJCB-KJ{ background-position:0 -927px; text-indent:-999em;}/*南京银行*/
+.mainBank-list .SZPAB-KJ{ background-position:0 -964px; text-indent:-999em;}/*平安银行*/
+.mainBank-list .SDB-KJ{ background-position:0 -1001px; text-indent:-999em;}/*深圳发展银行*/
+.mainBank-list .BCCB-KJ{ background-position:0 -1038px; text-indent:-999em;}/*北京银行*/
+.mainBank-list .SPDB-KJ{ background-position:0 -1073px; text-indent:-999em;}/*浦发银行*/
+.mainBank-list .CQRCB-KJ{background-position:0 -1114px; text-indent:-999em;}/*重庆农商行*/
+.mainBank-list .AHRCU-KJ{background-position:0 -1154px; text-indent:-999em;}/*安徽农商行*/
+.mainBank-list .GSRCB-KJ{background-position:0 -1194px; text-indent:-999em;}/*甘肃省农信社*/
+.mainBank-list .SDNXS-KJ{background-position:0 -1234px; text-indent:-999em;}/*山东农信社*/
+.mainBank-list .CJCCB-KJ{background-position:0 -1274px; text-indent:-999em;}/*长江商业银行*/
+.mainBank-list .WHRCB-KJ{background-position:0 -1314px; text-indent:-999em;}/*武汉农商行*/
+.mainBank-list .HLJRCB-KJ{background-position:0 -1354px; text-indent:-999em;}/*黑龙江农信社*/
+.mainBank-list .TCRCB-KJ{background-position:0 -1394px; text-indent:-999em;}/*太仓农商行*/
+.mainBank-list .JNRCB-KJ{background-position:0 -1434px; text-indent:-999em;}/*江南农商行*/
+.mainBank-list .JLRCB-KJ{background-position:0 -1474px; text-indent:-999em;}/*吉林农信社*/
+.mainBank-list .HFBANK-KJ{background-position:0 -1514px; text-indent:-999em;}/*恒丰银行*/
+.mainBank-list .HZCCB-KJ{background-position:0 -1554px; text-indent:-999em;}/*湖州银行*/
+.mainBank-list .SDEB-KJ{background-position:0 -1594px; text-indent:-999em;}/*顺德农商行*/
+.mainBank-list .HKBCHINA-KJ{background-position:0 -1634px;text-indent:-999em;}/*汉口银行*/
+.mainBank-list .BQD-KJ{background-position:0 -1674px; text-indent:-999em;}/*青岛银行*/
+.mainBank-list .LZB-KJ{background-position:0 -1714px; text-indent:-999em;}/*兰州银行*/
+.mainBank-list .WZCB-KJ{background-position:0 -1754px; text-indent:-999em;}/*温州银行*/
+
+
+/***银行大额***/
+.mainBank-list{}
+.mainBank-list .BIocn-DE{ display:block; width:160px; height:34px; background:url(../../images/bank/bank-de.png) 0 0 no-repeat; overflow:hidden; }
+.mainBank-list .ICBC-DE{ background-position:0 -4px; text-indent:-999em;}/*中国工商银行*/
+.mainBank-list .ABC-DE{ background-position:0 -41px; text-indent:-999em;}/*中国农业银行*/
+.mainBank-list .CCB-DE{ background-position:0 -78px; text-indent:-999em;}/*中国建设银行*/
+.mainBank-list .PSBC-DE{ background-position:0 -115px; text-indent:-999em;}/*中国邮政储蓄银行*/
+.mainBank-list .SHRCB-DE{ background-position:0 -152px; text-indent:-999em;}/*上海农商银行*/
+.mainBank-list .CMBC-DE{ background-position:0 -189px; text-indent:-999em;}/*中国民生银行*/
+.mainBank-list .CMB-DE{ background-position:0 -226px; text-indent:-999em;}/*招商银行*/
+.mainBank-list .BOC-DE{ background-position:0 -263px; text-indent:-999em;}/*中国银行*/
+.mainBank-list .COMM-DE{ background-position:0 -297px; text-indent:-999em;}/*交通银行*/
+.mainBank-list .CIB-DE{ background-position:0 -337px; text-indent:-999em;}/*兴业银行*/
+.mainBank-list .GDB-DE{ background-position:0 -372px; text-indent:-999em;}/*广发银行*/
+.mainBank-list .HKBEA-DE{ background-position:0 -408px; text-indent:-999em;}/*东亚银行*/
+.mainBank-list .CEB-DE{ background-position:0 -445px; text-indent:-999em;}/*中国光大银行*/
+.mainBank-list .BJRCB-DE{ background-position:0 -482px; text-indent:-999em;}/*北京农商银行*/
+.mainBank-list .CBHB-DE{ background-position:0 -519px; text-indent:-999em;}/*渤海银行*/
+.mainBank-list .BOS-DE{ background-position:0 -556px; text-indent:-999em;}/*上海银行*/
+.mainBank-list .CITIC-DE{ background-position:0 -593px; text-indent:-999em;}/*中信银行*/
+.mainBank-list .CZB-DE{ background-position:0 -630px; text-indent:-999em;}/*浙商银行*/
+.mainBank-list .GZCB-DE{ background-position:0 -667px; text-indent:-999em;}/*广州银行*/
+.mainBank-list .GNXS-DE{ background-position:0 -704px; text-indent:-999em;}/*广州农商银行*/
+.mainBank-list .HSBANK-DE{ background-position:0 -741px; text-indent:-999em;}/*徽商银行*/
+.mainBank-list .HXB-DE{ background-position:0 -778px; text-indent:-999em;}/*华夏银行*/
+.mainBank-list .HCCB-DE{ background-position:0 -816px; text-indent:-999em;}/*杭州银行*/
+.mainBank-list .JSCB-DE{ background-position:0 -854px; text-indent:-999em;}/*江苏银行*/
+.mainBank-list .NBCB-DE{ background-position:0 -890px; text-indent:-999em;}/*宁波银行*/
+.mainBank-list .NJCB-DE{ background-position:0 -927px; text-indent:-999em;}/*南京银行*/
+.mainBank-list .SZPAB-DE{ background-position:0 -964px; text-indent:-999em;}/*平安银行*/
+.mainBank-list .SDB-DE{ background-position:0 -1001px; text-indent:-999em;}/*深圳发展银行*/
+.mainBank-list .BCCB-DE{ background-position:0 -1038px; text-indent:-999em;}/*北京银行*/
+.mainBank-list .SPDB-DE{ background-position:0 -1073px; text-indent:-999em;}/*浦发银行*/
+.mainBank-list .CQRCB-DE{background-position:0 -1114px; text-indent:-999em;}/*重庆农商行*/
+.mainBank-list .AHRCU-DE{background-position:0 -1154px; text-indent:-999em;}/*安徽农商行*/
+.mainBank-list .GSRCB-DE{background-position:0 -1194px; text-indent:-999em;}/*甘肃省农信社*/
+.mainBank-list .SDNXS-DE{background-position:0 -1234px; text-indent:-999em;}/*山东农信社*/
+.mainBank-list .CJCCB-DE{background-position:0 -1274px; text-indent:-999em;}/*长江商业银行*/
+.mainBank-list .WHRCB-DE{background-position:0 -1314px; text-indent:-999em;}/*武汉农商行*/
+.mainBank-list .HLJRCB-DE{background-position:0 -1354px; text-indent:-999em;}/*黑龙江农信社*/
+.mainBank-list .TCRCB-DE{background-position:0 -1394px; text-indent:-999em;}/*太仓农商行*/
+.mainBank-list .JNRCB-DE{background-position:0 -1434px; text-indent:-999em;}/*江南农商行*/
+.mainBank-list .JLRCB-DE{background-position:0 -1474px; text-indent:-999em;}/*吉林农信社*/
+.mainBank-list .HFBANK-DE{background-position:0 -1514px; text-indent:-999em;}/*恒丰银行*/
+.mainBank-list .HZCCB-DE{background-position:0 -1554px; text-indent:-999em;}/*湖州银行*/
+.mainBank-list .SDEB-DE{background-position:0 -1594px; text-indent:-999em;}/*顺德农商行*/
+.mainBank-list .HKBCHINA-DE{background-position:0 -1634px;text-indent:-999em;}/*汉口银行*/
+.mainBank-list .BQD-DE{background-position:0 -1674px; text-indent:-999em;}/*青岛银行*/
+.mainBank-list .LZB-DE{background-position:0 -1714px; text-indent:-999em;}/*兰州银行*/
+.mainBank-list .WZCB-DE{background-position:0 -1754px; text-indent:-999em;}/*温州银行*/
+
+/***银行企业***/
+.mainBank-list{}
+.mainBank-list .BIocn-QY{ display:block; width:160px; height:34px; background:url(../jquery/cashier/bank-qy.png) 0 0 no-repeat; overflow:hidden; }
+.mainBank-list .ICBC-QY{ background-position:0 -4px; text-indent:-999em;}/*中国工商银行*/
+.mainBank-list .ABC-QY{ background-position:0 -41px; text-indent:-999em;}/*中国农业银行*/
+.mainBank-list .CCB-QY{ background-position:0 -78px; text-indent:-999em;}/*中国建设银行*/
+.mainBank-list .PSBC-QY{ background-position:0 -115px; text-indent:-999em;}/*中国邮政储蓄银行*/
+.mainBank-list .SHRCB-QY{ background-position:0 -152px; text-indent:-999em;}/*上海农商银行*/
+.mainBank-list .CMBC-QY{ background-position:0 -189px; text-indent:-999em;}/*中国民生银行*/
+.mainBank-list .CMB-QY{ background-position:0 -226px; text-indent:-999em;}/*招商银行*/
+.mainBank-list .BOC-QY{ background-position:0 -263px; text-indent:-999em;}/*中国银行*/
+.mainBank-list .COMM-QY{ background-position:0 -297px; text-indent:-999em;}/*交通银行*/
+.mainBank-list .CIB-QY{ background-position:0 -337px; text-indent:-999em;}/*兴业银行*/
+.mainBank-list .GDB-QY{ background-position:0 -372px; text-indent:-999em;}/*广发银行*/
+.mainBank-list .HKBEA-QY{ background-position:0 -408px; text-indent:-999em;}/*东亚银行*/
+.mainBank-list .CEB-QY{ background-position:0 -445px; text-indent:-999em;}/*中国光大银行*/
+.mainBank-list .BJRCB-QY{ background-position:0 -482px; text-indent:-999em;}/*北京农商银行*/
+.mainBank-list .CBHB-QY{ background-position:0 -519px; text-indent:-999em;}/*渤海银行*/
+.mainBank-list .BOS-QY{ background-position:0 -556px; text-indent:-999em;}/*上海银行*/
+.mainBank-list .CITIC-QY{ background-position:0 -593px; text-indent:-999em;}/*中信银行*/
+.mainBank-list .CZB-QY{ background-position:0 -630px; text-indent:-999em;}/*浙商银行*/
+.mainBank-list .GZCB-QY{ background-position:0 -667px; text-indent:-999em;}/*广州银行*/
+.mainBank-list .GNXS-QY{ background-position:0 -704px; text-indent:-999em;}/*广州农商银行*/
+.mainBank-list .HSBANK-QY{ background-position:0 -741px; text-indent:-999em;}/*徽商银行*/
+.mainBank-list .HXB-QY{ background-position:0 -778px; text-indent:-999em;}/*华夏银行*/
+.mainBank-list .HCCB-QY{ background-position:0 -816px; text-indent:-999em;}/*杭州银行*/
+.mainBank-list .JSCB-QY{ background-position:0 -854px; text-indent:-999em;}/*江苏银行*/
+.mainBank-list .NBCB-QY{ background-position:0 -890px; text-indent:-999em;}/*宁波银行*/
+.mainBank-list .NJCB-QY{ background-position:0 -927px; text-indent:-999em;}/*南京银行*/
+.mainBank-list .SZPAB-QY{ background-position:0 -964px; text-indent:-999em;}/*平安银行*/
+.mainBank-list .SDB-QY{ background-position:0 -1001px; text-indent:-999em;}/*深圳发展银行*/
+.mainBank-list .BCCB-QY{ background-position:0 -1038px; text-indent:-999em;}/*北京银行*/
+.mainBank-list .SPDB-QY{ background-position:0 -1073px; text-indent:-999em;}/*浦发银行*/
+.mainBank-list .HEBBANK-QY{ background-position:0 -1112px; text-indent:-999em;}/*河北银行*/
+.mainBank-list .CQRCB-QY{background-position:0 -1152px; text-indent:-999em;}/*重庆农商行*/
+.mainBank-list .AHRCU-QY{background-position:0 -1192px; text-indent:-999em;}/*安徽农商行*/
+.mainBank-list .GSRCB-QY{background-position:0 -1232px; text-indent:-999em;}/*甘肃省农信社*/
+.mainBank-list .SDNXS-QY{background-position:0 -1272px; text-indent:-999em;}/*山东农信社*/
+.mainBank-list .CJCCB-QY{background-position:0 -1312px; text-indent:-999em;}/*长江商业银行*/
+.mainBank-list .WHRCB-QY{background-position:0 -1352px; text-indent:-999em;}/*武汉农商行*/
+.mainBank-list .HLJRCB-QY{background-position:0 -1392px; text-indent:-999em;}/*黑龙江农信社*/
+.mainBank-list .TCRCB-QY{background-position:0 -1432px; text-indent:-999em;}/*太仓农商行*/
+.mainBank-list .JNRCB-QY{background-position:0 -1472px; text-indent:-999em;}/*江南农商行*/
+.mainBank-list .JLRCB-QY{background-position:0 -1512px; text-indent:-999em;}/*吉林农信社*/
+.mainBank-list .HFBANK-QY{background-position:0 -1552px; text-indent:-999em;}/*恒丰银行*/
+.mainBank-list .HZCCB-QY{background-position:0 -1592px; text-indent:-999em;}/*湖州银行*/
+.mainBank-list .SDEB-QY{background-position:0 -1632px; text-indent:-999em;}/*顺德农商行*/
+.mainBank-list .HKBCHINA-QY{background-position:0 -1672px;text-indent:-999em;}/*汉口银行*/
+.mainBank-list .BQD-QY{background-position:0 -1712px; text-indent:-999em;}/*青岛银行*/
+.mainBank-list .LZB-QY{background-position:0 -1752px; text-indent:-999em;}/*兰州银行*/
+.mainBank-list .WZCB-QY{background-position:0 -1792px; text-indent:-999em;}/*温州银行*/
+
+/***第三方支付平台***/
+.mainBank-list{}
+.mainBank-list .BIocn-DSF{ display:block; width:160px; height:34px; background:url(../../images/bank/bank-dsf.png) 0 0 no-repeat; overflow:hidden; }
+.mainBank-list .ALIPAY{ background-position:0 -4px; text-indent:-999em;}/*支付宝*/
+.mainBank-list .UPOP{ background-position:0 -41px; text-indent:-999em;}/*银联支付*/
+.mainBank-list .YSPAY{ background-position:0 -78px; text-indent:-999em;}/*银盛支付*/
+.mainBank-list .BDPAY{ background-position:0 -115px; text-indent:-999em;}/*百度钱包*/
+.mainBank-list .TENPAY{ background-position:0 -115px; text-indent:-999em;}/*财付通*/
+.mainBank-list .BDPAY{ background-position:0 -152px; text-indent:-999em;}/*百度钱包*/
+.mainBank-list .BESTPAY{ background-position:0 -189px; text-indent:-999em;}/*翼支付*/
+.mainBank-list .BILL{ background-position:0 -224px; text-indent:-999em;}/*块钱*/
+.mainBank-list .WECASH{ background-position:0 -258px; text-indent:-999em;}/*闪银*/
+.mainBank-list .WXPAY{ background-position:0 -293px; text-indent:-999em;}/*微信*/
+/*闪银*/
+.header {
+  /*顶部用户状态条*/
+  /*logo*/
+}
+.header .user-bar {
+  height: 30px;
+  background-color: #3c464a;
+  color: #ffffff;
+}
+.header .user-bar ul {
+  float: right;
+}
+.header .user-bar ul li {
+  float: left;
+  height: 12px;
+  font-size: 12px;
+  margin-top: 9px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.header .user-bar ul li a {
+  color: #ffffff;
+}
+.header .user-bar ul .border-right {
+  border-right: 1px solid #ffffff;
+}
+.header .logo-bar {
+  background-color: #f6f6f6;
+  height: 75px;
+  border-bottom: 1px solid #ddd;
+}
+.header .logo-bar h1 {
+  float: left;
+  width: 218px;
+  text-indent: -10000em;
+  height: 75px;
+  /*background: url("../images/logo-cashier.png") no-repeat center left;*/
+}
+.header .logo-bar p {
+  float: left;
+  padding-top: 40px;
+  font-size: 18px;
+  color: #999;
+}
+/*主内容区开始*/
+.content {
+  color: #333333;
+  /*background-color: #fafafa;*/
+  padding-top: 16px;
+  padding-bottom: 40px;
+  /*交易信息开始*/
+  /*支付部分开始*/
+}
+.content .trade-info {
+  position: relative;
+  background: #f7f9fe;
+  padding: 16px 30px;
+  margin-bottom: 16px;
+  border: 1px solid #dfdfdf;
+  border-bottom: 3px solid #acacac;
+  height:100%;
+  /*height:100%  此处为了解决IE7当父元素中含有position属性时，不支持jquery中的slideToggle()*/
+  /*交易概览开始*/
+  /*交易详情*/
+  /*显示隐藏交易详情的按钮*/
+}
+.content .trade-info .overview {
+  /*padding-bottom: 12px;*/
+  /*商家信息*/
+  /*交易金额*/
+}
+.content .trade-info .overview .business {
+  float: left;
+}
+.content .trade-info .overview .business h3 {
+  font-size: 14px;
+  color:#555;
+  padding-bottom: 10px;
+}
+.content .trade-info .overview .business p {
+  color: #808080;
+  font-size: 12px;
+}
+.content .trade-info .overview .amount {
+  float: right;
+  text-align:right;
+}
+.content .trade-info .overview .amount p {
+  font-size: 16px;
+  color:#555;
+}
+.content .trade-info .overview .amount p .money {
+  /*float: left;*/
+  font-size: 18px;
+  /*height: 30px;*/
+  color: #ff6c15;
+  padding: 0 8px;
+}
+.content .trade-info .overview .amount p .unit {
+  /*float: left;*/
+  font-size: 16px;
+  line-height: 16px;
+  padding-top: 10px;
+}
+.content .trade-info .details {
+  margin-top:10px;
+  padding: 10px 0;
+  border-top: 1px dashed #ececec;
+}
+.content .trade-info .details table td,
+.content .trade-info .details table th {
+  border: 1px solid #dfdfdf;
+  text-align: center;
+  background: #ffffff;
+}
+.content .trade-info .details-btn {
+  text-align:right;
+  font-size: 12px;
+  color:#f37022;
+  margin-top: 10px;
+  cursor:pointer;
+  display:block;
+}
+.content .cashier-payment {
+  border: 1px solid #dfdfdf;
+  background-color: #ffffff;
+  padding:30px 30px 0;
+  /*选择银行卡类型*/
+  /*选择银行开始*/
+  /*表单部分开始*/
+}
+.content .cashier-payment .payment-tags {
+  position: relative;
+  min-height: 30px;
+  border-bottom: 1px solid #e85a05;
+}
+.content .cashier-payment .payment-tags ul {
+  position: relative;
+  margin-top: -1px;
+}
+.content .cashier-payment .payment-tags ul li {
+  float: left;
+  margin:9px 8px 0 9px;
+  width: 138px;
+  height: 29px;
+  line-height:29px;
+  text-align:center;
+  font-size: 14px;
+  color:#555;
+  border:1px solid #eee;
+}
+.content .cashier-payment .payment-tags ul li a {
+  display:block;
+  color: #333;
+  font-size: 14px;
+}
+.content .cashier-payment .payment-tags ul li.active {
+  border:1px solid #e85a05;
+  border-bottom:none;
+  background:#f37022;
+  color:#fff;
+}
+.content .cashier-payment .payment-tags ul li.active a {
+  color: #fff;
+}
+.content .cashier-payment .payment-methods {
+  padding: 30px 20px 0 50px;
+}
+.content .cashier-payment .payment-methods .method {
+  /*online-bank代表网银*/
+  /*已绑定快捷卡列表*/
+}
+.content .cashier-payment .payment-methods .method ul.online-bank-list li {
+  float: left;
+  width:160px;
+  height:34px;
+  margin:0 13px 15px 0;
+  padding:2px;
+  background:#fff;
+  cursor:pointer;
+}
+.content .cashier-payment .payment-methods .method ul.online-bank-list li a {
+  border: 1px solid #d5d5d5;
+}
+.content .cashier-payment .payment-methods .method ul.online-bank-list li a.active {
+  border: 1px solid #e85a05;
+}
+.content .cashier-payment .payment-methods .method ul.qpay-bank-list li.bound-qpay-bank {
+  float: left;
+  padding-left: 20px;
+  padding-top: 16px;
+
+  height:156px;
+}
+.content .cashier-payment .payment-methods .method ul.qpay-bank-list li.bound-qpay-bank a {
+  display: block;
+  border-radius: 4px;
+  width: 220px;
+  height: 140px;
+  border: 1px solid #ececec;
+  overflow: hidden;
+}
+.content .cashier-payment .payment-methods .method ul.qpay-bank-list li.bound-qpay-bank a div {
+  height: 46px;
+  border-bottom: 1px solid #ececec;
+}
+.content .cashier-payment .payment-methods .method ul.qpay-bank-list li.bound-qpay-bank a div p.qpay-bank-count {
+  padding-top: 8px;
+  height: 38px;
+}
+.content .cashier-payment .payment-methods .method ul.qpay-bank-list li.bound-qpay-bank a div p.qpay-bank-count span {
+  float: left;
+}
+.content .cashier-payment .payment-methods .method ul.qpay-bank-list li.bound-qpay-bank a div p.qpay-bank-count .tail-num {
+  padding-top: 12px;
+  font-size: 12px;
+}
+.content .cashier-payment .payment-methods .method ul.qpay-bank-list li.bound-qpay-bank a div p.qpay-bank-info {
+  padding-top: 10px;
+  padding-bottom: 12px;
+  height: 46px;
+}
+.content .cashier-payment .payment-methods .method ul.qpay-bank-list li.bound-qpay-bank a div p.qpay-bank-info span {
+  float: left;
+  height: 26px;
+  line-height: 26px;
+}
+.content .cashier-payment .payment-methods .method ul.qpay-bank-list li.bound-qpay-bank a div p.qpay-bank-info .qpay-bind {
+  margin-left: 10px;
+  margin-right: 10px;
+  background: url("../../images/qpay-bg.png") no-repeat;
+  color: #ffffff;
+  width: 78px;
+  text-align: center;
+  font-size: 14px;
+}
+.content .cashier-payment .payment-methods .method ul.qpay-bank-list li.bound-qpay-bank a div p.qpay-bank-type {
+  padding-top: 14px;
+  padding-bottom: 14px;
+  height: 18px;
+}
+.content .cashier-payment .payment-methods .method ul.qpay-bank-list li.bound-qpay-bank a div p.qpay-bank-type span {
+  margin-right: 4px;
+  float: right;
+  height: 18px;
+  width: 46px;
+  line-height: 18px;
+  background: url("../../images/bank-type-bg.png");
+  color: #ffffff;
+  text-align: center;
+}
+.content .cashier-payment .payment-methods .method ul.qpay-bank-list li.bound-qpay-bank a.active {
+  border: 2px solid #fbcdb2;
+}
+.content .cashier-payment .payment-methods .method ul.qpay-bank-list li.bind-new-bank-btn {
+  float: left;
+  padding-left: 20px;
+  padding-top: 16px;
+}
+.content .cashier-payment .payment-methods .method ul.qpay-bank-list li.bind-new-bank-btn a {
+  display: block;
+  border-radius: 4px;
+  width: 220px;
+  height: 140px;
+  border: 1px solid #ececec;
+  overflow: hidden;
+  background-color: #fafafa;
+}
+.content .cashier-payment .payment-methods .method ul.qpay-bank-list li.bind-new-bank-btn a p.add {
+  margin: 30px auto 20px;
+  width: 44px;
+  height: 44px;
+  background: url("../../images/plus-symbol.png") no-repeat;
+}
+.content .cashier-payment .payment-methods .method ul.qpay-bank-list li.bind-new-bank-btn a p {
+  text-align: center;
+}
+.content .cashier-payment .result {
+  padding: 32px 0px;
+  width:100%;
+}
+.content .cashier-payment .result p.tip {
+  padding-bottom: 16px;
+  font-size: 12px;
+}
+.content .cashier-payment .result p.tip .emphasis {
+  color: #ff0000;
+}
+.content .cashier-payment .result p.security {
+  background: url("../../images/small-succeed.png") left top no-repeat;
+  padding-left: 20px;
+  padding-top: 2px;
+  font-size: 12px;
+}
+.content .cashier-payment .result .result-form {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.content .cashier-payment .result .result-form button {
+  width: 108px;
+  height: 32px;
+  border-radius: 2px;
+  background-color: #f36f21;
+  color: #ffffff;
+  font-size: 14px;
+}
+/*模态弹出框,绑定快捷卡开始*/
+.dialog-box {
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  /*半透明背景*/
+  /*设置居中容器*/
+}
+.dialog-box .bg {
+  width: 100%;
+  background: #000;
+  opacity: 0.3;
+  filter: alpha(opacity=30);
+}
+.dialog-box .dialog-content-box {
+  position: absolute;
+  z-index: 500;
+  top: 50%;
+  left: 50%;
+  margin-left: -236px;
+  margin-top: -126px;
+  padding: 6px;
+  background-color: rgba(0, 0, 0, 0.6);
+  /*内容区*/
+}
+.dialog-box .dialog-content-box .dialog-content {
+  width: 460px;
+  height: 240px;
+  background-color: #ffffff;
+  /*用户操作内容区,这部分内容会根据用户的操作显示隐藏*/
+}
+.dialog-box .dialog-content-box .dialog-content h2 {
+  border-bottom: 1px solid #e6e6e6;
+  font-size: 16px;
+  padding: 10px 20px;
+}
+.dialog-box .dialog-content-box .dialog-content .close {
+  position: absolute;
+  z-index: 1000;
+  top: 16px;
+  right: 18px;
+  width: 12px;
+  height: 12px;
+  background: url("../../images/close.png") no-repeat;
+}
+.dialog-box .dialog-content-box .dialog-content .wrapper {
+  padding: 20px 0 20px 20px;
+  /*输入卡号,识别卡片信息*/
+}
+.dialog-box .dialog-content-box .dialog-content .wrapper .payment-confirm {
+  padding-left: 20px;
+  padding-bottom: 20px;
+  padding-right: 20px;
+}
+.dialog-box .dialog-content-box .dialog-content .wrapper .payment-confirm .form-item {
+  margin-bottom: 30px;
+}
+.dialog-box .dialog-content-box .dialog-content .wrapper .payment-confirm .form-item .tip {
+  width: 100%;
+  float: left;
+  padding-top: 20px;
+  line-height: 24px;
+}
+.dialog-box .dialog-content-box .dialog-content .wrapper .payment-confirm .form-item a {
+  color: #f36f21;
+}
+#back{
+  margin-left:14px;
+  color:#f36f21;
+  font-size:12px;
+  font-family: BlinkMacSystemFont;
+}
+/*更多银行显示*/
+.moreBankShow .moreBankShow-span{
+  width: 86px;
+  display: inline-block;
+  margin: 6px 40px;
+  font-size: 14px;
+  color: #f37022;
+  font-weight: bold;
+  background: url("../../images/arrow-down.jpg") no-repeat right center;
+}
+.moreBankShow .moreBankShow-span.up{
+  background: url("../../images/arrow-up.jpg") no-repeat right center;
+}
+
+/** 内页进度条**/
+.insideBox-progress{ padding-bottom:50px; padding-top:15px; width:700px; height:30px; margin:0 auto; }
+.insideBox-progress .proPhoto{ width:700px; height:30px; background:url(../../images/progress-bar.png) no-repeat; }
+/**进度条一**/
+.insideBox-progress .proP1{ width:700px; height:30px; background-position:0 0; position:relative; }
+.insideBox-progress .proP1 .p1{ display:block; width:150px; height:20px; text-align:center; font-size:14px; font-family:"Microsoft YaHei"; color:#f37022; position:absolute; top:34px; left:-52px; }
+.insideBox-progress .proP1 .p2{ display:block; width:150px; height:20px; text-align:center; font-family:"Microsoft YaHei"; color:#a3a3a3; position:absolute; top:34px; left:281px; }
+.insideBox-progress .proP1 .p3{ display:block; width:150px; height:20px; text-align:center; font-family:"Microsoft YaHei"; color:#a3a3a3; position:absolute; top:34px; left:610px; }
+/**进度条二**/
+.insideBox-progress .proP2{ width:700px; height:30px; background-position:1px -42px; position:relative; }
+.insideBox-progress .proP2 .p1{ display:block; width:150px; height:20px; text-align:center; font-size:14px; font-family:"Microsoft YaHei"; color:#f37022; position:absolute; top:34px; left:-52px; }
+.insideBox-progress .proP2 .p2{ display:block; width:150px; height:20px; text-align:center; font-family:"Microsoft YaHei"; color:#f37022; position:absolute; top:34px; left:281px; }
+.insideBox-progress .proP2 .p3{ display:block; width:150px; height:20px; text-align:center; font-family:"Microsoft YaHei"; color:#a3a3a3; position:absolute; top:34px; left:610px; }
+/**进度条三**/
+.insideBox-progress .proP3{ width:700px; height:30px; background-position:0 -81px; position:relative; }
+.insideBox-progress .proP3 .p1{ display:block; width:150px; height:20px; text-align:center; font-size:14px; font-family:"Microsoft YaHei"; color:#f37022; position:absolute; top:34px; left:-52px; }
+.insideBox-progress .proP3 .p2{ display:block; width:150px; height:20px; text-align:center; font-family:"Microsoft YaHei"; color:#f37022; position:absolute; top:34px; left:281px; }
+.insideBox-progress .proP3 .p3{ display:block; width:150px; height:20px; text-align:center; font-family:"Microsoft YaHei"; color:#f37022; position:absolute; top:34px; left:610px; }
+
+/*线下打款*/
+.stepBox{
+  padding-top: 30px;
+  margin: 0 auto;
+}
+.stepBox .step1{
+  width:600px;
+  margin:0 auto;
+}
+.stepBox .step2 .drawingTip{
+  text-align: left;
+}
+.stepBox .step2 .drawingTip p{
+  padding-top: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.stepBox .step2 .drawingTip img{
+  width:837px;
+}
+.stepBox .step3 .form-group{
+  margin-bottom: 6px;
+}
+.stepBox .step3 label{
+  width:45%;
+  padding:0;
+}
+.stepBox .step3 label span{
+  display: block;
+  margin-top:7px;
+  text-align: left;
+}
+.stepBox .step3 .successtip{
+  margin-bottom: 20px;
+}
+.stepBox .step3 .successtip img{
+  margin-right: 10px;
+  width:30px;
+  height: 30px;
+}
+.stepBox .step3 .orderInfo{
+  padding-top: 20px;
+  margin-bottom: 20px;
+  width: 96%;
+  border-top: 1px dashed #ccc;
+}
+.stepBox .copy_icon{
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+  width: 16px;
+  height: 16px;
+  background: url('../../images/copy_icon.png') center center no-repeat;
+}
+.textRed{
+  color:red;
+}

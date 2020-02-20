@@ -1,0 +1,742 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.posp.ui.dao.IPcuserMapper">
+    <resultMap id="BaseResultMap" type="com.posp.common.service.user.entyty.PcuserDO">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="USERNO" property="userno" jdbcType="VARCHAR"/>
+        <result column="EMAIL" property="email" jdbcType="VARCHAR"/>
+        <result column="MOBILE" property="mobile" jdbcType="VARCHAR"/>
+        <result column="OPTLOGINNAME" property="optloginname" jdbcType="VARCHAR"/>
+        <result column="ISAGENT" property="isagent" jdbcType="BIGINT"/>
+        <result column="ISSALEMAN" property="issaleman" jdbcType="BIGINT"/>
+        <result column="ISMERCHANT" property="ismerchant" jdbcType="BIGINT"/>
+        <result column="ISOPERATOR" property="isoperator" jdbcType="BIGINT"/>
+        <result column="ISSITEMANAGER" property="issitemanager" jdbcType="BIGINT"/>
+        <result column="USERLEVEL" property="userlevel" jdbcType="BIGINT"/>
+        <result column="USERSTATUS" property="userstatus" jdbcType="BIGINT"/>
+        <result column="REALNAME" property="realname" jdbcType="VARCHAR"/>
+        <result column="IDCARDNO" property="idcardno" jdbcType="VARCHAR"/>
+        <result column="IDCARDTYPE" property="idcardtype" jdbcType="BIGINT"/>
+        <result column="IDCARDEXPIRY" property="idcardexpiry" jdbcType="VARCHAR"/>
+        <result column="IDCARDOFFICE" property="idcardoffice" jdbcType="VARCHAR"/>
+        <result column="IDCARDADDRESS" property="idcardaddress" jdbcType="VARCHAR"/>
+        <result column="LOGINPWD" property="loginpwd" jdbcType="VARCHAR"/>
+        <result column="PAYPWD" property="paypwd" jdbcType="VARCHAR"/>
+        <result column="ISEMAILAUTH" property="isemailauth" jdbcType="BIGINT"/>
+        <result column="ISMOBILEAUTH" property="ismobileauth" jdbcType="BIGINT"/>
+        <result column="ISREALNAMEAUTH" property="isrealnameauth" jdbcType="BIGINT"/>
+        <result column="LOGINPWDERRORTIMES" property="loginpwderrortimes" jdbcType="BIGINT"/>
+        <result column="PAYPWDERRORTIMES" property="paypwderrortimes" jdbcType="BIGINT"/>
+        <result column="ISINITLOGINPWD" property="isinitloginpwd" jdbcType="BIGINT"/>
+        <result column="LASTLOGINPWDERRORTIME" property="lastloginpwderrortime" jdbcType="TIMESTAMP"/>
+        <result column="LASTPAYPWDERRORTIME" property="lastpaypwderrortime" jdbcType="TIMESTAMP"/>
+        <result column="LASTLOGINTIME" property="lastlogintime" jdbcType="TIMESTAMP"/>
+        <result column="CREATETIME" property="createtime" jdbcType="TIMESTAMP"/>
+        <result column="SITECODE" property="sitecode" jdbcType="BIGINT"/>
+        <result column="VERSION" property="version" jdbcType="BIGINT"/>
+        <result column="DELETESTATUS" property="deletestatus" jdbcType="BIGINT"/>
+        <result column="AGENTLEVEL" property="agentlevel" jdbcType="BIGINT"/>
+        <result column="ISSMSACCEPT" property="issmsaccept" jdbcType="BIGINT"/>
+        <result column="ISEMAILACCEPT" property="isemailaccept" jdbcType="BIGINT"/>
+        <result column="REGISTERFROM" property="registerfrom" jdbcType="BIGINT"/>
+        <result column="GESTUREPWD" property="gesturepwd" jdbcType="VARCHAR"/>
+        <result column="MOBILE_ENCRYPT" property="mobileEncrypt" jdbcType="VARCHAR"/>
+        <result column="IDCARDNO_ENCRYPT" property="idcardnoEncrypt" jdbcType="VARCHAR"/>
+        <result column="KEY_NAME" property="keyName" jdbcType="VARCHAR"/>
+        <result column="MOBILE_CODE" property="mobileCode" jdbcType="VARCHAR"/>
+        <result column="SEND_TIME" property="sendTime" jdbcType="TIMESTAMP"/>
+        <result column="FORGET_MOBILE_CODE" property="forgetMobileCode" jdbcType="VARCHAR"/>
+        <result column="FORGET_SEND_TIME" property="forgetSendTime" jdbcType="TIMESTAMP"/>
+        <result column="PWD_MODIFY_TIME" property="pwdModifyTime" jdbcType="TIMESTAMP"/>
+        <result column="LOGIN_RESERVE" property="loginReserve" jdbcType="VARCHAR"/>
+        <result column="orgnId" property="orgnId" jdbcType="VARCHAR"/>
+        <result column="orgnName" property="orgnName" jdbcType="VARCHAR"/>
+        <result column="merchId" property="merchId" jdbcType="VARCHAR"/>
+        <result column="merchName" property="merchName" jdbcType="VARCHAR"/>
+        <result column="ORG_CODE" property="orgCode" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        ID,USERNO,EMAIL,MOBILE,OPTLOGINNAME,ISAGENT,ISSALEMAN,ISMERCHANT,ISOPERATOR,ISSITEMANAGER,USERLEVEL,USERSTATUS,REALNAME,IDCARDNO,IDCARDTYPE,IDCARDEXPIRY,IDCARDOFFICE,IDCARDADDRESS,LOGINPWD,PAYPWD,ISEMAILAUTH,ISMOBILEAUTH,ISREALNAMEAUTH,LOGINPWDERRORTIMES,PAYPWDERRORTIMES,ISINITLOGINPWD,LASTLOGINPWDERRORTIME,LASTPAYPWDERRORTIME,LASTLOGINTIME,CREATETIME,SITECODE,VERSION,DELETESTATUS,AGENTLEVEL,ISSMSACCEPT,ISEMAILACCEPT,REGISTERFROM,GESTUREPWD,MOBILE_ENCRYPT,IDCARDNO_ENCRYPT,KEY_NAME,MOBILE_CODE,SEND_TIME,FORGET_MOBILE_CODE,FORGET_SEND_TIME,PWD_MODIFY_TIME,LOGIN_RESERVE
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM PCUSER WHERE ID = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        UPDATE
+		PCUSER
+		SET deleteStatus = 1
+		WHERE
+		id = #{id,jdbcType=BIGINT}
+		AND deleteStatus = 0
+    </delete>
+    <insert id="insert" parameterType="com.posp.common.service.user.entyty.PcuserDO">
+        <selectKey keyProperty="id" resultType="Long" order="BEFORE">
+            select SEQ_pcUser_id.nextval as id from dual
+        </selectKey>
+        INSERT INTO PCUSER (ID,USERNO,EMAIL,MOBILE,OPTLOGINNAME,ISAGENT,ISSALEMAN,ISMERCHANT,ISOPERATOR,ISSITEMANAGER,USERLEVEL,USERSTATUS,REALNAME,IDCARDNO,IDCARDTYPE,IDCARDEXPIRY,IDCARDOFFICE,IDCARDADDRESS,LOGINPWD,PAYPWD,ISEMAILAUTH,ISMOBILEAUTH,ISREALNAMEAUTH,LOGINPWDERRORTIMES,PAYPWDERRORTIMES,ISINITLOGINPWD,LASTLOGINPWDERRORTIME,LASTPAYPWDERRORTIME,LASTLOGINTIME,CREATETIME,SITECODE,VERSION,DELETESTATUS,AGENTLEVEL,ISSMSACCEPT,ISEMAILACCEPT,REGISTERFROM,GESTUREPWD,MOBILE_ENCRYPT,IDCARDNO_ENCRYPT,KEY_NAME,MOBILE_CODE,SEND_TIME,FORGET_MOBILE_CODE,FORGET_SEND_TIME,PWD_MODIFY_TIME,LOGIN_RESERVE)
+        VALUES(#{id,jdbcType=BIGINT},#{userno,jdbcType=VARCHAR},#{email,jdbcType=VARCHAR},#{mobile,jdbcType=VARCHAR},#{optloginname,jdbcType=VARCHAR},#{isagent,jdbcType=BIGINT},#{issaleman,jdbcType=BIGINT},#{ismerchant,jdbcType=BIGINT},#{isoperator,jdbcType=BIGINT},#{issitemanager,jdbcType=BIGINT},#{userlevel,jdbcType=BIGINT},#{userstatus,jdbcType=BIGINT},#{realname,jdbcType=VARCHAR},#{idcardno,jdbcType=VARCHAR},#{idcardtype,jdbcType=BIGINT},#{idcardexpiry,jdbcType=VARCHAR},#{idcardoffice,jdbcType=VARCHAR},#{idcardaddress,jdbcType=VARCHAR},#{loginpwd,jdbcType=VARCHAR},#{paypwd,jdbcType=VARCHAR},#{isemailauth,jdbcType=BIGINT},#{ismobileauth,jdbcType=BIGINT},#{isrealnameauth,jdbcType=BIGINT},#{loginpwderrortimes,jdbcType=BIGINT},#{paypwderrortimes,jdbcType=BIGINT},#{isinitloginpwd,jdbcType=BIGINT},#{lastloginpwderrortime,jdbcType=TIMESTAMP},#{lastpaypwderrortime,jdbcType=TIMESTAMP},#{lastlogintime,jdbcType=TIMESTAMP},#{createtime,jdbcType=TIMESTAMP},#{sitecode,jdbcType=BIGINT},#{version,jdbcType=BIGINT},#{deletestatus,jdbcType=BIGINT},#{agentlevel,jdbcType=BIGINT},#{issmsaccept,jdbcType=BIGINT},#{isemailaccept,jdbcType=BIGINT},#{registerfrom,jdbcType=BIGINT},#{gesturepwd,jdbcType=VARCHAR},#{mobileEncrypt,jdbcType=VARCHAR},#{idcardnoEncrypt,jdbcType=VARCHAR},#{keyName,jdbcType=VARCHAR},#{mobileCode,jdbcType=VARCHAR},#{sendTime,jdbcType=TIMESTAMP},#{forgetMobileCode,jdbcType=VARCHAR},#{forgetSendTime,jdbcType=TIMESTAMP},#{pwdModifyTime,jdbcType=TIMESTAMP},#{loginReserve,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.posp.common.service.user.entyty.PcuserDO">
+        INSERT INTO PCUSER
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="userno != null">
+                USERNO,
+            </if>
+            <if test="email != null">
+                EMAIL,
+            </if>
+            <if test="mobile != null">
+                MOBILE,
+            </if>
+            <if test="optloginname != null">
+                OPTLOGINNAME,
+            </if>
+            <if test="isagent != null">
+                ISAGENT,
+            </if>
+            <if test="issaleman != null">
+                ISSALEMAN,
+            </if>
+            <if test="ismerchant != null">
+                ISMERCHANT,
+            </if>
+            <if test="isoperator != null">
+                ISOPERATOR,
+            </if>
+            <if test="issitemanager != null">
+                ISSITEMANAGER,
+            </if>
+            <if test="userlevel != null">
+                USERLEVEL,
+            </if>
+            <if test="userstatus != null">
+                USERSTATUS,
+            </if>
+            <if test="realname != null">
+                REALNAME,
+            </if>
+            <if test="idcardno != null">
+                IDCARDNO,
+            </if>
+            <if test="idcardtype != null">
+                IDCARDTYPE,
+            </if>
+            <if test="idcardexpiry != null">
+                IDCARDEXPIRY,
+            </if>
+            <if test="idcardoffice != null">
+                IDCARDOFFICE,
+            </if>
+            <if test="idcardaddress != null">
+                IDCARDADDRESS,
+            </if>
+            <if test="loginpwd != null">
+                LOGINPWD,
+            </if>
+            <if test="paypwd != null">
+                PAYPWD,
+            </if>
+            <if test="isemailauth != null">
+                ISEMAILAUTH,
+            </if>
+            <if test="ismobileauth != null">
+                ISMOBILEAUTH,
+            </if>
+            <if test="isrealnameauth != null">
+                ISREALNAMEAUTH,
+            </if>
+            <if test="loginpwderrortimes != null">
+                LOGINPWDERRORTIMES,
+            </if>
+            <if test="paypwderrortimes != null">
+                PAYPWDERRORTIMES,
+            </if>
+            <if test="isinitloginpwd != null">
+                ISINITLOGINPWD,
+            </if>
+            <if test="lastloginpwderrortime != null">
+                LASTLOGINPWDERRORTIME,
+            </if>
+            <if test="lastpaypwderrortime != null">
+                LASTPAYPWDERRORTIME,
+            </if>
+            <if test="lastlogintime != null">
+                LASTLOGINTIME,
+            </if>
+            <if test="createtime != null">
+                CREATETIME,
+            </if>
+            <if test="sitecode != null">
+                SITECODE,
+            </if>
+            <if test="version != null">
+                VERSION,
+            </if>
+            <if test="deletestatus != null">
+                DELETESTATUS,
+            </if>
+            <if test="agentlevel != null">
+                AGENTLEVEL,
+            </if>
+            <if test="issmsaccept != null">
+                ISSMSACCEPT,
+            </if>
+            <if test="isemailaccept != null">
+                ISEMAILACCEPT,
+            </if>
+            <if test="registerfrom != null">
+                REGISTERFROM,
+            </if>
+            <if test="gesturepwd != null">
+                GESTUREPWD,
+            </if>
+            <if test="mobileEncrypt != null">
+                MOBILE_ENCRYPT,
+            </if>
+            <if test="idcardnoEncrypt != null">
+                IDCARDNO_ENCRYPT,
+            </if>
+            <if test="keyName != null">
+                KEY_NAME,
+            </if>
+            <if test="mobileCode != null">
+                MOBILE_CODE,
+            </if>
+            <if test="sendTime != null">
+                SEND_TIME,
+            </if>
+            <if test="forgetMobileCode != null">
+                FORGET_MOBILE_CODE,
+            </if>
+            <if test="forgetSendTime != null">
+                FORGET_SEND_TIME,
+            </if>
+            <if test="pwdModifyTime != null">
+                PWD_MODIFY_TIME,
+            </if>
+            <if test="loginReserve != null">
+                LOGIN_RESERVE
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="userno != null">
+                #{userno,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="optloginname != null">
+                #{optloginname,jdbcType=VARCHAR},
+            </if>
+            <if test="isagent != null">
+                #{isagent,jdbcType=BIGINT},
+            </if>
+            <if test="issaleman != null">
+                #{issaleman,jdbcType=BIGINT},
+            </if>
+            <if test="ismerchant != null">
+                #{ismerchant,jdbcType=BIGINT},
+            </if>
+            <if test="isoperator != null">
+                #{isoperator,jdbcType=BIGINT},
+            </if>
+            <if test="issitemanager != null">
+                #{issitemanager,jdbcType=BIGINT},
+            </if>
+            <if test="userlevel != null">
+                #{userlevel,jdbcType=BIGINT},
+            </if>
+            <if test="userstatus != null">
+                #{userstatus,jdbcType=BIGINT},
+            </if>
+            <if test="realname != null">
+                #{realname,jdbcType=VARCHAR},
+            </if>
+            <if test="idcardno != null">
+                #{idcardno,jdbcType=VARCHAR},
+            </if>
+            <if test="idcardtype != null">
+                #{idcardtype,jdbcType=BIGINT},
+            </if>
+            <if test="idcardexpiry != null">
+                #{idcardexpiry,jdbcType=VARCHAR},
+            </if>
+            <if test="idcardoffice != null">
+                #{idcardoffice,jdbcType=VARCHAR},
+            </if>
+            <if test="idcardaddress != null">
+                #{idcardaddress,jdbcType=VARCHAR},
+            </if>
+            <if test="loginpwd != null">
+                #{loginpwd,jdbcType=VARCHAR},
+            </if>
+            <if test="paypwd != null">
+                #{paypwd,jdbcType=VARCHAR},
+            </if>
+            <if test="isemailauth != null">
+                #{isemailauth,jdbcType=BIGINT},
+            </if>
+            <if test="ismobileauth != null">
+                #{ismobileauth,jdbcType=BIGINT},
+            </if>
+            <if test="isrealnameauth != null">
+                #{isrealnameauth,jdbcType=BIGINT},
+            </if>
+            <if test="loginpwderrortimes != null">
+                #{loginpwderrortimes,jdbcType=BIGINT},
+            </if>
+            <if test="paypwderrortimes != null">
+                #{paypwderrortimes,jdbcType=BIGINT},
+            </if>
+            <if test="isinitloginpwd != null">
+                #{isinitloginpwd,jdbcType=BIGINT},
+            </if>
+            <if test="lastloginpwderrortime != null">
+                #{lastloginpwderrortime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastpaypwderrortime != null">
+                #{lastpaypwderrortime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastlogintime != null">
+                #{lastlogintime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createtime != null">
+                #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="sitecode != null">
+                #{sitecode,jdbcType=BIGINT},
+            </if>
+            <if test="version != null">
+                #{version,jdbcType=BIGINT},
+            </if>
+            <if test="deletestatus != null">
+                #{deletestatus,jdbcType=BIGINT},
+            </if>
+            <if test="agentlevel != null">
+                #{agentlevel,jdbcType=BIGINT},
+            </if>
+            <if test="issmsaccept != null">
+                #{issmsaccept,jdbcType=BIGINT},
+            </if>
+            <if test="isemailaccept != null">
+                #{isemailaccept,jdbcType=BIGINT},
+            </if>
+            <if test="registerfrom != null">
+                #{registerfrom,jdbcType=BIGINT},
+            </if>
+            <if test="gesturepwd != null">
+                #{gesturepwd,jdbcType=VARCHAR},
+            </if>
+            <if test="mobileEncrypt != null">
+                #{mobileEncrypt,jdbcType=VARCHAR},
+            </if>
+            <if test="idcardnoEncrypt != null">
+                #{idcardnoEncrypt,jdbcType=VARCHAR},
+            </if>
+            <if test="keyName != null">
+                #{keyName,jdbcType=VARCHAR},
+            </if>
+            <if test="mobileCode != null">
+                #{mobileCode,jdbcType=VARCHAR},
+            </if>
+            <if test="sendTime != null">
+                #{sendTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="forgetMobileCode != null">
+                #{forgetMobileCode,jdbcType=VARCHAR},
+            </if>
+            <if test="forgetSendTime != null">
+                #{forgetSendTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="pwdModifyTime != null">
+                #{pwdModifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="loginReserve != null">
+                #{loginReserve,jdbcType=VARCHAR}
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.posp.common.service.user.entyty.PcuserDO">
+        UPDATE PCUSER
+        <set>
+            <if test="userno != null">
+                USERNO = #{userno,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                EMAIL = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                MOBILE = #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="optloginname != null">
+                OPTLOGINNAME = #{optloginname,jdbcType=VARCHAR},
+            </if>
+            <if test="isagent != null">
+                ISAGENT = #{isagent,jdbcType=BIGINT},
+            </if>
+            <if test="issaleman != null">
+                ISSALEMAN = #{issaleman,jdbcType=BIGINT},
+            </if>
+            <if test="ismerchant != null">
+                ISMERCHANT = #{ismerchant,jdbcType=BIGINT},
+            </if>
+            <if test="isoperator != null">
+                ISOPERATOR = #{isoperator,jdbcType=BIGINT},
+            </if>
+            <if test="issitemanager != null">
+                ISSITEMANAGER = #{issitemanager,jdbcType=BIGINT},
+            </if>
+            <if test="userlevel != null">
+                USERLEVEL = #{userlevel,jdbcType=BIGINT},
+            </if>
+            <if test="userstatus != null">
+                USERSTATUS = #{userstatus,jdbcType=BIGINT},
+            </if>
+            <if test="realname != null">
+                REALNAME = #{realname,jdbcType=VARCHAR},
+            </if>
+            <if test="idcardno != null">
+                IDCARDNO = #{idcardno,jdbcType=VARCHAR},
+            </if>
+            <if test="idcardtype != null">
+                IDCARDTYPE = #{idcardtype,jdbcType=BIGINT},
+            </if>
+            <if test="idcardexpiry != null">
+                IDCARDEXPIRY = #{idcardexpiry,jdbcType=VARCHAR},
+            </if>
+            <if test="idcardoffice != null">
+                IDCARDOFFICE = #{idcardoffice,jdbcType=VARCHAR},
+            </if>
+            <if test="idcardaddress != null">
+                IDCARDADDRESS = #{idcardaddress,jdbcType=VARCHAR},
+            </if>
+            <if test="loginpwd != null">
+                LOGINPWD = #{loginpwd,jdbcType=VARCHAR},
+            </if>
+            <if test="paypwd != null">
+                PAYPWD = #{paypwd,jdbcType=VARCHAR},
+            </if>
+            <if test="isemailauth != null">
+                ISEMAILAUTH = #{isemailauth,jdbcType=BIGINT},
+            </if>
+            <if test="ismobileauth != null">
+                ISMOBILEAUTH = #{ismobileauth,jdbcType=BIGINT},
+            </if>
+            <if test="isrealnameauth != null">
+                ISREALNAMEAUTH = #{isrealnameauth,jdbcType=BIGINT},
+            </if>
+            <if test="loginpwderrortimes != null">
+                LOGINPWDERRORTIMES = #{loginpwderrortimes,jdbcType=BIGINT},
+            </if>
+            <if test="paypwderrortimes != null">
+                PAYPWDERRORTIMES = #{paypwderrortimes,jdbcType=BIGINT},
+            </if>
+            <if test="isinitloginpwd != null">
+                ISINITLOGINPWD = #{isinitloginpwd,jdbcType=BIGINT},
+            </if>
+            <if test="lastloginpwderrortime != null">
+                LASTLOGINPWDERRORTIME = #{lastloginpwderrortime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastpaypwderrortime != null">
+                LASTPAYPWDERRORTIME = #{lastpaypwderrortime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastlogintime != null">
+                LASTLOGINTIME = #{lastlogintime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createtime != null">
+                CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="sitecode != null">
+                SITECODE = #{sitecode,jdbcType=BIGINT},
+            </if>
+            <if test="version != null">
+                VERSION = #{version,jdbcType=BIGINT},
+            </if>
+            <if test="deletestatus != null">
+                DELETESTATUS = #{deletestatus,jdbcType=BIGINT},
+            </if>
+            <if test="agentlevel != null">
+                AGENTLEVEL = #{agentlevel,jdbcType=BIGINT},
+            </if>
+            <if test="issmsaccept != null">
+                ISSMSACCEPT = #{issmsaccept,jdbcType=BIGINT},
+            </if>
+            <if test="isemailaccept != null">
+                ISEMAILACCEPT = #{isemailaccept,jdbcType=BIGINT},
+            </if>
+            <if test="registerfrom != null">
+                REGISTERFROM = #{registerfrom,jdbcType=BIGINT},
+            </if>
+            <if test="gesturepwd != null">
+                GESTUREPWD = #{gesturepwd,jdbcType=VARCHAR},
+            </if>
+            <if test="mobileEncrypt != null">
+                MOBILE_ENCRYPT = #{mobileEncrypt,jdbcType=VARCHAR},
+            </if>
+            <if test="idcardnoEncrypt != null">
+                IDCARDNO_ENCRYPT = #{idcardnoEncrypt,jdbcType=VARCHAR},
+            </if>
+            <if test="keyName != null">
+                KEY_NAME = #{keyName,jdbcType=VARCHAR},
+            </if>
+            <if test="mobileCode != null">
+                MOBILE_CODE = #{mobileCode,jdbcType=VARCHAR},
+            </if>
+            <if test="sendTime != null">
+                SEND_TIME = #{sendTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="forgetMobileCode != null">
+                FORGET_MOBILE_CODE = #{forgetMobileCode,jdbcType=VARCHAR},
+            </if>
+            <if test="forgetSendTime != null">
+                FORGET_SEND_TIME = #{forgetSendTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="pwdModifyTime != null">
+                PWD_MODIFY_TIME = #{pwdModifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="loginReserve != null">
+                LOGIN_RESERVE = #{loginReserve,jdbcType=VARCHAR}
+            </if>
+        </set>
+        WHERE ID = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.posp.common.service.user.entyty.PcuserDO">
+        UPDATE PCUSER
+        SET
+            USERNO = #{userno,jdbcType=VARCHAR},
+            EMAIL = #{email,jdbcType=VARCHAR},
+            MOBILE = #{mobile,jdbcType=VARCHAR},
+            OPTLOGINNAME = #{optloginname,jdbcType=VARCHAR},
+            ISAGENT = #{isagent,jdbcType=BIGINT},
+            ISSALEMAN = #{issaleman,jdbcType=BIGINT},
+            ISMERCHANT = #{ismerchant,jdbcType=BIGINT},
+            ISOPERATOR = #{isoperator,jdbcType=BIGINT},
+            ISSITEMANAGER = #{issitemanager,jdbcType=BIGINT},
+            USERLEVEL = #{userlevel,jdbcType=BIGINT},
+            USERSTATUS = #{userstatus,jdbcType=BIGINT},
+            REALNAME = #{realname,jdbcType=VARCHAR},
+            IDCARDNO = #{idcardno,jdbcType=VARCHAR},
+            IDCARDTYPE = #{idcardtype,jdbcType=BIGINT},
+            IDCARDEXPIRY = #{idcardexpiry,jdbcType=VARCHAR},
+            IDCARDOFFICE = #{idcardoffice,jdbcType=VARCHAR},
+            IDCARDADDRESS = #{idcardaddress,jdbcType=VARCHAR},
+            LOGINPWD = #{loginpwd,jdbcType=VARCHAR},
+            PAYPWD = #{paypwd,jdbcType=VARCHAR},
+            ISEMAILAUTH = #{isemailauth,jdbcType=BIGINT},
+            ISMOBILEAUTH = #{ismobileauth,jdbcType=BIGINT},
+            ISREALNAMEAUTH = #{isrealnameauth,jdbcType=BIGINT},
+            LOGINPWDERRORTIMES = #{loginpwderrortimes,jdbcType=BIGINT},
+            PAYPWDERRORTIMES = #{paypwderrortimes,jdbcType=BIGINT},
+            ISINITLOGINPWD = #{isinitloginpwd,jdbcType=BIGINT},
+            LASTLOGINPWDERRORTIME = #{lastloginpwderrortime,jdbcType=TIMESTAMP},
+            LASTPAYPWDERRORTIME = #{lastpaypwderrortime,jdbcType=TIMESTAMP},
+            LASTLOGINTIME = #{lastlogintime,jdbcType=TIMESTAMP},
+            CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+            SITECODE = #{sitecode,jdbcType=BIGINT},
+            VERSION = #{version,jdbcType=BIGINT},
+            DELETESTATUS = #{deletestatus,jdbcType=BIGINT},
+            AGENTLEVEL = #{agentlevel,jdbcType=BIGINT},
+            ISSMSACCEPT = #{issmsaccept,jdbcType=BIGINT},
+            ISEMAILACCEPT = #{isemailaccept,jdbcType=BIGINT},
+            REGISTERFROM = #{registerfrom,jdbcType=BIGINT},
+            GESTUREPWD = #{gesturepwd,jdbcType=VARCHAR},
+            MOBILE_ENCRYPT = #{mobileEncrypt,jdbcType=VARCHAR},
+            IDCARDNO_ENCRYPT = #{idcardnoEncrypt,jdbcType=VARCHAR},
+            KEY_NAME = #{keyName,jdbcType=VARCHAR},
+            MOBILE_CODE = #{mobileCode,jdbcType=VARCHAR},
+            SEND_TIME = #{sendTime,jdbcType=TIMESTAMP},
+            FORGET_MOBILE_CODE = #{forgetMobileCode,jdbcType=VARCHAR},
+            FORGET_SEND_TIME = #{forgetSendTime,jdbcType=TIMESTAMP},
+            PWD_MODIFY_TIME = #{pwdModifyTime,jdbcType=TIMESTAMP},
+            LOGIN_RESERVE = #{loginReserve,jdbcType=VARCHAR}
+        WHERE ID = #{id,jdbcType=BIGINT}
+    </update>
+    <!--自定义查询条件-->
+    <sql id="search_opt_condition_sql">
+        us.deleteStatus = 0
+        <if test="optloginname != null and optloginname != ''">AND us.optLoginName LIKE
+            CONCAT(CONCAT('%',#{optloginname}),'%')
+        </if>
+        <if test="optloginname != null and optloginname != ''">OR merch.MERCH_ID LIKE
+            CONCAT(CONCAT('%',#{optloginname}),'%')
+        </if>
+        <if test="optloginname != null and optloginname != ''">OR agent.AGENT_ID LIKE
+            CONCAT(CONCAT('%',#{optloginname}),'%')
+        </if>
+        <if test="orgnOrMerchName == '00000000'">AND us.ISAGENT =0 AND us.ISMERCHANT = 0</if>
+        <if test="orgnOrMerchName != null and orgnOrMerchName != '' and orgnOrMerchName != '00000000'">
+            AND merch.MERCH_NAME LIKE CONCAT(CONCAT('%',#{orgnOrMerchName}),'%')
+            OR agent.AGENT_NAME LIKE CONCAT(CONCAT('%',#{orgnOrMerchName}),'%')
+        </if>
+        <if test="realname != null and realname != ''">AND us.realName LIKE CONCAT(CONCAT('%',#{realname}),'%')</if>
+        <if test="status != null">AND us.userStatus = #{status}</if>
+        <!-- AND isOperator = 1 -->
+    </sql>
+    <sql id="search_salemans_orgn_condition_sql">
+        us.deleteStatus = 0
+        <if test="orgnOrMerchName != null and orgnOrMerchName != '' ">
+            AND ba.AGENT_NAME LIKE CONCAT(CONCAT('%',#{orgnOrMerchName}),'%')
+        </if>
+        <if test="realname != null and realname != ''">AND us.realname LIKE CONCAT(CONCAT('%',#{realname}),'%')</if>
+        <if test="status != null">AND us.userStatus = #{status,jdbcType=INTEGER}</if>
+        <if test="orgCode != null and orgCode != ''">AND agent.AGENT_ID= #{orgCode,jdbcType=VARCHAR}</if>
+    </sql>
+    <sql id="search_salemans_merch_condition_sql">
+        us.deleteStatus = 0
+        <if test="optloginname != null and optloginname != ''">AND mc.merch_id LIKE
+            CONCAT(CONCAT('%',#{optloginname}),'%')
+        </if>
+        <if test="orgnOrMerchName != null and orgnOrMerchName != ''">
+            AND mc.MERCH_NAME LIKE CONCAT(CONCAT('%',#{orgnOrMerchName}),'%')
+        </if>
+        <if test="realname != null and realname != ''">AND us.realname LIKE CONCAT(CONCAT('%',#{realname}),'%')</if>
+        <if test="status != null">AND us.userStatus = #{status,jdbcType=INTEGER}</if>
+    </sql>
+    <!--自定义方法-->
+    <select id="selectByParam" resultMap="BaseResultMap" parameterType="com.posp.common.service.user.query.PcuserQuery">
+        SELECT
+        us.ID,us.REALNAME,us.MOBILE,us.ISAGENT,us.ISMERCHANT,us.ISOPERATOR,us.EMAIL,us.CREATETIME,us.LOGIN_RESERVE,us.USERLEVEL,us.ISSALEMAN,us.USERNO,us.USERSTATUS,agent.AGENT_ID
+        as orgnId,agent.AGENT_NAME as orgnName,merch.MERCH_ID as merchId,
+        merch.MERCH_NAME as merchName,us.ISREALNAMEAUTH,us.ISMOBILEAUTH,us.ISINITLOGINPWD
+        FROM PCUSER us
+        left join b_agent agent
+        on us.USERNO = agent.AGENT_ID
+        left join b_merch merch
+        on us.USERNO = merch.USER_CODE
+        <where>
+            <include refid="search_opt_condition_sql"/>
+        </where>
+        ORDER BY createTime DESC
+    </select>
+    <!--自定义方法2,本机构以及下属机构-->
+    <select id="selectByParamAndOrg" resultMap="BaseResultMap"
+            parameterType="com.posp.common.service.user.query.PcuserQuery">
+        SELECT ba.agent_id as orgnId,ba.agent_name as orgnName,null as merchId,null as merchName,us.REALNAME,us.MOBILE,us.ISAGENT,us.ISMERCHANT,us.ISOPERATOR,us.EMAIL,us.CREATETIME,us.LOGIN_RESERVE,us.USERLEVEL,us.ISSALEMAN,us.USERNO,us.USERSTATUS,us.ID,us.ISREALNAMEAUTH,us.ISMOBILEAUTH,us.ISINITLOGINPWD
+        FROM PCUSER us
+        LEFT JOIN (
+        select agent_id from b_agent
+        where
+        instr(agent_organization, #{orgnId,jdbcType=VARCHAR}) > 0
+        ) agent ON us.USERNO = agent.AGENT_ID
+        INNER JOIN B_AGENT ba
+        ON agent.AGENT_ID = ba.AGENT_ID
+        <where>
+            <include refid="search_salemans_orgn_condition_sql"/>
+        </where>
+        UNION
+        SELECT null as orgnId,null as orgnName,mc.merch_id as merchId,mc.merch_name as merchName,us.REALNAME,us.MOBILE,us.ISAGENT,us.ISMERCHANT,us.ISOPERATOR,us.EMAIL,us.CREATETIME,us.LOGIN_RESERVE,us.USERLEVEL,us.ISSALEMAN,us.USERNO,us.USERSTATUS,US.ID,us.ISREALNAMEAUTH,us.ISMOBILEAUTH,us.ISINITLOGINPWD
+        FROM PCUSER us
+        INNER JOIN (
+        SELECT user_code,merch_id,merch_name
+        FROM B_MERCH merch
+        INNER JOIN (
+        select agent_id,agent_organization from b_agent
+        where
+        instr(agent_organization, #{agent_id,jdbcType=VARCHAR}) > 0
+        ) agent on agent.agent_id = merch.agent_id
+        <if test="orgCode != null and orgCode != ''">AND merch.AGENT_ID= #{orgCode,jdbcType=VARCHAR}</if>
+        <if test="createUserId != null and createUserId != ''">AND merch.CREATE_USER_ID= #{createUserId,jdbcType=VARCHAR}</if>
+        ) mc
+        ON us.USERNO = mc.USER_CODE
+        <where>
+            <include refid="search_salemans_merch_condition_sql"/>
+        </where>
+        ORDER BY createTime DESC
+    </select>
+
+    <!--批量删除-->
+    <delete id="batchDelete" parameterType="java.util.List">
+        DELETE FROM PCUSER WHERE ID IN
+        <foreach collection="ids" item="item" index="index" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </delete>
+    <!--批量新增-->
+    <insert id="batchInsert" parameterType="java.util.List">
+        INSERT INTO PCUSER
+        (ID,USERNO,EMAIL,MOBILE,OPTLOGINNAME,ISAGENT,ISSALEMAN,ISMERCHANT,ISOPERATOR,ISSITEMANAGER,USERLEVEL,USERSTATUS,REALNAME,IDCARDNO,IDCARDTYPE,IDCARDEXPIRY,IDCARDOFFICE,IDCARDADDRESS,LOGINPWD,PAYPWD,ISEMAILAUTH,ISMOBILEAUTH,ISREALNAMEAUTH,LOGINPWDERRORTIMES,PAYPWDERRORTIMES,ISINITLOGINPWD,LASTLOGINPWDERRORTIME,LASTPAYPWDERRORTIME,LASTLOGINTIME,CREATETIME,SITECODE,VERSION,DELETESTATUS,AGENTLEVEL,ISSMSACCEPT,ISEMAILACCEPT,REGISTERFROM,GESTUREPWD,MOBILE_ENCRYPT,IDCARDNO_ENCRYPT,KEY_NAME,MOBILE_CODE,SEND_TIME,FORGET_MOBILE_CODE,FORGET_SEND_TIME,PWD_MODIFY_TIME,LOGIN_RESERVE)
+        SELECT a.* FROM (
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT
+            #{item.id,jdbcType=BIGINT},
+            #{item.userno,jdbcType=VARCHAR},
+            #{item.email,jdbcType=VARCHAR},
+            #{item.mobile,jdbcType=VARCHAR},
+            #{item.optloginname,jdbcType=VARCHAR},
+            #{item.isagent,jdbcType=BIGINT},
+            #{item.issaleman,jdbcType=BIGINT},
+            #{item.ismerchant,jdbcType=BIGINT},
+            #{item.isoperator,jdbcType=BIGINT},
+            #{item.issitemanager,jdbcType=BIGINT},
+            #{item.userlevel,jdbcType=BIGINT},
+            #{item.userstatus,jdbcType=BIGINT},
+            #{item.realname,jdbcType=VARCHAR},
+            #{item.idcardno,jdbcType=VARCHAR},
+            #{item.idcardtype,jdbcType=BIGINT},
+            #{item.idcardexpiry,jdbcType=VARCHAR},
+            #{item.idcardoffice,jdbcType=VARCHAR},
+            #{item.idcardaddress,jdbcType=VARCHAR},
+            #{item.loginpwd,jdbcType=VARCHAR},
+            #{item.paypwd,jdbcType=VARCHAR},
+            #{item.isemailauth,jdbcType=BIGINT},
+            #{item.ismobileauth,jdbcType=BIGINT},
+            #{item.isrealnameauth,jdbcType=BIGINT},
+            #{item.loginpwderrortimes,jdbcType=BIGINT},
+            #{item.paypwderrortimes,jdbcType=BIGINT},
+            #{item.isinitloginpwd,jdbcType=BIGINT},
+            #{item.lastloginpwderrortime,jdbcType=TIMESTAMP},
+            #{item.lastpaypwderrortime,jdbcType=TIMESTAMP},
+            #{item.lastlogintime,jdbcType=TIMESTAMP},
+            #{item.createtime,jdbcType=TIMESTAMP},
+            #{item.sitecode,jdbcType=BIGINT},
+            #{item.version,jdbcType=BIGINT},
+            #{item.deletestatus,jdbcType=BIGINT},
+            #{item.agentlevel,jdbcType=BIGINT},
+            #{item.issmsaccept,jdbcType=BIGINT},
+            #{item.isemailaccept,jdbcType=BIGINT},
+            #{item.registerfrom,jdbcType=BIGINT},
+            #{item.gesturepwd,jdbcType=VARCHAR},
+            #{item.mobileEncrypt,jdbcType=VARCHAR},
+            #{item.idcardnoEncrypt,jdbcType=VARCHAR},
+            #{item.keyName,jdbcType=VARCHAR},
+            #{item.mobileCode,jdbcType=VARCHAR},
+            #{item.sendTime,jdbcType=TIMESTAMP},
+            #{item.forgetMobileCode,jdbcType=VARCHAR},
+            #{item.forgetSendTime,jdbcType=TIMESTAMP},
+            #{item.pwdModifyTime,jdbcType=TIMESTAMP},
+            #{item.loginReserve,jdbcType=VARCHAR}
+            FROM dual
+        </foreach>
+        ) a
+    </insert>
+    <!--使用userno查询-->
+    <select id="selectByUserNo" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM PCUSER WHERE USERNO = #{userNo,jdbcType=VARCHAR}
+    </select>
+
+
+    <insert id="insertUserAgent" parameterType="com.posp.common.service.user.entyty.UserAgentDO">
+        INSERT INTO USER_AGENT("ID", "USER_ID", "AGENT_ID", "STATUS")
+       VALUES(#{id,jdbcType=VARCHAR},#{userId,jdbcType=BIGINT},#{agentId,jdbcType=VARCHAR},#{status,jdbcType=BIGINT})
+    </insert>
+    
+    <select id="selectUserInfo" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        SELECT
+        S.*,BM.AGENT_ID ORG_CODE
+        FROM PCUSER S
+        LEFT JOIN B_MERCH BM ON BM.USER_CODE=S.USERNO WHERE S.ID = #{id,jdbcType=BIGINT}
+    </select>
+</mapper>

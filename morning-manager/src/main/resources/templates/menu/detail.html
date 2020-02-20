@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="utf-8"/>
+    <title>运营管理系统-畅捷支付</title>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all"/>
+    <link rel="stylesheet" th:href="@{/style/admin.css}" media="all"/>
+</head>
+<body>
+<div class="layui-form" style="padding-top: 20px;margin-left: 10px;margin-right: 10px">
+    <div class="layui-form-item">
+        <label class="layui-form-label">ID</label>
+        <div class="layui-input-block">
+            <input type="text" name="id" th:value="${entity?.id}" disabled="disabled" autocomplete="off"
+                   class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">上级菜单ID</label>
+        <div class="layui-input-block">
+            <input type="text" name="parentId" th:value="${entity?.parentId}" disabled="disabled" autocomplete="off"
+                   class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">菜单名称</label>
+        <div class="layui-input-block">
+            <input type="text" name="name" th:value="${entity?.name}" disabled="disabled" autocomplete="off"
+                   class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">URL</label>
+        <div class="layui-input-block">
+            <input type="text" name="url" th:value="${entity?.url}" disabled="disabled" autocomplete="off"
+                   class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">权限</label>
+        <div class="layui-input-block">
+            <input type="text" name="perms" th:value="${entity?.perms}" disabled="disabled" autocomplete="off"
+                   class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">类型</label>
+        <div class="layui-input-block">
+            <div class="layui-input-inline">
+                <select name="type" disabled="disabled">
+                    <option value="0" th:selected="${entity?.type}=='0'">目录</option>
+                    <option value="1" th:selected="${entity?.type}=='1'">菜单</option>
+                    <option value="2" th:selected="${entity?.type}=='2'">按钮</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">图标</label>
+        <div class="layui-input-block">
+            <input type="text" name="icon" th:value="${entity?.icon}" disabled="disabled" autocomplete="off"
+                   class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">排序</label>
+        <div class="layui-input-block">
+            <input type="text" name="sortNo" th:value="${entity?.sortNo}" disabled="disabled" autocomplete="off"
+                   class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">备注</label>
+        <div class="layui-input-block">
+            <input type="text" name="remark" th:value="${entity?.remark}" disabled="disabled" autocomplete="off"
+                   class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">创建人</label>
+        <div class="layui-input-block">
+            <input type="text" name="createUserId" th:value="${entity?.createUserId}" disabled="disabled"
+                   autocomplete="on" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">创建时间</label>
+        <div class="layui-input-block">
+            <input type="text" name="createTime" th:value="${#dates.format(entity?.createTime, 'yyyy-MM-dd HH:mm:ss')}"
+                   disabled="disabled" autocomplete="on" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">修改人</label>
+        <div class="layui-input-block">
+            <input type="text" name="lastUserId" th:value="${entity?.lastUserId}" disabled="disabled" autocomplete="on"
+                   class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">修改时间</label>
+        <div class="layui-input-block">
+            <input type="text" name="lastModTime"
+                   th:value="${#dates.format(entity?.lastModTime, 'yyyy-MM-dd HH:mm:ss')}" disabled="disabled"
+                   autocomplete="on" class="layui-input"/>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/layui/layui.js}"></script>
+<script>
+    layui.config({
+        base: '/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'menu'], function () {
+    });
+</script>
+</body>
+</html>

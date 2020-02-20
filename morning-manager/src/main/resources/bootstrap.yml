@@ -1,0 +1,35 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: web-ui
+  freemarker:
+    template-loader-path: classpath:/generator
+  http:
+    multipart:
+      maxFileSize: 5Mb
+      maxRequestSize: 15Mb
+  thymeleaf:
+    mode: HTML5
+    encoding: UTF-8
+    content-type: text/html
+    prefix: classpath:/templates
+server:
+  port: 38752
+
+debug: false
+
+management:
+  port: ${server.port}
+  security:
+    enabled: false
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+logging:
+  level:
+    root: info
+  path: logs

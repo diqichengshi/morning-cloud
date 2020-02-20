@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="utf-8"/>
+    <title>运营管理系统-畅捷支付</title>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all"/>
+    <link rel="stylesheet" th:href="@{/style/admin.css}" media="all"/>
+</head>
+<body>
+<div class="layui-form layui-form-pane" style="padding-top: 20px;margin-left: 10px;margin-right: 10px">
+        <div class="layui-form-item">
+        <label class="layui-form-label">任务名称</label>
+        <div class="layui-input-block">
+            <input type="text" name="jobName"  placeholder="请输入任务名称" autocomplete="on"
+                       class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">任务描述</label>
+        <div class="layui-input-block">
+            <input type="text" name="jobDesc"  placeholder="请输入任务描述" autocomplete="on"
+                       class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">任务执行主机IP</label>
+        <div class="layui-input-block">
+            <input type="text" name="runHost"  placeholder="请输入任务执行主机IP" autocomplete="on"
+                       class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">耗时</label>
+        <div class="layui-input-block">
+            <input type="text" name="spendTimes"  placeholder="请输入耗时" autocomplete="on"
+                       class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">执行结果，S：成功E:失败</label>
+        <div class="layui-input-block">
+            <input type="text" name="result"  placeholder="请输入执行结果，S：成功E:失败" autocomplete="on"
+                       class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">追踪号</label>
+        <div class="layui-input-block">
+            <input type="text" name="traceId"  placeholder="请输入追踪号" autocomplete="on"
+                       class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">错误信息</label>
+        <div class="layui-input-block">
+            <input type="text" name="resultMsg"  placeholder="请输入错误信息" autocomplete="on"
+                       class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item layui-hide">
+        <input type="button" lay-submit="submit" lay-filter="add-submit" id="add-submit" value="提交"/>
+    </div>
+</div>
+
+<script th:src="@{/layui/layui.js}"></script>
+<script>
+    layui.config({
+        base: '/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'scheduleLog'], function () {
+    });
+</script>
+</body>
+</html>
