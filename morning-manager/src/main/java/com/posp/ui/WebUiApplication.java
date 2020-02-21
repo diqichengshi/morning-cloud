@@ -12,9 +12,8 @@ import org.springframework.scheduling.annotation.EnableAsync;
  * @description:
  */
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.posp.ui", "com.posp.tool.common"})
 @EnableAsync
-@MapperScan(basePackages = "com.posp.ui.dao")
+@MapperScan("com.posp.ui.dao")
 public class WebUiApplication {
 
     public static void main(String[] args) {

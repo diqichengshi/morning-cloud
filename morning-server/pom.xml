@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>com.morning</groupId>
-    <artifactId>morning-register</artifactId>
+    <artifactId>morning-server</artifactId>
     <version>1.0.0</version>
 
     <modules>

@@ -27,7 +27,8 @@
         <module>morning-cms</module>
         <module>morning-point</module>
         <module>morning-pay</module>
-        <module>morning-register</module>
+        <module>morning-server</module>
+        <module>morning-test</module>
     </modules>
 
     <properties>

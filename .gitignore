@@ -5,3 +5,15 @@
 /morning-service/morning-order-service/*.factorypath
 /morning-service/morning-order-service/*.project
 /.settings
+/target/
+morning-seckill/target/
+*.prefs
+*.project
+*.iml
+*.factorypath
+*.classpath
+morning-ucenter/target/
+morning-server/zipkin-server/target/
+*/target/
+morning-server/config-server/target/
+morning-server/eureka-server/target/

@@ -1,3 +1,6 @@
+server:
+  port: 38752
+
 spring:
   profiles:
     active: dev
@@ -14,8 +17,6 @@ spring:
     encoding: UTF-8
     content-type: text/html
     prefix: classpath:/templates
-server:
-  port: 38752
 
 debug: false
 
@@ -25,7 +26,7 @@ management:
     enabled: false
 
 mybatis:
-  mapper-locations: classpath:mapper/*.xml
+  mapper-locations: classpath*:mapper/*.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
