@@ -1,23 +1,83 @@
-1. 系统管理后台基本框架SPPanAdmin，包括用户管理，角色管理，资源链接管理模块，可以动态分配权限和角色。
-2. 使用springboot、springdata jpa、shiro等服务端技术，使用freemarker模版渲染页面。
-3. 系统中对springdata的查询条件Specification做了简单的封装，更加方便查询条件的灵活使用。
-4. 前端技术：使用Hadmin系统模版，数据表格使用bootstrap table插件，弹窗使用layer插件，日期选择使用laydate插件。表单验证使用jQuery validate插件等等。
-5. 系统部署：
-    1. 方式一： 
-        1. 使用mysql数据库，先建立一个空数据库base，最好编码使用utf-8字符集，不然会乱码。
-        2. 把application.properties中的数据库连接信息修改成自己数据库的连接信息。
-        3. 修改spring.jpa.hibernate.ddl-auto为create，目的是让系统自动建表同时初始化相关集成数据。如果不需要自动初始化数据，可以删除resource目录的import.sql文件。
-    2. 方式二：
-        1. 直接导入base.sql脚本到数据库。 
-        2. 把application.properties中的数据库连接信息修改成自己数据库的连接信息。 
-        3. 修改spring.jpa.hibernate.ddl-auto为none，目的是防止hibernate自动修改表结构。
-6. 系统启动后，访问：127.0.0.1/admin/会自动跳转到后台登录页面。
-7. 初始用户名和密码为：admin/111111。
-8. 演示图片：
-![输入图片说明](http://git.oschina.net/uploads/images/2017/0120/101747_21c1bc11_559378.jpeg "在这里输入图片标题")
-![输入图片说明](http://git.oschina.net/uploads/images/2017/0120/101756_5ab80e6b_559378.jpeg "在这里输入图片标题")
-![输入图片说明](http://git.oschina.net/uploads/images/2017/0120/101805_f87bd7b4_559378.jpeg "在这里输入图片标题")
-![输入图片说明](http://git.oschina.net/uploads/images/2017/0120/101813_39158674_559378.jpeg "在这里输入图片标题")
-![输入图片说明](http://git.oschina.net/uploads/images/2017/0120/101823_106d2eb9_559378.jpeg "在这里输入图片标题")
-![输入图片说明](http://git.oschina.net/uploads/images/2017/0120/101830_5767b7c1_559378.jpeg "在这里输入图片标题")
-![输入图片说明](http://git.oschina.net/uploads/images/2017/0120/101839_c5700e09_559378.jpeg "在这里输入图片标题")
+
+<p>
+  <a href="http://www.lzhpo.com"><img src="https://img.shields.io/badge/author-会打篮球的程序猿-red" alt="作者"></a>
+  <a href="http://cdn.lzhpo.com/aboutme/wechat-wxgzh/8cm.jpg"><img src="https://img.shields.io/badge/微信公众号-会打篮球的程序猿-blueviolet" alt="公众号"></a>
+  <a href="#"><img src="https://img.shields.io/badge/license-GPL%20v3-success.svg" alt="开源协议"></a>
+</p>
+
+<hr>
+
+## 图片预览
+
+### 登录界面
+
+![](http://cdn.liuzhaopo.top/lzhpo-shiro-login.png)
+
+### 全局概览
+
+![](http://cdn.liuzhaopo.top/lzhpo-shiro-%E6%9B%B4%E6%8D%A2%E7%9A%AE%E8%82%A4.png)
+
+个人喜欢顶部颜色值`#00a65a`，可以自己去`static/admin/js/index.js`下设计自己喜欢的颜色主题。
+
+### 权限管理
+
+![](http://cdn.liuzhaopo.top/lzhpo-shiro-%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86.png)
+
+### 分配角色权限
+
+![](http://cdn.liuzhaopo.top/lzhpo-shiro-%E5%88%86%E9%85%8D%E8%A7%92%E8%89%B2%E6%9D%83%E9%99%902.png)
+
+### 个人资料
+
+![](http://cdn.liuzhaopo.top/lzhpo-shiro-%E4%B8%AA%E4%BA%BA%E8%B5%84%E6%96%99.png)
+
+## 技术栈
+
+-   JDK 1.8
+-   SpringBoot 2.2.4.RELEASE
+-   Shiro 1.4.0
+-   Mybatis-Plus 3.0-RC1
+-   Layui 2.4.5
+-   FastJson 1.2.62
+-   MySQL
+-   Redis
+
+## 使用说明
+
+### 下载
+
+```
+git clone https://github.com/liuzhaopo/lzhpo-shiro.git
+```
+
+不使用Git就直接直接下载。
+
+### 导入项目
+
+直接导入到`idea`或者`eclipse`。
+
+### 导入sql脚本
+
+说明：脚本已经包含创建数据库的命令，所以直接导入sql脚本即可，sql脚本在`sql/lzhpo-shiro.sql`。
+
+### 运行项目
+
+启动`com.lzhpo.AdminApplication`
+
+### 登录
+
+打开浏览器，访问[http://localhost:8080](http://localhost:8080)即可。
+登录账号：admin
+登录密码：123456
+
+## 打赏作者
+
+喜欢的话，先star，然后可以小额打赏一下哈~
+
+| 支付宝                                                       | 微信                                                 |
+| ------------------------------------------------------------ | ---------------------------------------------------- |
+| ![](http://cdn.liuzhaopo.top/%E6%94%AF%E4%BB%98%E5%AE%9D.png) | ![](http://cdn.liuzhaopo.top/%E5%BE%AE%E4%BF%A1.png) |
+
+### 
+
+
