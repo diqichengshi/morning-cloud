@@ -189,7 +189,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.lzhpo.ManagerApplication</mainClass>
+                    <mainClass>com.morning.manager.ManagerApplication</mainClass>
                     <fork>true</fork>
                 </configuration>
             </plugin>
