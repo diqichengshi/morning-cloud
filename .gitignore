@@ -17,3 +17,4 @@ morning-server/zipkin-server/target/
 */target/
 morning-server/config-server/target/
 morning-server/eureka-server/target/
+/morning-manager/.sts4-cache/
