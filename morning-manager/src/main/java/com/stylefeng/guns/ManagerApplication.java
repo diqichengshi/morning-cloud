@@ -6,6 +6,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -16,9 +18,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * @Date 2017/5/21 12:06
  */
 @SpringBootApplication
-public class GunsApplication extends WebMvcConfigurerAdapter{
+public class ManagerApplication extends WebMvcConfigurerAdapter{
 
-    protected final static Logger logger = LoggerFactory.getLogger(GunsApplication.class);
+    protected final static Logger logger = LoggerFactory.getLogger(ManagerApplication.class);
 
     @Autowired
     GunsProperties gunsProperties;
@@ -35,7 +37,22 @@ public class GunsApplication extends WebMvcConfigurerAdapter{
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(GunsApplication.class, args);
-        logger.info("GunsApplication is success!");
+        SpringApplication.run(ManagerApplication.class, args);
+        logger.info("ManagerApplication is success!");
     }
+    /**
+     * Guns Web程序启动类
+     *
+     * @author fengshuonan
+     * @date 2017-05-21 9:43
+     */
+    static class GunsServletInitializer extends SpringBootServletInitializer {
+
+        @Override
+        protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+            return builder.sources(ManagerApplication.class);
+        }
+
+    }
+
 }
