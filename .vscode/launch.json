@@ -4,6 +4,13 @@
             "type": "java",
             "name": "CodeLens (Launch) - ManagerApplication",
             "request": "launch",
+            "mainClass": "com.morning.manager.ManagerApplication",
+            "projectName": "morning-manager"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ManagerApplication",
+            "request": "launch",
             "mainClass": "com.posp.ui.ManagerApplication",
             "projectName": "morning-manager"
         },
