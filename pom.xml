@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.morning</groupId>
-    <artifactId>morning-cloud</artifactId>
+    <artifactId>morning-parent</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
@@ -16,18 +16,12 @@
         <module>morning-order</module>
         <module>morning-product</module>
         <module>morning-ucenter</module>
-        <module>morning-seckill</module>
-        <module>morning-wms</module>
-        <module>morning-activiti</module>
-        <module>morning-crm</module>
-        <module>morning-erp</module>
         <module>morning-serach</module>
-        <module>morning-schedule</module>
-        <module>morning-cms</module>
-        <module>morning-point</module>
         <module>morning-pay</module>
         <module>morning-server</module>
-        <module>morning-test</module>
+        <module>morning-logistic</module>
+        <module>morning-task</module>
+        <module>morning-seckill</module>
     </modules>
 
     <properties>
