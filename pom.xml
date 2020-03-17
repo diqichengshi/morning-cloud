@@ -5,23 +5,22 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.morning</groupId>
-    <artifactId>morning-parent</artifactId>
+    <artifactId>morning-cloud</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>morning-common</module>
-        <module>morning-gateway</module>
-        <module>morning-manager</module>
-        <module>morning-order</module>
-        <module>morning-product</module>
-        <module>morning-ucenter</module>
-        <module>morning-serach</module>
-        <module>morning-pay</module>
-        <module>morning-server</module>
-        <module>morning-logistic</module>
-        <module>morning-task</module>
-        <module>morning-seckill</module>
+        <module>tool-common</module>
+        <module>trans-gateway</module>
+        <module>order-service</module>
+        <module>product-service</module>
+        <module>user-service</module>
+        <module>pay-service</module>
+        <module>logistic-service</module>
+        <module>zipkin-server</module>
+        <module>eureka-server</module>
+        <module>config-server</module>
+        <module>web-ui</module>
     </modules>
 
     <properties>
