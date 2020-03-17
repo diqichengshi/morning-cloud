@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.morning.shop.product.dao.ProductMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.morning.common.service.shop.product.entity.Product">
+        <id column="id" property="id"/>
+        <result column="product_id" property="productId"/>
+        <result column="merchant_id" property="merchantId"/>
+        <result column="category_id" property="categoryId"/>
+        <result column="label_id" property="labelId"/>
+        <result column="name" property="name"/>
+        <result column="show_score" property="showScore"/>
+        <result column="show_price" property="price"/>
+        <result column="introduce" property="introduce"/>
+        <result column="show_img" property="showImg"/>
+        <result column="detail" property="detail"/>
+        <result column="parameter" property="parameter"/>
+        <result column="stock" property="stock"/>
+        <result column="sales_volume" property="salesVolume"/>
+        <result column="page_views" property="pageViews"/>
+        <result column="comment_number" property="commentNumber"/>
+        <result column="comment_num_detail" property="commentNumDetail"/>
+        <result column="favorite_number" property="favoriteNumber"/>
+        <result column="question_number" property="questionNumber"/>
+        <result column="remarks" property="remarks"/>
+        <result column="show_status" property="showStatus"/>
+        <result column="tags" property="tags"/>
+        <result column="discount" property="discount"/>
+        <result column="promotion" property="promotion"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_by" property="createBy"/>
+        <result column="shelve_time" property="shelveTime"/>
+        <result column="shelve_by" property="shelveBy"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_by" property="updateBy"/>
+    </resultMap>
+
+    <!-- 查找商品列表 -->
+    <select id="selectProductListPage" resultType="com.morning.common.service.shop.product.dto.ProductDTO">
+        select
+          a.product_id AS productId,
+          a.name AS name,
+          a.stock AS stock,
+          a.price AS price,
+          a.comment_number AS commentNumber,
+          a.show_img as showImg,
+          b.shop_name AS shopName
+        from os_product a
+        left join os_shop b on a.shop_id=b.shop_id
+        <where>
+            <if test="categoryId != null and categoryId != ''">
+                AND a.category_id = #{categoryId}
+            </if>
+        </where>
+        <!--<if test="pageInfo != null">
+            LIMIT #{pageInfo.offset}, #{pageInfo.limit}
+        </if>-->
+    </select>
+
+    <!-- 查找商品详情 -->
+    <select id="selectProductDetail" resultType="com.morning.common.service.shop.product.entity.ProductDetailDO">
+        select
+            product_id as productId,
+            shop_id as shopId,
+            name,
+            big_img as bigImg,
+            small_img as smallImg,
+            show_price as showPrice,
+            comment_number as commentNumber,
+            comment_num_detail as commentNumDetail,
+            tags,
+            discount,
+            promotion,
+            detail,
+            parameter
+        from os_product
+        <where>
+            <if test="productId != null and productId != ''">
+                AND product_id = #{productId}
+            </if>
+        </where>
+    </select>
+
+
+    <!-- 查找热销商品列表 -->
+    <select id="selectHotProductList" resultType="com.morning.common.service.shop.product.dto.HotProductDTO">
+        select
+            product_id AS productId,
+            show_price AS showPrice,
+            sales_volume AS salesVolume,
+            big_img as bigImg
+        from os_product
+        <where>
+            <if test="shopId != null and shopId != ''">
+                AND shop_id = #{shopId}
+            </if>
+        </where>
+        order by sales_volume desc
+        <if test="pageInfo != null">
+            LIMIT #{pageInfo.offset}, #{pageInfo.limit}
+        </if>
+    </select>
+
+</mapper>

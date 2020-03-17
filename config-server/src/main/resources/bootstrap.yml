@@ -1,0 +1,28 @@
+server:
+  address: 127.0.0.1
+  port: 8762
+  
+#配置eureka 的注册中心
+eureka:
+  instance:
+    instance-id: ${server.address}:${server.port}
+    prefer-ip-address: true
+    ip-address: ${server.address}
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.server.ip-address:127.0.0.1}:${eureka.server.port:8761}/eureka/
+
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/${profiles.active:dev}/
+logging:
+  level:
+    root: info
+  path: _logs

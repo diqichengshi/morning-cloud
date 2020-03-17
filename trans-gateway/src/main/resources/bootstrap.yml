@@ -1,0 +1,89 @@
+server:
+  address: 127.0.0.1
+  port: 8081
+#配置eureka 的注册中心
+eureka:
+  instance:
+    instance-id: ${server.address}:${server.port}
+    prefer-ip-address: true
+    ip-address: ${server.address}
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.server.ip-address:127.0.0.1}:${eureka.server.port:8761}/eureka/
+
+spring:
+  application:
+    name: trans-gateway
+  profiles:
+    active: dev
+
+zuul:
+  ignored-services: /**
+  routes:
+    order-service-url:
+      path: /api/trans-gateway/order-service/**
+      service-id: order-service
+    pay-service-url:
+      path: /api/trans-gateway/pay-service/**
+      service-id: pay-service
+    product-service-url:
+      path: /api/trans-gateway/product-service/**
+      service-id: product-service
+    user-service-url:
+      path: /api/trans-gateway/user-service/**
+      service-id: user-service
+
+#hystrix的超时时间
+hystrix:
+  shareSecurityContext: true
+  command:
+    default:
+      circuitBreaker:
+        sleepWindowInMilliseconds: 100000
+        forceClosed: true
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 500000
+#ribbon的超时时间
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 10000
+
+logging:
+  level:
+    root: info
+  path: _logs
+
+
+---
+# 线下环境
+spring:
+  profiles: dev
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: admin
+    password: admin
+  zipkin:
+    rabbitmq:
+      queue: zipkin
+    sleuth:
+      sampler:
+        percentage: 1
+
+---
+# 线上环境
+spring:
+  profiles: test
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: admin
+    password: admin
+  zipkin:
+    rabbitmq:
+      queue: zipkin
+    sleuth:
+      sampler:
+        percentage: 1

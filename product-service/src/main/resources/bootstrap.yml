@@ -1,0 +1,43 @@
+server:
+  address: 127.0.0.1
+  port: 38622
+
+spring:
+  application:
+    name: product-service
+  cloud:
+    config:
+      name: ${spring.application.name},datasource,redis,rabbitmq,feign
+      profile: ${spring.profiles.active}
+      label: master
+      discovery:
+        service-id: config-server
+        enabled: true
+      failFast: true #设为true，如果无法连接config server，启动时会抛异常，并停止服务
+  profiles:
+    active: dev
+
+#配置eureka 的注册中心
+eureka:
+  instance:
+    instance-id: ${server.address}:${server.port}
+    prefer-ip-address: true
+    ip-address: ${server.address}
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.server.ip-address:127.0.0.1}:${eureka.server.port:8761}/eureka/
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.morning.common.service.shop.*.entity
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#Nginx图片服务器地址
+imageUrl: http://192.168.213.103:8088
+
+logging:
+  level:
+    root: info
+  path: _logs

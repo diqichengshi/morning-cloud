@@ -1,0 +1,17 @@
+#开启hystrix
+feign.hystrix.enabled: true
+hystrix:
+  shareSecurityContext: true
+  command:
+    default:
+      circuitBreaker:
+        sleepWindowInMilliseconds: 100000
+        forceClosed: true
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 600000
+
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
