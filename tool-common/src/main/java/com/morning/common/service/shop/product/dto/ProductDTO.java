@@ -26,6 +26,10 @@ public class ProductDTO implements Serializable {
      * 商品名称
      */
     private String name;
+    /**
+     * 商品标题
+     */
+    private String title;
 
     /**
      * 总库存
@@ -35,7 +39,7 @@ public class ProductDTO implements Serializable {
     /**
      * 显示价格
      */
-    private BigDecimal showPrice;
+    private BigDecimal price;
     /**
      * 评论数量
      */
@@ -43,7 +47,7 @@ public class ProductDTO implements Serializable {
     /**
      * 展示图片
      */
-    private String bigImg;
+    private String imgSrc;
 
     /**
      * 店铺名称

@@ -63,8 +63,7 @@ public class Product implements Serializable {
     /**
      * 显示价格
      */
-	@TableField("show_price")
-	private BigDecimal showPrice;
+	private BigDecimal price;
     /**
      * 产品简介
      */
@@ -77,8 +76,8 @@ public class Product implements Serializable {
     /**
      * 展示小图片列表
      */
-	@TableField("small_img")
-	private String smallImg;
+	@TableField("show_img")
+	private String showImg;
 	/**
 	 * 商品介绍
 	 */

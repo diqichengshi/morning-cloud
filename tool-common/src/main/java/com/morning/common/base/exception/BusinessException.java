@@ -2,8 +2,7 @@ package com.morning.common.base.exception;
 
 /**
  * 
-* 项目名称：morning-common   
-* 类名称：BusinessException   
+* 类名称：BusinessException
 * 类描述：BusinessException 业务异常   
 * 创建人：赵娟娟
 * 创建时间：2017年3月31日 下午12:53:32   

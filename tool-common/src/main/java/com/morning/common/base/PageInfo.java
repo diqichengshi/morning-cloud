@@ -1,54 +1,63 @@
 package com.morning.common.base;
 
+import com.morning.common.util.StringUtil;
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Map;
 
 /**
- * 项目名称：morning-common
  * 类名称：PageInfo
  * 类描述：PageInfo 分页实体类
  * 创建人：赵娟娟
  * 创建时间：2017年4月2日 下午5:31:18
  */
+@Data
 public class PageInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
     /**
-     * 总记录
+     * 数据库中page的参数，从第几条开始取
      */
-    private long total;
-
-    /**
-     * 总页数
-     */
-    private long totalPage;
-
-    /**
-     * 数据库中limit的参数，从第几条开始取
-     */
-    private int offset;
+    private String page;
 
     /**
      * 每页显示的记录数
      */
-    private int limit;
+    private String size;
 
-    /**
+    /*public int getParamSize() {
+        if (StringUtil.isBlank(page)){
+            return 10;
+        }
+        return Integer.parseInt(page);
+    }*/
+
+    /* *//**
+     * 总记录
+     *//*
+    private long total;
+
+    *//**
+     * 总页数
+     *//*
+    private long totalPage;
+
+    *//**
      * 当前页
-     */
-    private int current;
+     *//*
+    private int current;*/
 
-    /**
+   /* *//**
      * 分页实体类辅助类
-     */
+     *//*
     public static PageInfo buildPageInfo(int offset, int limit) {
         return new PageInfo(offset, limit);
     }
 
-    /**
+    *//**
      * 构造函数私有化
-     */
+     *//*
     private PageInfo() {
         super();
     }
@@ -134,6 +143,6 @@ public class PageInfo implements Serializable {
 
     public void setCurrent(int current) {
         this.current = current;
-    }
+    }*/
 
 }

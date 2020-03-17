@@ -16,7 +16,7 @@ public class MorningResult<T> implements Serializable {
 
     private static final long serialVersionUID = 4893280118017319089L;
 
-    public static final Integer SUCCESS_CODE = 200;
+    public static final Integer SUCCESS_CODE = 00;
     public static final String SUCCESS_MESSAGE = "操作成功";
     public static final Integer ERROR_CODE = 500;
     public static final String ERROR_MESSAGE = "内部异常";
