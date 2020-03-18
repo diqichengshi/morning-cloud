@@ -13,7 +13,7 @@ public class ValidateException extends BaseException {
 	private static final long serialVersionUID = 1L;
 	
 	/** 返回状态码 */
-	private Integer code;
+	private String code;
 	
 	public ValidateException() {
 		super();
@@ -28,11 +28,11 @@ public class ValidateException extends BaseException {
 		this.code = exceptionEnum.getCode();
 	}
 	
-	public Integer getCode() {
+	public String getCode() {
 		return code;
 	}
 
-	public void setCode(Integer code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 

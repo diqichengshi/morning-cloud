@@ -38,7 +38,7 @@ public class ProductController {
      */
     @RequestMapping(value = "/productList")
     @SysLog(value = "商品列表")
-    public MorningResult<Page<ProductDTO>> queryProductList(@RequestBody QueryProductListAO query) {
+    public MorningResult<Page<ProductDTO>> queryProductList(QueryProductListAO query) {
         Page<ProductDTO> productList = productService.selectProductListPage(query);
         return MorningResult.ok(productList);
     }

@@ -24,11 +24,23 @@ public class PageAO  {
      */
     private String size;
 
-    public String getPageSize(){
-        if (StringUtil.isBlank(size)){
-            return "10";
+    public int getReqPage(){
+        if (null == page){
+            return 0;
+        }else if (StringUtil.isEmpty(page)){
+            return 0;
+        } else {
+            return Integer.valueOf(page);
+        }
+    }
+
+    public int getReqSize(){
+        if (null == size){
+            return 10;
+        }else if (StringUtil.isEmpty(size)){
+            return 10;
         }else {
-            return size;
+            return Integer.valueOf(size);
         }
     }
 }

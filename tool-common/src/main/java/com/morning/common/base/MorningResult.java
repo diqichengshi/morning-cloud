@@ -16,11 +16,11 @@ public class MorningResult<T> implements Serializable {
 
     private static final long serialVersionUID = 4893280118017319089L;
 
-    public static final Integer SUCCESS_CODE = 00;
+    public static final String SUCCESS_CODE = "00";
     public static final String SUCCESS_MESSAGE = "操作成功";
-    public static final Integer ERROR_CODE = 500;
+    public static final String ERROR_CODE = "500";
     public static final String ERROR_MESSAGE = "内部异常";
-    private Integer code; // 编号
+    private String code; // 编号
     private String message; // 信息
     private T result; // 结果数据
 
@@ -29,11 +29,11 @@ public class MorningResult<T> implements Serializable {
     }
 
 
-    MorningResult(Integer code, String message) {
+    MorningResult(String code, String message) {
         this(code, message, null);
     }
 
-    MorningResult(Integer code, String message, T result) {
+    MorningResult(String code, String message, T result) {
         super();
         this.code = code;
         this.message = message;

@@ -26,7 +26,7 @@ public interface AbstractBaseExceptionEnum {
     /**
      * 获取异常的状态码
      */
-    Integer getCode();
+    String getCode();
 
     /**
      * 获取异常的提示信息

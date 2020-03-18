@@ -1,2 +1,0 @@
-前端项目再mweb得webapp目录下
-使用vue项目,要先安装nodejs

@@ -13,7 +13,7 @@ public class BusinessException extends BaseException {
 	private static final long serialVersionUID = 1L;
 	
 	/** 返回状态码 */
-	private Integer code;
+	private String code;
 	
 	public BusinessException() {
 		super();
@@ -28,11 +28,11 @@ public class BusinessException extends BaseException {
 		this.code = exception.getCode();
 	}
 
-	public Integer getCode() {
+	public String getCode() {
 		return code;
 	}
 
-	public void setCode(Integer code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 	

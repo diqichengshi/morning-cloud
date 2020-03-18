@@ -48,7 +48,7 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
 
     @Override
     public Page<ProductDTO> selectProductListPage(QueryProductListAO query) {
-        Page page = new Page(Integer.valueOf(query.getPage()),Integer.valueOf(query.getPageSize()));
+        Page page = new Page(query.getReqPage(),query.getReqSize());
         List<ProductDTO> list=productMapper.selectProductListPage(page);
         page.setRecords(list);
         return page;
