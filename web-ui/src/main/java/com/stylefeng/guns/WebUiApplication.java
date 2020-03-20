@@ -18,9 +18,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * @Date 2017/5/21 12:06
  */
 @SpringBootApplication
-public class ManagerApplication extends WebMvcConfigurerAdapter{
+public class WebUiApplication extends WebMvcConfigurerAdapter{
 
-    protected final static Logger logger = LoggerFactory.getLogger(ManagerApplication.class);
+    protected final static Logger logger = LoggerFactory.getLogger(WebUiApplication.class);
 
     @Autowired
     GunsProperties gunsProperties;
@@ -37,7 +37,7 @@ public class ManagerApplication extends WebMvcConfigurerAdapter{
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(ManagerApplication.class, args);
+        SpringApplication.run(WebUiApplication.class, args);
         logger.info("ManagerApplication is success!");
     }
     /**
@@ -50,7 +50,7 @@ public class ManagerApplication extends WebMvcConfigurerAdapter{
 
         @Override
         protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-            return builder.sources(ManagerApplication.class);
+            return builder.sources(WebUiApplication.class);
         }
 
     }

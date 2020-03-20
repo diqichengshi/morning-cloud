@@ -20,26 +20,10 @@ import java.util.List;
 public interface IAdvertService extends IService<Advert> {
 
     /**
-     * queryHomeAdvertList 查询首页电脑专栏商品列表
-     *
-     * @param queryAO 查询参数
-     * @return 首页电脑专栏商品列表
-     */
-    AdvertDTO queryHomeComputerList();
-
-    /**
      * queryHomeAdvertList 查询首页爱吃专栏商品列表
      *
      * @param queryAO 查询参数
      * @return 首页爱吃专栏商品列表
      */
-    AdvertDTO queryHomeEatList();
-
-    /**
-     * queryHomeAdvertList 查询首页爱吃专栏商品列表
-     *
-     * @param queryAO 查询参数
-     * @return 首页爱吃专栏商品列表
-     */
-    CarouselDTO queryCarouselList();
+    List<CarouselDTO> queryCarouselList();
 }

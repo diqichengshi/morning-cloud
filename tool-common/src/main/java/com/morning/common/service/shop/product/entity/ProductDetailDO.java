@@ -25,46 +25,39 @@ public class ProductDetailDO implements Serializable {
     /**
      * 商品名称
      */
-    private String name;
+    private String title;
     /**
      * 展示图片
      */
-    private String bigImg;
+    private String showImg;
 
-    /**
-     * 小图
-     */
-    private String smallImg;
     /**
      * 展示价格
      */
-    private String showPrice;
+    private String price;
     /**
-     * 评论数量
-     */
-    private String commentNumber;
-    /**
-     * 评论数量详情
-     */
-    private String commentNumDetail;
-    /**
-     * 商品标签
-     */
-    private String tags;
-    /**
-     * 商品折扣
+     * 折扣(默认1不打折)
      */
     private String discount;
     /**
-     * 商品推广
+     * 折扣价格
      */
-    private String promotion;
+    private String discountPrice;
     /**
-     * 商品介绍
+     * 积分
      */
-    private String detail;
+    private String score;
     /**
-     * 商品参数
+     * 总库存
      */
-    private String parameter;
+    private String stock;
+    /**
+     * 销量
+     */
+    private String salesVolume;
+    /**
+     * 浏览量
+     */
+    private String pageViewNum;
+
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.morning.shop.product.dao.CommentMapper">
+<mapper namespace="com.morning.shop.product.dao.CommentDetailMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.morning.common.service.shop.product.entity.Comment">
+    <resultMap id="BaseResultMap" type="com.morning.common.service.shop.product.entity.CommentDetail">
         <id column="comment_id" property="commentId"/>
         <result column="product_id" property="productId"/>
         <result column="user_id" property="userId"/>
@@ -27,22 +27,22 @@
     </sql>
 
     <!-- 查找商品列表 -->
-    <select id="queryProductConmmentList" resultType="com.morning.common.service.shop.product.dto.ConmmentDTO">
+    <select id="selectConmmentListPage" resultType="com.morning.common.service.shop.product.dto.ConmmentDetailDTO">
         SELECT
             product_id as productId,
-            user_name as userName,
+            a.user_id as userId,
+            b.user_name,
+            b.head_img as headImg
             star,
             content,
+            spec_param_id as specParamId,
             create_time as createTime
-        FROM os_comment
+        FROM os_comment_detail a left join os_user b on a.user_id = b.user_id
         <where>
             <if test="productId != null and productId != ''">
                 AND product_id = #{productId}
             </if>
         </where>
-        <if test="pageInfo != null">
-            LIMIT #{pageInfo.offset}, #{pageInfo.limit}
-        </if>
     </select>
 
 </mapper>

@@ -4,35 +4,40 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class ConmmentDTO {
-    /**
-     * 商户号
-     */
-    private String productId;
-    /**
-     * 规格名称
-     */
-    private String kindName;
-    /**
-     * 用户名
-     */
-    private String userName;
-    /**
-     * 评论星级：1,2,3,4,5
-     */
-    private Integer star;
 
     /**
-     * 评论内容
+     * 商品ID
      */
-    private String content;
+    private Long productId;
 
     /**
-     * 创建时间
+     * 好评数
      */
-    private String createTime;
+    private Integer totalCount;
 
+    /**
+     * 好评数
+     */
+    private Integer goodCount;
+
+    /**
+     * 好评数
+     */
+    private Integer middleCount;
+
+    /**
+     * 差评数
+     */
+    private Integer badCount;
+
+    /**
+     * 评论列表
+     */
+    List<ConmmentDetailDTO> conmmentList;
 
     @Override
     public String toString() {
@@ -43,4 +48,5 @@ public class ConmmentDTO {
                         SerializerFeature.WriteNullBooleanAsFalse, SerializerFeature.UseISO8601DateFormat
                 });
     }
+
 }

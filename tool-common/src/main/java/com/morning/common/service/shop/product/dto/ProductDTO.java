@@ -23,10 +23,6 @@ public class ProductDTO implements Serializable {
     private String productId;
 
     /**
-     * 商品名称
-     */
-    private String name;
-    /**
      * 商品标题
      */
     private String title;

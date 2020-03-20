@@ -39,7 +39,7 @@
     <select id="selectProductListPage" resultType="com.morning.common.service.shop.product.dto.ProductDTO">
         select
           a.product_id AS productId,
-          a.name AS name,
+          a.title AS title,
           a.stock AS stock,
           a.price AS price,
           a.comment_number AS commentNumber,
@@ -62,43 +62,20 @@
         select
             product_id as productId,
             shop_id as shopId,
-            name,
-            big_img as bigImg,
-            small_img as smallImg,
-            show_price as showPrice,
-            comment_number as commentNumber,
-            comment_num_detail as commentNumDetail,
-            tags,
-            discount,
-            promotion,
-            detail,
-            parameter
+            title,
+            show_img as showImg,
+            discount as discount,
+            price as price,
+        score as score,
+            stock as stock,
+            sales_volume as salesVolume,
+            page_view_num as pageViewNum
         from os_product
         <where>
             <if test="productId != null and productId != ''">
                 AND product_id = #{productId}
             </if>
         </where>
-    </select>
-
-
-    <!-- 查找热销商品列表 -->
-    <select id="selectHotProductList" resultType="com.morning.common.service.shop.product.dto.HotProductDTO">
-        select
-            product_id AS productId,
-            show_price AS showPrice,
-            sales_volume AS salesVolume,
-            big_img as bigImg
-        from os_product
-        <where>
-            <if test="shopId != null and shopId != ''">
-                AND shop_id = #{shopId}
-            </if>
-        </where>
-        order by sales_volume desc
-        <if test="pageInfo != null">
-            LIMIT #{pageInfo.offset}, #{pageInfo.limit}
-        </if>
     </select>
 
 </mapper>

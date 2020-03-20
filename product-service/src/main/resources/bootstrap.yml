@@ -40,4 +40,4 @@ imageUrl: http://192.168.213.103:8088
 logging:
   level:
     root: info
-  path: logs
+  path: _logs

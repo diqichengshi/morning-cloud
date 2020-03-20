@@ -1,6 +1,7 @@
 package com.morning.common.service.shop.product.dto;
 
 import com.morning.common.base.KvBean;
+import com.morning.common.service.shop.product.entity.ProductDetailDO;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -15,69 +16,26 @@ public class ProductDetailDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    private ProductDetailDO product;
     /**
-     * 商品ID
+     * 商品图片列表
      */
-    private String productId;
+    private List<ProductImgDTO> productImgList;
     /**
-     * 店铺Id
+     * 商品规格组列表
      */
-    private String shopId;
-
+    private List<SpecGroupDTO> specGroupList;
     /**
-     * 商品名称
+     * 商品规格参数列表
      */
-    private String name;
+    private List<SpecParamDTO> specParamList;
     /**
-     * 展示图片
+     * 优惠券列表
      */
-    private String bigImg;
-
+    private List<CouponDTO> couponList;
     /**
-     * 展示图片
+     * 商品保证列表
      */
-    private List<String> smallImg;
-    /**
-     * 展示价格
-     */
-    private String showPrice;
-    /**
-     * 评论数量
-     */
-    private String commentNumber;
-    /**
-     * 评论数量详情
-     */
-    private List<String> commentNumDetail;
-    /**
-     * 商品标签
-     */
-    private List<String> tags;
-    /**
-     * 商品折扣
-     */
-    private List<String> discount;
-    /**
-     * 商品推广
-     */
-    private List<String> promotion;
-    /**
-     * 商品介绍
-     */
-    private List<String> detail;
-    /**
-     * 商品参数
-     */
-    private List<KvBean> parameter;
-    /**
-     * 产品规格列表
-     */
-    List<List<KindDTO>> kindList;
-    /**
-     * 热销产品列表
-     */
-    List<HotProductDTO> hotProductList;
-
-    ConmmentDetailDTO conmmentDetail;
+    List<ProductVouchDTO> productVouchList;
 
 }

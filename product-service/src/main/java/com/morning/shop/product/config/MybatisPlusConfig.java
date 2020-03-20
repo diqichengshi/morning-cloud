@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  * 描述:
  */
 @Configuration
-public class MybatisConfig {
+public class MybatisPlusConfig {
 
     /**
      *   mybatis-plus分页插件

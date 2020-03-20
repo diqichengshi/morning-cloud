@@ -2,6 +2,8 @@ package com.morning.shop.product.web;
 
 import java.util.List;
 
+import com.baomidou.mybatisplus.plugins.Page;
+import com.morning.common.service.shop.product.ao.QueryRecommendListAO;
 import com.morning.common.service.shop.product.dto.ReconmmendDTO;
 import com.morning.shop.product.service.IRecommendService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,9 +36,9 @@ public class RecommendController {
      */
     @RequestMapping(value = "/recommendList")
     @ResponseBody
-    public MorningResult<List<List<ReconmmendDTO>>> queryProductRecommendList(String productId) {
-        List<List<ReconmmendDTO>> list = recommendService.queryProductRecommendList( productId);
-        return MorningResult.ok(list);
+    public MorningResult<Page<ReconmmendDTO>> queryProductRecommendList(QueryRecommendListAO query) {
+        Page<ReconmmendDTO> page = recommendService.queryRecommendListPage( query);
+        return MorningResult.ok(page);
     }
 
 }

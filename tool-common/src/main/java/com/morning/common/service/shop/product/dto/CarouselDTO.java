@@ -13,8 +13,8 @@ import java.util.List;
 public class CarouselDTO  implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    List<String> carouselItemList;
-    List<String> activityList;
+    private Long id;
+    private String picImg;
     @Override
     public String toString() {
         return JSON.toJSONString(this,

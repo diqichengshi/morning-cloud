@@ -30,31 +30,6 @@ import java.util.List;
 public class AdvertController {
     @Autowired
     private IAdvertService advertService;
-    /**
-     * queryHomeAdvertList 查询首页电脑专栏商品列表
-     *
-     * @param queryAO 查询参数
-     * @return 首页电脑专栏商品列表
-     */
-    @GetMapping(value = "/homeComputerList")
-    @ResponseBody
-    public MorningResult queryHomeComputerList() {
-        AdvertDTO advertDTO = advertService.queryHomeComputerList();
-        return MorningResult.ok(advertDTO);
-    }
-
-    /**
-     * queryHomeAdvertList 查询首页爱吃专栏商品列表
-     *
-     * @param queryAO 查询参数
-     * @return 首页爱吃专栏商品列表
-     */
-    @GetMapping(value = "/homeEatList")
-    @ResponseBody
-    public MorningResult queryHomeEatList() {
-        AdvertDTO advertDTO = advertService.queryHomeEatList();
-        return MorningResult.ok(advertDTO);
-    }
 
     /**
      * queryHomeAdvertList 查询首页轮播列表
@@ -64,9 +39,9 @@ public class AdvertController {
      */
     @GetMapping(value = "/carouselEatList")
     @ResponseBody
-    public MorningResult queryCarouselList() {
-        CarouselDTO carouselDTO = advertService.queryCarouselList();
-        return MorningResult.ok(carouselDTO);
+    public MorningResult<List<CarouselDTO>> queryCarouselList() {
+        List<CarouselDTO> list = advertService.queryCarouselList();
+        return MorningResult.ok(list);
     }
 }
 

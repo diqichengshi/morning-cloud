@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.morning.shop.product.dao.SeckillProductMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.morning.common.service.shop.product.entity.SeckillProdcut">
+        <id column="id" property="id"/>
+        <result column="product_id" property="productId"/>
+        <result column="type" property="type"/>
+        <result column="title" property="title"/>
+        <result column="show_img" property="showImg"/>
+        <result column="sales_volume" property="salesVolume"/>
+        <result column="show_price" property="showPrice"/>
+        <result column="status" property="status"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_by" property="createBy"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_by" property="updateBy"/>
+    </resultMap>
+    <!--xml里面的配置，尽量用resultMap（保证resultMap配置正确）,不要用resultType-->
+    <resultMap id="seckillProdcutListMap" type="com.morning.common.service.shop.product.dto.SeckillProdcutDTO">
+        <id column="id" property="id"/>
+        <result column="product_id" property="productId"/>
+        <result column="title" property="title"/>
+        <result column="show_img" property="showImg"/>
+        <result column="show_price" property="showPrice"/>
+        <result column="gruop_num" property="gruopNum"/>
+        <result column="join_gruop_num" property="joinGruopNum"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        product_id AS productId,recommend_id AS recommendId, name, code, number, show_number AS showNumber, status, create_time AS createTime, create_by AS createBy, update_time AS updateTime, update_by AS updateBy
+    </sql>
+
+    <!-- 查找商品列表 -->
+    <select id="querySeckillProductListPage" resultMap="seckillProdcutListMap">
+		SELECT
+		  id,
+		  product_id,
+		  title,
+		  show_img,
+		  show_price
+		FROM os_seckill_product
+
+	</select>
+
+</mapper>

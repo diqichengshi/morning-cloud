@@ -1,17 +1,11 @@
 package com.morning.shop.product.service;
 
+import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.IService;
-import com.morning.common.base.MorningResult;
-import com.morning.common.base.BasePageDTO;
-import com.morning.common.base.PageInfo;
-import com.morning.common.service.shop.product.ao.CommentQueryAO;
-import com.morning.common.service.shop.product.dto.ConmmentDTO;
+import com.morning.common.service.shop.product.ao.QueryCommentListAO;
 import com.morning.common.service.shop.product.dto.ConmmentDetailDTO;
-import com.morning.common.service.shop.product.entity.Comment;
-import com.morning.common.service.shop.product.vo.CommentVO;
-
-import java.util.List;
-import java.util.Map;
+import com.morning.common.service.shop.product.dto.ConmmentDTO;
+import com.morning.common.service.shop.product.entity.CommentDetail;
 
 /**
  * 项目名称：morning-product-facade
@@ -20,15 +14,14 @@ import java.util.Map;
  * 创建人：赵娟娟
  * 创建时间：2017年4月11日 下午3:12:11
  */
-public interface ICommentService extends IService<Comment> {
+public interface ICommentDetailService extends IService<CommentDetail> {
     /**
      * productDetail 商品评论列表
-     * <p>根据传过来的商品Id获取商品评论列表<br>
      *
      * @param productId 商品productId
      * @return 商品评论列表
      */
-    List<ConmmentDTO> queryProductConmmentList(String productId, PageInfo pageInfo);
+    ConmmentDTO queryConmmentList(QueryCommentListAO query);
     /**
      * productDetail 商品评论详情
      * <p>根据传过来的商品Id获取商品评论详情<br>
@@ -36,7 +29,7 @@ public interface ICommentService extends IService<Comment> {
      * @param productId 商品productId
      * @return 商品评论详情
      */
-    ConmmentDetailDTO queryProductConmmentDetail(String productId);
+    ConmmentDTO queryProductConmmentDetail(String productId);
     /**
      * 根据评价ID更新提问点赞数
      *

@@ -1,6 +1,8 @@
 package com.morning.shop.product.service;
 
+import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.IService;
+import com.morning.common.service.shop.product.ao.QueryRecommendListAO;
 import com.morning.common.service.shop.product.dto.ReconmmendDTO;
 import com.morning.common.service.shop.product.entity.Recommend;
 
@@ -21,5 +23,5 @@ public interface IRecommendService extends IService<Recommend> {
      * @param productId 商品productId
      * @return 商品推荐列表
      */
-    List<List<ReconmmendDTO>> queryProductRecommendList(String productId);
+    Page<ReconmmendDTO> queryRecommendListPage(QueryRecommendListAO query);
 }

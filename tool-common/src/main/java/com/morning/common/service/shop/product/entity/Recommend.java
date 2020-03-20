@@ -28,10 +28,10 @@ public class Recommend implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * 推荐位Id
+     * Id
      */
-	@TableId(value="recommend_id", type= IdType.AUTO)
-	private String recommendId;
+	@TableId(value="id", type= IdType.AUTO)
+	private String Id;
 
 	/**
 	 * 商户号
@@ -49,14 +49,14 @@ public class Recommend implements Serializable {
 	 */
 	private String type;
     /**
-     * 推荐位名称
+     * 名称
      */
 	private String name;
     /**
-     * 代码简称
+     * 展示图片
      */
-	@TableField("pic_img")
-	private String picImg;
+	@TableField("show_img")
+	private String showImg;
     /**
      * 销售量
      */

@@ -4,12 +4,12 @@ import com.morning.common.base.exception.AbstractBaseExceptionEnum;
 
 public enum SystemErrorEnum implements AbstractBaseExceptionEnum {
 
-    SYSTEM_OK("000000", "成功"),
-    SYSTEM_INNER_ERROR("500102", "服务器内部错误"),
-    SYSTEM_TIMEOUT_ERROR("500103", "服务器超时"),
-    SYSTEM_VALIDATED_ERROR("500108", "参数验证错误"),
-    SYSTEM_BUSINESS_ERROR("500109", "业务异常"),
-    GATEWAY_TIMEOUT_ERROR("500110", "网关超时");
+    SYSTEM_OK("00", "成功"),
+    SYSTEM_INNER_ERROR("10", "服务器内部错误"),
+    SYSTEM_TIMEOUT_ERROR("20", "服务器超时"),
+    SYSTEM_VALIDATED_ERROR("30", "参数验证错误"),
+    SYSTEM_BUSINESS_ERROR("40", "业务异常"),
+    GATEWAY_TIMEOUT_ERROR("50", "服务不可用");
 
     private String code;
 

@@ -22,7 +22,8 @@ spring:
       server:
         native:
           search-locations: classpath:/${profiles.active:dev}/
+
 logging:
   level:
     root: info
-  path: logs
+  path: _logs

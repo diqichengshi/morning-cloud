@@ -1,6 +1,7 @@
 package com.morning.shop.product.dao;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.baomidou.mybatisplus.plugins.Page;
 import com.morning.common.base.PageInfo;
 import com.morning.common.service.shop.product.ao.RecommendQueryAO;
 import com.morning.common.service.shop.product.dto.ReconmmendDTO;
@@ -26,5 +27,5 @@ public interface RecommendMapper extends BaseMapper<Recommend> {
      * @param productId 商品productId
      * @return 商品推荐列表
      */
-    List<ReconmmendDTO> queryProductRecommendList(RecommendQueryAO recommendQueryAO);
+    List<ReconmmendDTO> queryRecommendListPage(Page page);
 }

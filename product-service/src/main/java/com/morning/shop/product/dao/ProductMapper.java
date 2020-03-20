@@ -28,7 +28,7 @@ public interface ProductMapper extends BaseMapper<Product> {
      * @param page 查询参数
      * @return 商品列表
      */
-    List<ProductDTO> selectProductListPage( Page page);
+    List<ProductDTO> selectProductListPage(Page page);
 
     /**
      * productDetail 详情信息.
@@ -38,15 +38,5 @@ public interface ProductMapper extends BaseMapper<Product> {
      * @return 商品详情
      */
     ProductDetailDO selectProductDetail(@Param("productId") String productId);
-
-
-    /**
-     * productDetail 热销商品列表
-     * <p>根据传过来的商品编号获取热销商品列表<br>
-     *
-     * @param queryAO 查询参数
-     * @return 热销商品列表
-     */
-    List<HotProductDTO> selectHotProductList(@Param("shopId") String shopId, @Param("pageInfo") PageInfo pageInfo);
 
 }

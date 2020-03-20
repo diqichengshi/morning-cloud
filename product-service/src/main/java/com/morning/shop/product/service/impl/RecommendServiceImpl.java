@@ -1,10 +1,13 @@
 package com.morning.shop.product.service.impl;
 
 
+import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.morning.common.base.PageInfo;
 import com.morning.common.constant.enums.ListNumEnum;
+import com.morning.common.service.shop.product.ao.QueryRecommendListAO;
 import com.morning.common.service.shop.product.ao.RecommendQueryAO;
+import com.morning.common.service.shop.product.dto.ProductDTO;
 import com.morning.common.service.shop.product.dto.ReconmmendDTO;
 import com.morning.common.service.shop.product.entity.Recommend;
 import com.morning.shop.product.dao.RecommendMapper;
@@ -28,26 +31,11 @@ public class RecommendServiceImpl extends ServiceImpl<RecommendMapper, Recommend
     private RecommendMapper recommendMapper;
 
     @Override
-    public List<List<ReconmmendDTO>> queryProductRecommendList(String productId) {
-       /* PageInfo pageInfo = PageInfo.buildPageInfo(ListNumEnum.DEFAULT_LIST_OFFSET.getNum(),
-                ListNumEnum.RECOMMEND_PRODUCT_LIMIT.getNum());
-        RecommendQueryAO recommendQueryAO = new RecommendQueryAO(pageInfo);
-        recommendQueryAO.setProductId(productId);
-        List<ReconmmendDTO> list = recommendMapper.queryProductRecommendList(recommendQueryAO);
-        List<ReconmmendDTO> list1 = new ArrayList<>();
-        List<ReconmmendDTO> list2 = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            if (i<4){
-                list1.add(list.get(i));
-            }else {
-                list2.add(list.get(i));
-            }
-        }
-        List<List<ReconmmendDTO>> reconmmendList = new ArrayList<>();
-        reconmmendList.add(list1);
-        reconmmendList.add(list2);
-        return reconmmendList;*/
-        return null;
+    public Page<ReconmmendDTO> queryRecommendListPage(QueryRecommendListAO query) {
+        Page page = new Page(query.getReqPage(),query.getReqSize());
+        List<ReconmmendDTO> list=recommendMapper.queryRecommendListPage(page);
+        page.setRecords(list);
+        return page;
     }
 
 }

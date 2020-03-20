@@ -3,11 +3,16 @@ spring:
     database: 0
     host: 192.168.56.108
     port: 6379
-    password: 123456
+    password:
     encode: UTF-8
     timeout:  6000
     pool:
       max-active: 100
       max-wait: -1
       max-idle: 10
+      max-total: 100
       min-idle: 5
+    #sentinel:
+    #  master: mymaster   #哨兵集群的名称
+    #  nodes: 192.168.56.108:26379,192.168.56.109:26379,192.168.56.110:26379 #哨兵节点
+

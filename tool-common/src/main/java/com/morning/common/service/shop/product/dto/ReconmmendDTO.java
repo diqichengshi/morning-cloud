@@ -7,9 +7,9 @@ import lombok.Data;
 @Data
 public class ReconmmendDTO {
     /**
-     * 推荐Id
+     * Id
      */
-    private String recommendId;
+    private String id;
     /**
      * 商品Id
      */
@@ -17,11 +17,11 @@ public class ReconmmendDTO {
     /**
      * 名称
      */
-    private String name;
+    private String title;
     /**
      * 图片
      */
-    private String picImg;
+    private String showImg;
     /**
      * 显示价格
      */

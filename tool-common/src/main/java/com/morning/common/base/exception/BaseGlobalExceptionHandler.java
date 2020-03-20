@@ -85,7 +85,7 @@ public class BaseGlobalExceptionHandler {
         log.info("异常信息:{}", e.getMessage());
         log.error(ExceptionUtils.getStackTrace(e));
         LogUtil.logResult(0L, SystemErrorEnum.SYSTEM_INNER_ERROR + e.toString());
-        MorningResult<String> result=MorningResult.error(SystemErrorEnum.SYSTEM_VALIDATED_ERROR);
+        MorningResult<String> result=MorningResult.error(SystemErrorEnum.SYSTEM_INNER_ERROR);
         result.appendMsg(e.getMessage());
         return result;
     }
@@ -101,7 +101,7 @@ public class BaseGlobalExceptionHandler {
     public MorningResult<String> handleBusinessException(BusinessException e) {
         log.info("自定义异常信息:{}", e.getMessage());
         LogUtil.logResult(0L, SystemErrorEnum.SYSTEM_BUSINESS_ERROR.getCode() +":" + e.getMessage());
-        MorningResult<String> result=MorningResult.error(SystemErrorEnum.SYSTEM_VALIDATED_ERROR);
+        MorningResult<String> result=MorningResult.error(SystemErrorEnum.SYSTEM_BUSINESS_ERROR);
         result.appendMsg(e.getMessage().toString());
         return result;
     }
@@ -121,7 +121,7 @@ public class BaseGlobalExceptionHandler {
 
         LogUtil.logResult(0L
                 , SystemErrorEnum.SYSTEM_INNER_ERROR.getCode()+":" + e.getMessage());
-        MorningResult<String> result=MorningResult.error(SystemErrorEnum.SYSTEM_VALIDATED_ERROR);
+        MorningResult<String> result=MorningResult.error(SystemErrorEnum.SYSTEM_INNER_ERROR);
         result.appendMsg(error);
         return result;
     }
@@ -140,7 +140,7 @@ public class BaseGlobalExceptionHandler {
         // String error = SqlExceptionUtil.parseSqlException(e.getMessage());
 
         LogUtil.logResult(0L, SystemErrorEnum.SYSTEM_INNER_ERROR + ":" + e.getMessage());
-        MorningResult<String> result=MorningResult.error(SystemErrorEnum.SYSTEM_VALIDATED_ERROR);
+        MorningResult<String> result=MorningResult.error(SystemErrorEnum.SYSTEM_INNER_ERROR);
         result.appendMsg(e.getMessage().toString());
         return result;
     }

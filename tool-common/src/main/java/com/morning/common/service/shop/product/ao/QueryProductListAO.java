@@ -7,6 +7,9 @@ import lombok.Data;
 @Data
 public class QueryProductListAO extends PageAO {
 
+
+   private String queryType;
+
    private String categoryId;
 
 }

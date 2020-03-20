@@ -1,10 +1,9 @@
 package com.morning.shop.product.web;
 
-import java.util.List;
-import java.util.Map;
-
-import com.morning.common.service.shop.product.ao.CommentQueryAO;
+import com.baomidou.mybatisplus.plugins.Page;
+import com.morning.common.service.shop.product.ao.QueryCommentListAO;
 import com.morning.common.service.shop.product.dto.ConmmentDTO;
+import com.morning.common.service.shop.product.dto.ConmmentDetailDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.morning.common.base.MorningResult;
 import com.morning.common.service.shop.product.entity.CommentReply;
 import com.morning.shop.product.service.ICommentReplyService;
-import com.morning.shop.product.service.ICommentService;
+import com.morning.shop.product.service.ICommentDetailService;
 
 
 /**
@@ -28,11 +27,11 @@ import com.morning.shop.product.service.ICommentService;
  * 创建时间：2017年5月9日 下午12:29:33
  */
 @RestController
-@RequestMapping(value = "/shop/comment")
+@RequestMapping(value = "/comment")
 public class CommentController {
 
     @Autowired
-    private ICommentService commentService;
+    private ICommentDetailService commentService;
     @Autowired
     private ICommentReplyService commentReplyService;
 
@@ -41,10 +40,10 @@ public class CommentController {
      *
      * @return
      */
-    @GetMapping(value = "/list")
-    public MorningResult list(CommentQueryAO queryAO) {
-         List<ConmmentDTO> conmmentDTOList= commentService.queryProductConmmentList("",null);
-         return null;
+    @GetMapping(value = "/commentList")
+    public MorningResult<ConmmentDTO> list(QueryCommentListAO queryAO) {
+        ConmmentDTO conmmentDTO= commentService.queryConmmentList(queryAO);
+        return MorningResult.ok(conmmentDTO);
     }
 
     /**
