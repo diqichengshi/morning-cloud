@@ -70,7 +70,6 @@
     </dependencyManagement>
 
     <build>
-        <finalName>product-service</finalName>
         <!--<resource>
                 <directory>src/main/java</directory>
                 <includes>

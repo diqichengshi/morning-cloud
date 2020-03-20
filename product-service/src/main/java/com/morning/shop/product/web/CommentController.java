@@ -1,9 +1,7 @@
 package com.morning.shop.product.web;
 
-import com.baomidou.mybatisplus.plugins.Page;
-import com.morning.common.service.shop.product.ao.QueryCommentListAO;
+import com.morning.common.service.shop.product.ao.QueryCommentAO;
 import com.morning.common.service.shop.product.dto.ConmmentDTO;
-import com.morning.common.service.shop.product.dto.ConmmentDetailDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,9 +38,9 @@ public class CommentController {
      *
      * @return
      */
-    @GetMapping(value = "/commentList")
-    public MorningResult<ConmmentDTO> list(QueryCommentListAO queryAO) {
-        ConmmentDTO conmmentDTO= commentService.queryConmmentList(queryAO);
+    @GetMapping(value = "/queryComment")
+    public MorningResult<ConmmentDTO> queryComment(QueryCommentAO queryAO) {
+        ConmmentDTO conmmentDTO= commentService.queryConmmentDTO(queryAO);
         return MorningResult.ok(conmmentDTO);
     }
 

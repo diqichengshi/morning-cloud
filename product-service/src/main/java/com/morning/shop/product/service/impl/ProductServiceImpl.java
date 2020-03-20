@@ -31,8 +31,6 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
     @Autowired
     private ICommentDetailService commentService;
     @Autowired
-    private IKindService kindService;
-    @Autowired
     private RedisTemplate<String, String> redisTemplate;
     @Autowired
     private IProductImgService productImgService;
@@ -85,7 +83,6 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         detailDTO.setProductVouchList(productVouchDTOList);
 
         return detailDTO;
-
     }
 
     public ProductDetailDO queryProductDetailDOByProductId(String productId){

@@ -100,10 +100,10 @@ public class OrderController {
     @GetMapping(value = "/list")
     public MorningResult list(@RequestParam("userId") String userId, @RequestParam Map<String, Object> params) {
         String search = ObjectUtils.toString(params.get("search"));
-        PageInfo pageInfo = PageInfo.buildPageInfo(0, 10);
-        BasePageDTO<OrderVO> basePageDTO = orderService.list(userId, pageInfo, search);
+        //PageInfo pageInfo = PageInfo.buildPageInfo(0, 10);
+        // BasePageDTO<OrderVO> basePageDTO = orderService.list(userId, pageInfo, search);
 
-        return MorningResult.ok(basePageDTO);
+        return MorningResult.ok(null);
     }
 
     /**

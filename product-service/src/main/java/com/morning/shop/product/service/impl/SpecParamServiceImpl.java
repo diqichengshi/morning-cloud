@@ -59,10 +59,10 @@ public class SpecParamServiceImpl extends ServiceImpl<SpecParamMapper, SpecParam
 
     @Override
     public  String querySpecParamNameStitching(String specParanId) {
-        List<String> query= Arrays.asList(specParanId,",");
+        String[] array=specParanId.split(",");
         // 查询数据库
         EntityWrapper<SpecParam> wrapper = new EntityWrapper<SpecParam>();
-        wrapper.in("id", query);
+        wrapper.in("id", Arrays.asList(array));
         List<SpecParam> list = specParamMapper.selectList(wrapper); // 如果为Null，默认查询所有
 
         StringBuilder builder=new StringBuilder();

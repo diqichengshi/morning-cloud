@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.morning</groupId>
-    <artifactId>morning-gateway</artifactId>
+    <artifactId>trans-gateway</artifactId>
 
     <dependencies>
         <dependency>

@@ -2,9 +2,11 @@ package com.morning.shop.product.dao;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.plugins.Page;
+import com.morning.common.service.shop.product.ao.QueryCommentAO;
 import com.morning.common.service.shop.product.dto.ConmmentDetailDTO;
 import com.morning.common.service.shop.product.entity.CommentDetail;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -20,9 +22,10 @@ public interface CommentDetailMapper extends BaseMapper<CommentDetail> {
     /**
      * productDetail 商品推荐列表
      *
-     * @param productId 商品productId
+     * @param page 分页参数
+     * @param query 查询参数
      * @return 商品推荐列表
      */
-    List<ConmmentDetailDTO> selectConmmentListPage(Page page);
+    List<ConmmentDetailDTO> selectConmmentListPage(Page page,@Param("query") QueryCommentAO query);
 
 }

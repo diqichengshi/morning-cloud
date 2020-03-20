@@ -33,6 +33,8 @@ public class ConmmentDTO {
      * 差评数
      */
     private Integer badCount;
+    /**好评率*/
+    private String goodRate;
 
     /**
      * 评论列表

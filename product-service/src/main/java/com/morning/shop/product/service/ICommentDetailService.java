@@ -1,9 +1,7 @@
 package com.morning.shop.product.service;
 
-import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.IService;
-import com.morning.common.service.shop.product.ao.QueryCommentListAO;
-import com.morning.common.service.shop.product.dto.ConmmentDetailDTO;
+import com.morning.common.service.shop.product.ao.QueryCommentAO;
 import com.morning.common.service.shop.product.dto.ConmmentDTO;
 import com.morning.common.service.shop.product.entity.CommentDetail;
 
@@ -21,7 +19,7 @@ public interface ICommentDetailService extends IService<CommentDetail> {
      * @param productId 商品productId
      * @return 商品评论列表
      */
-    ConmmentDTO queryConmmentList(QueryCommentListAO query);
+    ConmmentDTO queryConmmentDTO(QueryCommentAO query);
     /**
      * productDetail 商品评论详情
      * <p>根据传过来的商品Id获取商品评论详情<br>

@@ -5,11 +5,12 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.morning.common.service.shop.product.ao.QueryCommentListAO;
+import com.morning.common.service.shop.product.ao.QueryCommentAO;
 import com.morning.common.service.shop.product.dto.ConmmentDetailDTO;
 import com.morning.common.service.shop.product.dto.ConmmentDTO;
 import com.morning.common.service.shop.product.entity.CommentDetail;
 import com.morning.common.service.shop.product.entity.CommentSummary;
+import com.morning.common.util.StringUtil;
 import com.morning.shop.product.dao.CommentDetailMapper;
 import com.morning.shop.product.dao.CommentReplyMapper;
 import com.morning.shop.product.service.ICommentDetailService;
@@ -42,18 +43,23 @@ public class CommentDetailServiceImpl extends ServiceImpl<CommentDetailMapper, C
     private ISpecParamService specParamService;
     @Autowired
     private ICommentSummaryService commentSummaryService;
+
     @Override
-    public ConmmentDTO queryConmmentList(QueryCommentListAO query){
+    public ConmmentDTO queryConmmentDTO(QueryCommentAO query){
         ConmmentDTO dto=new ConmmentDTO();
         // 查询汇总信息
         Wrapper summaryWapper=new EntityWrapper();
         summaryWapper.eq("product_id",query.getProductId());
         CommentSummary commentSummary= commentSummaryService.selectOne(summaryWapper);
         BeanUtils.copyProperties(commentSummary,dto);
+        dto.setGoodRate(String.valueOf(dto.getGoodCount()/dto.getTotalCount()));
 
         // 查询评论列表
+        if (StringUtil.isEmpty(query.getSize())){
+            query.setSize("2");
+        }
         Page page = new Page(query.getReqPage(),query.getReqSize());
-        List<ConmmentDetailDTO> list=commentMapper.selectConmmentListPage(page);
+        List<ConmmentDetailDTO> list=commentMapper.selectConmmentListPage(page,query);
         for (ConmmentDetailDTO conmmentDetailDTO:list){
            String nameStitching= specParamService.querySpecParamNameStitching(conmmentDetailDTO.getSpecParamId());
            conmmentDetailDTO.setBuyType(nameStitching);

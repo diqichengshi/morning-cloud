@@ -31,16 +31,16 @@
         SELECT
             product_id as productId,
             a.user_id as userId,
-            b.user_name,
-            b.head_img as headImg
+            b.user_name as userName,
+            b.head_img as headImg,
             star,
             content,
             spec_param_id as specParamId,
             create_time as createTime
         FROM os_comment_detail a left join os_user b on a.user_id = b.user_id
         <where>
-            <if test="productId != null and productId != ''">
-                AND product_id = #{productId}
+            <if test="query.productId != null and query.productId != ''">
+                AND product_id = #{query.productId}
             </if>
         </where>
     </select>
