@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.morning.shop.product.dao.CouponMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.morning.common.service.shop.product.entity.Coupon">
+        <id column="id" property="id" />
+        <result column="title" property="title" />
+        <result column="icon" property="icon" />
+        <result column="used" property="used" />
+        <result column="type" property="type" />
+        <result column="with_special" property="withSpecial" />
+        <result column="with_sn" property="withSn" />
+        <result column="with_amount" property="withAmount" />
+        <result column="used_amount" property="usedAmount" />
+        <result column="quota" property="quota" />
+        <result column="take_count" property="takeCount" />
+        <result column="used_count" property="usedCount" />
+        <result column="start_time" property="startTime" />
+        <result column="end_time" property="endTime" />
+        <result column="valid_type" property="validType" />
+        <result column="valid_start_time" property="validStartTime" />
+        <result column="valid_end_time" property="validEndTime" />
+        <result column="valid_days" property="validDays" />
+        <result column="status" property="status" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, title, icon, used, type, with_special, with_sn, with_amount, used_amount, quota, take_count, used_count, start_time, end_time, valid_type, valid_start_time, valid_end_time, valid_days, status, create_by, create_time, update_by, update_time
+    </sql>
+
+</mapper>
